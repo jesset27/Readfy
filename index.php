@@ -16,8 +16,9 @@
         $login = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($login && password_verify($senha, $login['senha'])){
-            
-
+            session_start();
+            $_SESSION['email'] = $email;
+            header('Location: homepage.php');
         }else {
             echo 'Email ou senha incorretos';
         }

@@ -21,6 +21,7 @@
         $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT));
         $leitorDao = new LeitorDAO($pdo);
         $leitorDao->inserir($leitor);
+        header("Location: index.php");
     }
 ?>
 
