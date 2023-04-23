@@ -5,6 +5,7 @@
         private string $email;
         private int $contato;
         private int $idade;
+        private string $senha;
         public function __construct
         (
             string $nome,
@@ -12,6 +13,7 @@
             string $email,
             int $contato,
             int $idade,
+            string $senha
         )
         {
             $this->nome = $nome;
@@ -19,6 +21,7 @@
             $this->email = $email;
             $this->contato = $contato;
             $this->idade = $idade;
+            $this->senha = $senha;
         }
         public function __get($nome)
         {
