@@ -39,6 +39,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
+    <p>Não tem conta? <a href="cadastro.php">Cadastrar-se</a></p>
 </div>
 
 

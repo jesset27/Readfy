@@ -27,7 +27,7 @@
                 <a class="nav-link" href="#">Livros</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="cadastro.php">Sair</a>
+                <a class="nav-link" href="session_destroy.php">Sair</a>
                 </li>
             </ul>
             </div>

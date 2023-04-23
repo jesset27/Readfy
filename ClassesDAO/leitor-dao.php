@@ -24,6 +24,8 @@ class LeitorDAO
         
         $stmt->execute();
     }
+
+    
     
     public function atualizar(Leitor $leitor)
     {

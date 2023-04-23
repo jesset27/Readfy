@@ -20,8 +20,18 @@
 
         $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT));
         $leitorDao = new LeitorDAO($pdo);
-        $leitorDao->inserir($leitor);
-        header("Location: index.php");
+
+        $stmt = $pdo->prepare('SELECT * FROM leitores WHERE email = :email');
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$leitor_data) {
+            $leitorDao->inserir($leitor);
+            header("Location: index.php");
+        }else{
+          echo "esse email ja existe jessé";
+        }
     }
 ?>
 
