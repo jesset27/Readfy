@@ -17,8 +17,8 @@
         $contato = $_POST['contato'];
         $idade = $_POST['idade'];
         $senha = $_POST['senha'];
-
-        $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT));
+        $user = "user";   
+        $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT), $user);
         $leitorDao = new LeitorDAO($pdo);
 
         $stmt = $pdo->prepare('SELECT * FROM leitores WHERE email = :email');

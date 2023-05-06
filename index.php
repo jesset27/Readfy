@@ -10,15 +10,18 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        $stmt = $pdo->prepare('SELECT email, senha FROM leitores WHERE email = :email');
+        $stmt = $pdo->prepare('SELECT email, senha, tipo FROM leitores WHERE email = :email');
         $stmt->bindValue(':email', $email);
         $stmt->execute();
-        $login = $stmt->fetch(PDO::FETCH_ASSOC);
+        $login = $stmt->fetch(PDO::FETCH_OBJ); 
         
-        if ($login && password_verify($senha, $login['senha'])){
+        if ($login && password_verify($senha, $login->senha)){
             session_start();
             $_SESSION['email'] = $email;
-            header('Location: homepage.php');
+            if ($login->tipo == 'user'){
+                header("Location: homepage.php");
+            }
+            header("Location: homepageadmin.php");
         }else {
             echo 'Email ou senha incorretos';
         }
