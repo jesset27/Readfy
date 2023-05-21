@@ -33,8 +33,5 @@
         public function __set($atri, $value){
             $this->$atri = $value;
         }
-        public function toString(){
-            echo get_class($this) . ":, Nome: " . $this->nome . ", Username: " . $this->userName . ", Email: " . $this->email . ", Contato: " . $this->contato . ", Idade: ". $this->idade;    
-        }
     }
 ?>
