@@ -1,5 +1,5 @@
 <?php 
-    require_once('Includes/header.php');
+    require_once('src/Views/layout/header.php');
 ?>
 <style>
 
@@ -26,4 +26,4 @@
 </div>
 
 </body>
-<?php require_once('Includes/footer.php'); ?>
+<?php require_once('src/Views/layout/footer.php'); ?>
