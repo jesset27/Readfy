@@ -1,5 +1,5 @@
 <?php
-require_once('Includes/header.php');
+require "src/Views/layout/header.php"; 
 session_start();
 
 if (!isset($_SESSION['email'])){
@@ -15,4 +15,4 @@ if (!isset($_SESSION['email'])){
 <div class="container">
     <h1>Bem vindo, <?= $user['username'] ?></h1>
 </div>
-<?php require_once('Includes/footer.php'); ?>
+<?php require "src/Views/layout/header.php";  ?>
