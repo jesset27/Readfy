@@ -49,7 +49,7 @@
             <img src="public\img\garota-atraente-e-legal-esta-entre-estantes-grandes-e-compridas-com-livros-antigos-ela-esta-segurando-uma-xicara-de-cafe-na-mao-e-olhando-para-a-prateleira-a-mulher-esta-procurando-um-livro_152404-1149.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="public\img\garota-atraente-e-legal-esta-entre-estantes-grandes-e-compridas-com-livros-antigos-ela-esta-segurando-uma-xicara-de-cafe-na-mao-e-olhando-para-a-prateleira-a-mulher-esta-procurando-um-livro_152404-1149.jpg" class="d-block w-100" alt="...">
+            <img src="public\img\book-1659717_1280.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
             <img src="public\img\garota-atraente-e-legal-esta-entre-estantes-grandes-e-compridas-com-livros-antigos-ela-esta-segurando-uma-xicara-de-cafe-na-mao-e-olhando-para-a-prateleira-a-mulher-esta-procurando-um-livro_152404-1149.jpg" class="d-block w-100" alt="...">
