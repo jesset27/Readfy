@@ -1,8 +1,8 @@
 <?php 
-    require_once('Includes/header.php');
-    require_once('Classes/Leitor.php');
-    require_once('ClassesDAO/leitor-dao.php');
-    require_once('Includes/connect.php');
+    require_once('src/Views/layout/header.php');
+    require_once('src/Models/Classes/Leitor.php');
+    require_once('src/Models/ClassesDAO/LeitorDao.php');
+    require_once('src/Lib/connect.php');
     $nome = '';
     $username = '';
     $email = '';
@@ -21,17 +21,10 @@
         $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT), $user);
         $leitorDao = new LeitorDAO($pdo);
 
-        $stmt = $pdo->prepare('SELECT * FROM leitores WHERE email = :email');
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$leitorDao->VerificaEmail($email)) header('Location: login.php');
 
-        if (!$leitor_data) {
-            $leitorDao->inserir($leitor);
-            header("Location: index.php");
-        }else{
-          echo "esse email ja existe jessé";
-        }
+        $leitorDao->inserir($leitor);
+
     }
 ?>
 
@@ -66,4 +59,4 @@
 </div>
 
 
-<?php require_once('Includes/footer.php'); ?>
+<?php require_once('src/Views/layout/footer.php'); ?>

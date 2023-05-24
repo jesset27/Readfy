@@ -15,4 +15,4 @@ if (!isset($_SESSION['email'])){
 <div class="container">
     <h1>Bem vindo, <?= $user['username'] ?></h1>
 </div>
-<?php require "src/Views/layout/header.php";  ?>
+<?php require "src/Views/layout/footer.php";  ?>

@@ -7,7 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $senha = $_POST['senha'];
 
     $leitorDao = new LeitorDAO($pdo);
-    if ($leitorDao->Login($email, $senha)) header("Location: homepage.php");
+    if ($leitorDao->Login($email, $senha)) header("Location: homepageadmin.php");
+
     
     
 }
