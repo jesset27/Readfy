@@ -1,16 +1,17 @@
-<?php 
-require "src/Views/layout/header.php"; 
+<?php
+require "src/Views/layout/header.php";
 require "src/Lib/connect.php";
 require "src/Models/ClassesDAO/LeitorDao.php";
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     $leitorDao = new LeitorDAO($pdo);
-    if ($leitorDao->Login($email, $senha)) header("Location: homepageadmin.php");
-
-    
-    
+    if (!$leitorDao->Login($email, $senha)){
+        echo "Senha incorreta";
+    } else {
+        echo "Login efetuado";
+    }
 }
 
 ?>
