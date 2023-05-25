@@ -2,6 +2,7 @@
 require "src/Views/layout/header.php";
 require "src/Lib/connect.php";
 require "src/Models/ClassesDAO/LeitorDao.php";
+require "src/Lib/Session.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -11,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Senha incorreta";
     } else {
         echo "Login efetuado";
+        $session = new Session();
+        $session->defineValor("user",$email);
+        header("Location: homepage.php");
     }
 }
 
