@@ -1,5 +1,5 @@
 <?php
-class LeitorDAO
+class LivroDAO
 {
     private $pdo;
 
@@ -8,19 +8,19 @@ class LeitorDAO
         $this->pdo = $pdo;
     }
 
-    public function inserir(Leitor $leitor)
+    public function inserir(Livro $livro)
     {
-        $senhaCriptografada = password_hash($leitor->senha, PASSWORD_DEFAULT);
 
-        $stmt = $this->pdo->prepare("INSERT INTO leitores (nome, username, email, contato, idade, senha, data, tipo) VALUES (:nome, :username, :email, :contato, :idade, :senha, NOW(), 'user')");
+        $stmt = $this->pdo->prepare("INSERT INTO livros 
+        (nome, editora, autor, datalancamento, dataatual, caminho, genero) 
+        VALUES (:nome, :editora, :autor, :datalancamento, NOW(), :caminho, :genero)");
 
-        $stmt->bindValue(':nome', $leitor->__get('nome'));
-        $stmt->bindValue(':username', $leitor->__get('userName'));
-        $stmt->bindValue(':email', $leitor->__get('email'));
-        $stmt->bindValue(':contato', $leitor->__get('contato'));
-        $stmt->bindValue(':idade', $leitor->__get('idade'));
-        $stmt->bindValue(':senha', $senhaCriptografada);
-
+        $stmt->bindValue(':nome', $livro->__get('nome'));
+        $stmt->bindValue(':editora', $livro->__get('editora'));
+        $stmt->bindValue(':autor', $livro->__get('autor'));
+        $stmt->bindValue(':datalancamento', $livro->__get('datalancamento'));
+        $stmt->bindValue(':caminho', $livro->__get('caminho'));
+        $stmt->bindValue(':genero', $livro->__get('genero'));
         $stmt->execute();
     }
 
@@ -36,10 +36,10 @@ class LeitorDAO
         if ($login && password_verify($senha, $login['senha'])) {
             if ($login['tipo'] == 'user') {
                 Session::defineValor('tipo', 'user',  'email', $email);
-                header("Location: ./usuario/index.php");
+                header("Location: homepage.php");
             } else if ($login['tipo'] == 'admin') {
                 Session::defineValor('tipo', 'user',  'email', $email);
-                header("Location: ./administrativo/index.php");
+                header("Location: homepageadmin.php");
             }
         } else {
             echo "senha incorreta";
@@ -74,21 +74,22 @@ class LeitorDAO
         return $leitor_obj;
     }
 
-    public function atualizar($id, $nome, $username, $email, $contato, $idade)
-    {
-        $stmt = $this->pdo->prepare(
-            "UPDATE leitores SET nome = ?, username = ?, email = ?, contato = ?, idade = ? 
-                WHERE id = $id
-                "
-        );
 
-        $stmt->bindValue(1, $nome);
-        $stmt->bindValue(2, $username);
-        $stmt->bindValue(3, $email);
-        $stmt->bindValue(4, $contato);
-        $stmt->bindValue(5, $idade);
+
+
+    public function atualizar(Leitor $leitor)
+    {
+        $stmt = $this->pdo->prepare('UPDATE leitores SET nome = ?, username = ?, email = ?, contato = ?, idade = ?, senha = ? WHERE id = ?');
+
+        $stmt->bindValue(1, $leitor->__get('nome'));
+        $stmt->bindValue(2, $leitor->__get('userName'));
+        $stmt->bindValue(3, $leitor->__get('email'));
+        $stmt->bindValue(4, $leitor->__get('contato'));
+        $stmt->bindValue(5, $leitor->__get('idade'));
+        $stmt->bindValue(6, $leitor->__get('senha'));
+        $stmt->bindValue(7, $leitor->__get('id'));
+
         $stmt->execute();
-        header("Location: ./leitores.php");
     }
 
     public function deletar($id)
@@ -102,22 +103,18 @@ class LeitorDAO
 
     public function buscarPorId($id)
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM leitores WHERE id = ?');
-        $stmt->bindValue(1, $id);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
+        // $stmt = $this->pdo->prepare('SELECT * FROM leitores WHERE id = ?');
+        // $stmt->bindValue(1, $id);
+        // $stmt->execute();
+        // $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        // return new Leitor($result['nome'], $result['username'], $result['email'], $result['contato'], $result['idade'], $result['senha']);
     }
 
     public function buscarTodos()
     {
-        try {
-            $stmt = $this->pdo->prepare("SELECT * FROM leitores");
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        } catch (PDOException $e) {
-            echo "Erro na inserção: " . $e->getMessage();
-        }
+        $stmt = $this->pdo->prepare('SELECT * FROM livros');
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

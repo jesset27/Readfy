@@ -1,25 +1,26 @@
 <?php  
 class Session {
-    public function __construct() {
+    public static function defineValor($chave, $valor, $email, $user) {
         session_start();
-    }
-
-    public function defineValor($chave, $valor) {
         $_SESSION[$chave] = $valor;
+        $_SESSION[$email] = $user;
     }
 
-    public function obterValor($chave) {
+    public static function obterValor($chave) {
+        session_start();
         if (isset($_SESSION[$chave])) {
-            return $_SESSION[$chave];
+            return array ($_SESSION[$chave], $_SESSION['email']);
         }
-        return null;
+        header('Location: /readfy');
     }
 
-    public function removerValor($chave) {
+    public static function removerValor($chave) {
+        session_start();
         unset($_SESSION[$chave]);
     }
 
-    public function encerrar() {
+    public static function encerrar() {
+        session_start();
         session_destroy();
     }
 }

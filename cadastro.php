@@ -10,22 +10,26 @@
     $idade = '';
     $senha = '';
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $nome = $_POST['nome'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $contato = $_POST['contato'];
-        $idade = $_POST['idade'];
-        $senha = $_POST['senha'];
-        $user = "user";   
-        $leitor = new Leitor($nome, $username, $email, $contato, $idade, password_hash($senha, PASSWORD_DEFAULT), $user);
-        $leitorDao = new LeitorDAO($pdo);
-
-        if (!$leitorDao->VerificaEmail($email)) header('Location: login.php');
-
-        $leitorDao->inserir($leitor);
-
-    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $nome = $_POST['nome'];
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $contato = $_POST['contato'];
+      $idade = $_POST['idade'];
+      $senha = $_POST['senha'];
+      $user = "user";
+  
+      $leitor = new Leitor($nome, $username, $email, $contato, $idade, $senha, $user);
+      $leitorDao = new LeitorDAO($pdo);
+  
+      if ($leitorDao->VerificaEmail($email)) {
+          $leitorDao->inserir($leitor);
+          header('Location: login.php');
+          exit();
+      } else {
+          echo "O email fornecido já está em uso.";
+      }
+  }
 ?>
 
 <div class="container">

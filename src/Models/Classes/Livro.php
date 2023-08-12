@@ -3,20 +3,23 @@
         private $nome;
         private $editora;
         private $autor;
-        private $dataLancamento;
-        private $dataAtual;
+        private $datalancamento;
+        private $caminho;
+        private $genero;
         public function __construct(
             $nome,
             $editora,
             $autor,
-            $dataLancamento,
-            $dataAtual
+            $datalancamento,
+            $caminho,
+            $genero
         ){
             $this->nome = $nome;
             $this->editora = $editora;
             $this->autor = $autor;
-            $this->dataLancamento = $dataLancamento;
-            $this->dataAtual = $dataAtual;
+            $this->datalancamento = $datalancamento;
+            $this->caminho = $caminho;
+            $this->genero = $genero;
         }
         public function __get($atributo){
             return $this->$atributo;
@@ -25,4 +28,3 @@
             $this->$atributo = $valor;
         }
     }
-?>

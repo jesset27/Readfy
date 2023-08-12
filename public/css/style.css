@@ -1,10 +1,16 @@
-body{
-    background-color: black;
+*{
+    
 }
 
-h1{
-    color: #eb2d07;
+.movies {
+    display: flex;
+    border: 1px solid red;
+    overflow-x: scroll;
 }
-.cor1{
-    background-color: #eb2d07;
+
+.movies img {
+    width: 100px;
+    padding: 0 10px;
+    cursor: pointer;
 }
+
