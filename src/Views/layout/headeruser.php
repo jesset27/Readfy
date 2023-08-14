@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/readfy">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
+                <a class="nav-link" href="livros.php">Livros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/readfy/src/Lib/session_destroy.php">Sair</a>

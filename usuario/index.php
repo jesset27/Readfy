@@ -1,5 +1,5 @@
 <?php
-require_once("../src/Views/layout/header.php");
+require_once("../src/Views/layout/headeruser.php");
 require_once("../src/Models/ClassesDAO/LeitorDao.php");
 require_once("../src/Lib/connect.php");
 require_once("../src/Lib/Session.php");

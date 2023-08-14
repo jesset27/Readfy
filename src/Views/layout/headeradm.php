@@ -35,7 +35,7 @@
                                     <a href="/readfy/administrativo/adicionar.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Adicionar Livros</span> 📚</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Livros</span> 📚</a>
+                                    <a href="livros.php" class="nav-link px-0"> <span class="d-none d-sm-inline">Livros</span> 📚</a>
                                 </li>
                             </ul>
                         </li>

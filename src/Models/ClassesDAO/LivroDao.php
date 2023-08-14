@@ -26,53 +26,8 @@ class LivroDAO
 
 
 
-    public function Login($email, $senha)
-    {
-        $stmt = $this->pdo->prepare('SELECT email, senha, tipo FROM leitores WHERE email = :email');
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        $login = $stmt->fetch(PDO::FETCH_ASSOC);
+    
 
-        if ($login && password_verify($senha, $login['senha'])) {
-            if ($login['tipo'] == 'user') {
-                Session::defineValor('tipo', 'user',  'email', $email);
-                header("Location: homepage.php");
-            } else if ($login['tipo'] == 'admin') {
-                Session::defineValor('tipo', 'user',  'email', $email);
-                header("Location: homepageadmin.php");
-            }
-        } else {
-            echo "senha incorreta";
-        }
-    }
-
-
-
-    public function VerificaEmail($email)
-    {
-
-        $stmt = $this->pdo->prepare('SELECT * FROM leitores WHERE email = :email');
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$leitor_data) {
-            // email não existe, cadastre    
-            return true;
-        } else {
-            //email ja existe, não cadastre
-            return false;
-        }
-    }
-
-    public function buscarUsuario($email)
-    {
-        $stmt = $this->pdo->prepare('SELECT * FROM leitores WHERE email = :email');
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $leitor_obj = $stmt->fetchObject(); // Retorna um objeto em vez de um array
-        return $leitor_obj;
-    }
 
 
 
@@ -112,9 +67,22 @@ class LivroDAO
 
     public function buscarTodos()
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM livros');
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM livros");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Erro na inserção: " . $e->getMessage();
+        }
+    }
+
+    public function buscarUsuario($email)
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM leitores WHERE email = :email');
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        $leitor_obj = $stmt->fetchObject(); // Retorna um objeto em vez de um array
+        return $leitor_obj;
     }
 }
