@@ -62,31 +62,33 @@ require_once('../src/Views/layout/headeradm.php');
                     <td scope="row" class="align-middle"><?= $livro['genero'] ?></td>
                     <td class="table-light" style="width:15%">
                         <a href="update.php?id=<?= $livro['id'] ?>"><button type="button" class="btn btn-primary">Alterar</button></a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $livro['id'] ?>">
                             Excluir
                         </button>
                     </td>
                 </tr>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal<?= $livro['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel<?= $livro['id'] ?>" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirma a exclusão de: <?= $leitor['nome'] ?></h1>
+                                <h1 class="modal-title fs-5" id="modalLabel<?= $livro['id'] ?>"><?= $livro["nome"] ?></h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Ao clicar em confirmar você concorda com a exclusão deste usuario?
+                                <p>Editora: <?= $livro["editora"] ?></p>
+                                <p>Autor: <?= $livro["autor"] ?></p>
+                                <p>Data de Lançamento: <?= $livro["datalancamento"] ?></p>
+                                <p>Gênero: <?= $livro["genero"] ?></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <a href="destroy_leitores.php?id=<?= $leitor['id'] ?>"><button type="button" class="btn btn-primary">Confirmar</button></a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <a href=""><button type="button" class="btn btn-primary">Ler</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php } ?>
-        </tbody>
         </tbody>
     </table>
 
