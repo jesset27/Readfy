@@ -62,9 +62,15 @@ require_once('../src/Views/layout/headeradm.php');
                     <td scope="row" class="align-middle"><?= $leitor['tipo'] ?></td>
                     <td class="table-light" style="width:15%">
                         <a href="update.php?id=<?= $leitor['id'] ?>"><button type="button" class="btn btn-primary">Alterar</button></a>
+<<<<<<< Updated upstream
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $leitor['id'] ?>">
                             Excluir
                         </button>
+=======
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="<?= $leitor['id'] ?>">
+                Excluir
+            </button>
+>>>>>>> Stashed changes
                     </td>
                 </tr>
 
