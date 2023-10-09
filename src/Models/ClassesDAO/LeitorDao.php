@@ -40,6 +40,9 @@ class LeitorDAO
             } else if ($login['tipo'] == 'admin') {
                 Session::defineValor('tipo', 'user',  'email', $email);
                 header("Location: ./administrativo/index.php");
+            } else if ($login['tipo'] == 'professor'){
+                Session::defineValor('tipo', 'user',  'email', $email);
+                header("Location: ./professor/index.php");
             }
         } else {
             echo "senha incorreta";
