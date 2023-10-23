@@ -1,10 +1,10 @@
 *{
-    
+    margin: 0;
+    padding: 0;
 }
 
 .movies {
     display: flex;
-    border: 1px solid red;
     overflow-x: scroll;
 }
 
@@ -14,3 +14,6 @@
     cursor: pointer;
 }
 
+.img_capa{
+    width: 100%;
+}

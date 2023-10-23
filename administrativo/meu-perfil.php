@@ -14,7 +14,14 @@ $usuario = $leitorDao->buscarUsuario(
 );
 
 
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $contato = $_POST['contato'];
+    $idade = $_POST['idade'];
+    $leitorDao->atualizar($id, $nome, $username, $email, $contato, $idade);
+}
 ?>
 
 <div class="dropdown pb-4">
@@ -34,13 +41,32 @@ $usuario = $leitorDao->buscarUsuario(
 </div>
 </div>
 <div class="col py-3">
+    <h3>Leitores</h3>
 
-    <h3>Bem vindo, <?= $usuario->username ?></h3>
-    <h3>Nome: <?= $usuario->nome ?></h3>
-    <h3>E-mail: <?= $usuario->email ?></h3>
-    <h3>Contato: <?= $usuario->contato ?></h3>
-    <h3>Idade:, <?= $usuario->idade ?></h3>
-    <h3>Data de Cadastro, <?= $usuario->data ?></h3>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input disabled value="<?= $leitor['nome'] ?>" name="nome" type="text" class="form-control" id="inputNome" placeholder="Digite seu nome">
+        </div>
+        <div class="mb-3">
+            <label for="inputUsername" class="form-label">Username</label>
+            <input disabled value="<?= $leitor['username'] ?>" name="username" type="text" class="form-control" id="inputUsername" placeholder="Digite seu username">
+        </div>
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input disabled value="<?= $leitor['email'] ?>" name="email" type="email" class="form-control" id="inputEmail" placeholder="Digite seu email">
+        </div>
+        <div class="mb-3">
+            <label for="inputContato" class="form-label">Contato</label>
+            <input disabled value="<?= $leitor['contato'] ?>" name="contato" type="text" class="form-control" id="inputContato" placeholder="Digite seu telefone ou celular">
+        </div>
+        <div class="mb-3">
+            <label for="inputIdade" class="form-label">Idade</label>
+            <input disabled value="<?= $leitor['idade'] ?>" value="<?= $leitor['nome'] ?>" name="idade" type="number" class="form-control" id="inputIdade" placeholder="Digite sua idade">
+        </div>
+    </form>
+
 
 </div>
 </div>

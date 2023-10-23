@@ -56,7 +56,7 @@ require_once('../src/Views/layout/headeradm.php');
         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
         <span class="d-none d-sm-inline mx-1"><?= $usuario->username; ?></span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href=" update.php?id= <?= $usuario->id ?> ">Alterar Dados</a></li>
         <li><a class="dropdown-item" href="meu-perfil.php?id= <?= $usuario->id ?>">Meu Perfil</a></li>
         <li>

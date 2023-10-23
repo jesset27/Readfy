@@ -18,7 +18,7 @@ require_once('../src/Views/layout/headeradm.php');
         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
         <span class="d-none d-sm-inline mx-1"><?= $usuario->username; ?></span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href=" update.php?id= <?= $usuario->id ?> ">Alterar Dados</a></li>
         <li><a class="dropdown-item" href="meu-perfil.php?id= <?= $usuario->id ?>">Meu Perfil</a></li>
         <li>
@@ -61,16 +61,10 @@ require_once('../src/Views/layout/headeradm.php');
                     <td scope="row" class="align-middle"><?= $leitor['data'] ?></td>
                     <td scope="row" class="align-middle"><?= $leitor['tipo'] ?></td>
                     <td class="table-light" style="width:15%">
-                        <a href="update.php?id=<?= $leitor['id'] ?>"><button type="button" class="btn btn-primary">Alterar</button></a>
-<<<<<<< Updated upstream
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $leitor['id'] ?>">
-                            Excluir
+                        <a href="update.php?id=<?= $leitor['id'] ?>"><button type="button" class="btn btn-primary bi bi-pencil-square"></button></a>
+                        <button type="button" class="btn btn-danger bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="<?= $leitor['id'] ?>">
+                           
                         </button>
-=======
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="<?= $leitor['id'] ?>">
-                Excluir
-            </button>
->>>>>>> Stashed changes
                     </td>
                 </tr>
 
