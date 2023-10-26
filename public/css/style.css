@@ -1,19 +1,956 @@
+@import url("https://fonts.googleleapis.com/css2? family=Poppins;wght @300;400;500;600;700;800;900& display=swap");
+
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins" sans-serif;
 }
 
-.movies {
-    display: flex;
-    overflow-x: scroll;
+body{
+    min-height: 100vh;
+    background: url('/readfy/public/img/fundo3.png') no-repeat;
+    background-size: cover ; 
+    background-position: center;
 }
-
-.movies img {
-    width: 100px;
-    padding: 0 10px;
-    cursor: pointer;
-}
-
-.img_capa{
+.header {
+    position: fixed;
+    top:0;
+    left: 0;
     width: 100%;
+    padding: 1.3rem 10%;
+    background: rgba(0, 0, 0, .1);
+    /*backdrop-filter: blur(50px); cria opacidade na navibar*/ 
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
+.logo{
+    font-size:2rem;
+    color:#ffffff;
+    text-decoration: no;
+}
+
+.navbar a{
+    font-size: 1.35rem;
+    color:#ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+    text-align: right;  
+}
+.navbar {
+    margin-left: 650px;
+}
+
+.logo img{
+    width: 350px;
+    margin-top: -60px;
+    margin-left:30px;
+    border-radius: 50%; 
+}
+
+.texto{
+    color:#ffffff;
+    font-size: 20px; 
+}
+
+.botao1 button{ 
+    padding: 15px 50px;
+    font-size: 24px;
+    background-color: #FFA500;
+    border: 1px solid #FFA500;
+    border-radius: 50px;
+    cursor: pointer;
+    color:#ffffff;
+    transition: 0.5s;
+    outline:0;
+    margin-top: 50px;
+    margin-left: 40%;
+    font-family: "Poppins" sans-serif;
+}
+
+.botao1 button:hover {
+    background-color: #4D94FF;
+    color: #ffffff;
+    border: 1px solid #4D94FF;
+}
+
+.botao2 button{ 
+    padding: 15px 50px;
+    font-size: 24px;
+    background-color:#00FF00;
+    border: 1px solid #00FF00;
+    border-radius: 50px;
+    cursor: pointer;
+    color:white;
+    transition: 0.5s;
+    outline:0;
+    margin-top:100px;
+    margin-left: 40%;
+    margin-top:50px;
+    font-family: "Poppins" sans-serif;
+   
+}
+.botao2 button:hover {
+    background-color: #4D94FF; 
+    color:#ffffff;
+    border:1px solid #4D94FF;
+}
+
+.tx1{
+    margin-top: 70px;
+    margin-left: 35%;
+    font-size:large;
+    color: rgb(255, 255, 255);
+}
+
+.tex2{
+    margin-top: 30px;
+    margin-left: 25%;
+    font-size: 40px;
+    
+}
+
+.txt3{
+    margin-top: -50px;
+    margin-left: 30%;
+    font-size:18px;
+    color: rgb(255, 255, 255);
+    width: 40%;   
+}
+
+.txt4{
+    margin-top: 15px;
+    margin-left: 30%;
+    font-size:18px;
+    color: rgb(255, 255, 255);
+    width: 40%;   
+}
+.txt5{
+    margin-top: 50px;
+    margin-left: 10%;
+    font-size:15px;
+    color: rgb(255, 255, 255);
+    width: 80%;   
+}
+
+.txt5 h1 {
+    margin-top: 50px;
+    margin-left: 40%;
+    color: #ffa500;
+}
+
+.txt5 h2 {
+    margin-top: 20px;
+    margin-left: 20%;
+}
+
+.traco{
+    margin-left: 25%;
+}
+.container {
+    width: 300px;
+    display: flex;
+    justify-content: center; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

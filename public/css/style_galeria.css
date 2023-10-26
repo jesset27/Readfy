@@ -1,0 +1,42 @@
+body{
+    background-color:#F5F5F5;
+}
+
+h2{
+    color: #333333;
+}
+
+h2:hover{
+    color:#ffa500;
+}
+
+.cor1{
+    background-color: #eb2d07;
+}
+
+.navbar a{
+    font-size: 1.35rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 7.5rem;
+    margin-right: 7.5rem;
+    justify-content: center;
+}
+
+header{
+    background-color: #007acc;
+    
+}
+
+.logogaleria a img {
+    margin-left: 30%;
+    height: 300px;
+    margin-top: -5%;
+    margin-bottom: -5%;
+    
+}
+
+
+
+

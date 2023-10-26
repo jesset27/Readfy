@@ -1,0 +1,155 @@
+.box {
+    display: flex;
+    justify-content: center; 
+    margin-top:-100px; 
+    
+}
+
+body{
+     min-height: 100vh; 
+    background: #f5f5f5;
+    background-size: cover ; 
+    background-position: center;
+}
+
+.container{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding:  0 15px 0 15 px; 
+    
+}
+
+.logo{
+    color: #f0f1f1;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;  
+  
+}
+
+.logo a{
+    width: 320px;
+    margin-top: -160px;
+    margin-left:-90%;
+    border-radius: 50%;
+
+}
+
+header{
+    color: #333333;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+    font-size: 50px; 
+   
+}
+
+.input::placeholder {
+    color: #807f7f; /* Substitua #ff0000 pela cor desejada */
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    height: 45px;
+    width: 87%;
+    border:none;
+    outline: none;
+    border-radius: 30px;
+    color: #f0f1f1;
+    padding: 0 0 0 45px;
+    background:rgba(0, 0, 0, .1);
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.fechar img{
+    width: 35px;
+    position: absolute;
+    top: 30px;
+    right:40px;
+}
+
+
+
+.input-field select{
+    display: flex;
+    flex-direction: column;
+    height: 45px;
+    width: 87%;
+    border:none;
+    outline: none;
+    border-radius: 30px;
+    color: #f0f1f1;
+    padding: 0 0 0 54px;
+    background:rgba(0, 0, 0, .1);
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 50%;
+}
+
+.form-check{
+    color: #f0f1f1;
+    padding: 0 0 0 54px;
+}
+
+i{
+    position:relative;
+    top: -30px;
+    left: 17px; 
+    color: #f0f1f1;   
+} 
+
+.fa-regular fa-envelope{
+    margin-top: -60px;
+}
+
+::-webkit-input-placeholder{
+    color: #f0f1f1;
+}
+
+.submit{
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    background:#4d94ff;
+    cursor: pointer;
+    transition: 3s;
+    margin-top: 15px;
+    color: #f5f5f5;
+}
+
+.submit:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: small;
+    color: #fff;
+    margin-top: 10px;  
+}
+
+.left{
+    display: flex;
+}
+
+label {
+    color: #333333;
+    text-decoration: none;
+    font-size: 15px;
+    
+}
+

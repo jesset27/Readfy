@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.movies {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.movies img {
+    width: 100px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.img_capa{
+    width: 100%;
+}
