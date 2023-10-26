@@ -1,15 +1,14 @@
 <?php
 require "src/Views/layout/header.php";
 require "src/Lib/connect.php";
-require "src/Models/ClassesDAO/LeitorDao.php";
 require_once("src/Lib/Session.php");
+require_once("./src/Models/ClassesDAO/LoginDao.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-
-    $leitorDao = new LeitorDAO($pdo);
-    $leitorDao->Login($email, $senha);
+    $login = new LoginDao($pdo);
+    $login->login($email, $senha);
 }
 
 ?>
