@@ -12,10 +12,9 @@
     <header class="header">
 
         <nav class="navbar">
-            <a href="C:\xampp\htdocs\Readfy\index.php">Home</a>
-            <a href="src\Views\layout\galeria.php">Galeria</a>
-            <a href="src\Views\layout\contato.php">Contato</a>
-            <a href="src\Views\layout\sobre.php">Sobre</a>
+            <a href="index.php">Home</a>
+            <a href="contato.php">Contato</a>
+            <a href="sobre.php">Sobre</a>
         </nav>
         
     </header>
@@ -33,13 +32,13 @@
     </div>
 
     <div class="botao1">
-    <a href="src\Views\layout\cadastro_user.php">
+    <a href="\readfy\aluno\cadastro.php">
         <button type="button" id="comeceAgora" name="comeceagora">Comece Agora</button>
     </a>
     </div>
 
     <div class="botao2">
-    <a href="src\Views\layout\login.php">
+    <a href="login.php">
         <button type="button" id="jaTenhoConta">Já Tenho Conta</button>
     </a>
     </div>

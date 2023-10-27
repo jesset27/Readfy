@@ -11,10 +11,10 @@
 <body>
 
     <div class="logo">
-        <a href="home.php"><img src="\readfy\public\img\logo5.png"> </a>
+        <a href="../index.php"><img src="\readfy\public\img\logo5.png"> </a>
     </div>
     <div class="btn_login">                                                                                                                          
-        <a href="login.php">
+        <a href="../login.php">
             <input type="submit" class="submit" value="ENTRAR">
         </a>
     </div>
@@ -51,17 +51,7 @@
                 <i class="fa-regular fa-envelope"></i>
             </div><br>
             <div class="tpuser">
-                <label>Tipo de usuario</label>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Professor
-                    <label class="form-check-label" for="radio1"></label>
-                </div>
-
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Aluno
-                    <label class="form-check-label" for="radio2"></label>
-                </div>
-
+                
                 <div class="input-field">
                     <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required>
                     <i class="fa-solid fa-lock"></i>
@@ -72,17 +62,7 @@
                 </div>
 
 
-                <!-- <div class="bottom">
-                    <div class="left">
-                        <input type="checkbox" id="check">
-                        <label for="check">Lembrar senha</label>
-                    </div>
-
-                    <div class="right">
-                        <label><a href="#"> Esqueceu a senha?</a></label>
-
-                    </div>
-                </div> -->
+        
             </div>
         </div>
     </div>

@@ -1,14 +1,14 @@
-<?php
+ <?php
 require_once("../src/Views/layout/headerprofessor.php");
-require_once("../src/Models/ClassesDAO/SalaDao.php");
-require_once("../src/Models/Classes/Sala.php");
+// require_once("../src/Models/ClassesDAO/SalaDao.php");
+// require_once("../src/Models/Classes/Sala.php");
 require_once("../src/Lib/connect.php");
 require_once("../src/Lib/Session.php");
 
-$salaDao = new SalaDAO($pdo);
+// $salaDao = new SalaDAO($pdo);
 // $sala = new Sala("ADS 1", "Analise e Desenvolvimento de Sistemas", "1234");
-// $salaDao->inserir($sala);
-$salas = $salaDao->buscarTodos();
+// // $salaDao->inserir($sala);
+// $salas = $salaDao->buscarTodos();
 
 
 
@@ -16,7 +16,7 @@ $salas = $salaDao->buscarTodos();
 
 <div class="container">
     <h1>Salas Existentes:</h1>
-    <?php foreach ($salas as $sala) { ?>
+    <!-- <?php foreach ($salas as $sala) { ?> -->
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>

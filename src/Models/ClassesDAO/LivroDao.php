@@ -41,6 +41,8 @@ class LivroDao{
         $stmt->bindValue(':capa', $livro->getCapa());
 
         $stmt->execute();
+        
+        $this->pdo = null;
     } catch (PDOException $e) {
         echo 'Erro ao inserir livro: ' . $e->getMessage();
     }

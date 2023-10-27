@@ -11,8 +11,7 @@
     <header class="header">
        
         <nav class="navbar">
-            <a href="Home.php">Home</a>
-            <a href="galeria.php">Galeria</a>
+            <a href="index.php">Home</a>
             <a href="contato.php">Contato</a>
             <a href="sobre.php">Sobre</a>
            
