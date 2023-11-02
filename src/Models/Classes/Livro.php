@@ -16,7 +16,6 @@ class Livro
         $editora,
         $autor,
         $datalancamento,
-        $dataatual,
         $caminho,
         $genero,
         $total_paginas,
@@ -26,7 +25,6 @@ class Livro
         $this->editora = $editora;
         $this->autor = $autor;
         $this->datalancamento = $datalancamento;
-        $this->dataatual = $dataatual;
         $this->caminho = $caminho;
         $this->genero = $genero;
         $this->total_paginas = $total_paginas;
