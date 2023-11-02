@@ -50,8 +50,13 @@ class LoginDao
                 $senha_hash = $result['senha'];
 
                 if (password_verify($senha, $senha_hash)) {
-                    // A senha está correta. Faça o que for necessário com o usuário autenticado.
-                    echo "Login bem-sucedido como $tipo_usuario";
+                    if($tipo_usuario === 'admin'){
+                        header('Location: /readfy/administrativo/');
+                    }elseif($tipo_usuario === 'professor'){
+                        echo 'professor';
+                    }else{
+                        echo 'aluno';
+                    }
                 } else {
                     // Senha incorreta
                     echo "Senha incorreta $tipo_usuario";
@@ -62,7 +67,7 @@ class LoginDao
             }
         } catch (PDOException $e) {
             error_log($e->getMessage()); // Registre o erro no log do servidor
-            die("Erro na consulta: " . $e->getMessage());
+            die("Erro na consulta: " . $e->getMessage(  ));
         }
     }
 }

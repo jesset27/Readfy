@@ -1,15 +1,8 @@
 <?php
-require '../src/Models/ClassesDAO/LeitorDao.php';
 require '../src/Lib/connect.php';
 require_once("../src/Lib/Session.php");
-
-$leitorDao = new LeitorDAO($pdo);
-
-$usuario = $leitorDao->buscarUsuario(
-    Session::obterValor('email')[1]
-);
-
 require_once('../src/Views/layout/headeradm.php');
+Session::defineValor();
 ?>
 <div class="dropdown pb-4">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
