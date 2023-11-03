@@ -49,9 +49,9 @@ class ProfessorDao {
         $stmt = $this->pdo->prepare('SELECT * FROM professor WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $professor_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$leitor_data) {
+        if (!$professor_data) {
             // email não existe, cadastre    
             return true;
         } else {

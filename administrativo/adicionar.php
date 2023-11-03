@@ -74,27 +74,27 @@ require_once('../src/Views/layout/headeradm.php');
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="inputNome" class="form-label">Nome</label>
-            <input name="nome" type="text" class="form-control" id="inputNome" placeholder="Digite o nome do Livro">
+            <input name="nome" type="text" class="form-control" id="inputNome" placeholder="Digite o nome do Livro" required>
         </div>
         <div class="mb-3">
             <label for="editora" class="form-label">Editora</label>
-            <input name="editora" type="text" class="form-control" id="editora" placeholder="Editora">
+            <input name="editora" type="text" class="form-control" id="editora" placeholder="Editora" required>
         </div>
         <div class="mb-3">
             <label for="autor" class="form-label">Autor</label>
-            <input name="autor" type="text" class="form-control" id="autor" placeholder="Autor">
+            <input name="autor" type="text" class="form-control" id="autor" placeholder="Autor" required>
         </div>
         <div class="mb-3">
             <label for="datalancamento" class="form-label">Data de Lançamento</label>
-            <input name="datalancamento" type="date" class="form-control" id="datalancamento" placeholder="Data de Lançamento">
+            <input name="datalancamento" type="date" class="form-control" id="datalancamento" placeholder="Data de Lançamento" required>
         </div>
         <div class="mb-3">
             <label for="imagem" class="form-label">Imagem do Livro</label>
-            <input name="imagem" type="file" class="form-control" id="imagem" placeholder="Imagem do Livro">
+            <input name="imagem" type="file" class="form-control" id="imagem" placeholder="Imagem do Livro" required>
         </div>
 
         <label for="genero" class="form-label">Selecione o Gênero</label>
-        <select name="genero" class="form-select" aria-label="Default select example" id="genero">
+        <select name="genero" class="form-select" aria-label="Default select example" id="genero" required >
             <option selected>Open this select menu</option>
             <?php foreach ($generos as $genero) { ?>
             <option value="<?= $genero["nome"] ?>"><?= $genero["nome"] ?></option>

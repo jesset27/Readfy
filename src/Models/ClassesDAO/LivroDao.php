@@ -62,7 +62,7 @@ class LivroDao
 
             move_uploaded_file($_FILES['livro']['tmp_name'], $livroPath);
             move_uploaded_file($_FILES['capaLivro']['tmp_name'], $capaLivroPath);
-            header('Location: ./galeria.php');
+            header('Location: ./cadastro.php');
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();
         }

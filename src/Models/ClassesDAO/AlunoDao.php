@@ -49,9 +49,9 @@ class AlunoDao {
         $stmt = $this->pdo->prepare('SELECT * FROM aluno WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $aluno_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$leitor_data) {
+        if (!$aluno_data) {
             // email não existe, cadastre    
             return true;
         } else {

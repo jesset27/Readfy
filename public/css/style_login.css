@@ -39,7 +39,6 @@ body{
 
 header{
     color: #333333;
-    font-size: 30px;
     display: flex;
     justify-content: center;
     padding: 10px 0 10px 0;
@@ -48,7 +47,8 @@ header{
 }
 
 .input::placeholder {
-    color: #807f7f; /* Substitua #ff0000 pela cor desejada */
+    color: #807f7f;
+
 }
 
 .input-field{
@@ -62,8 +62,8 @@ header{
     border:none;
     outline: none;
     border-radius: 30px;
-    color: #f0f1f1;
-    padding: 0 0 0 45px;
+    color:  #333333;
+    padding: 0 0 0 45px; 
     background:rgba(0, 0, 0, .1);
     margin-top: 15px;
     font-size: 15px;
@@ -151,5 +151,8 @@ label {
     text-decoration: none;
     font-size: 15px;
     
+}
+.input-field i{
+    color:#333333;
 }
 
