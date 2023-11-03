@@ -1,13 +1,12 @@
 <?php
 class Admin{
     private string $id;
-    private string $nome;
+    private string $name;
     private string $email;
-    private string $senha;
-    public function __construct($nome, $email, $senha){
-        $this->nome = $nome;
-        $this->email = $email;
-        $this->senha = password_hash($senha, PASSWORD_DEFAULT);
+    private string $password;
+    public function __construct(){
+
+        
     }
     public function getId(){
         return $this->id;
@@ -15,11 +14,11 @@ class Admin{
     public function setId(string $id){
         $this->id = $id;
     }
-    public function getNome(){
-        return $this->nome;
+    public function getName(){
+        return $this->name;
     }
-    public function setNome(string $nome){
-        $this->nome = $nome;
+    public function setName(string $name){
+        $this->name = $name;
     }
     public function getEmail(){
         return $this->email;
@@ -27,10 +26,10 @@ class Admin{
     public function setEmail(string $email){
         $this->email = $email;
     }
-    public function getsenha(){
-        return $this->senha;
+    public function getPassword(){
+        return $this->password;
     }
-    public function setSenha(string $senha){
-        $this->senha = password_hash($senha, PASSWORD_DEFAULT);
+    public function setPassword(string $password){
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 }

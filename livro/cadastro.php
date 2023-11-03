@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dataLancamento = $_POST['dataLancamento'];
     $genero = $_POST['genero'];
     $totalPaginas = $_POST['totalPaginas'];
-    $livroNome = $_FILES['livro']['name'];
-    $capaLivroNome = $_FILES['capaLivro']['name'];
+    $livroNome = '../public/pdf/' . $_FILES['livro']['name'];
+    $capaLivroNome = '../public/img/capas/' . $_FILES['capaLivro']['name'];
     $livro = new Livro(
         $nomeLivro,
         $editora,
@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livroDao = new LivroDao($pdo);
     $livroDao->inserir($livro);
     $livroDao->UploadFiles($livroNome, $capaLivroNome);
-    echo "DEU SUPER CERTO";
 }
 ?>
 <div class="container">

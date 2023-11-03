@@ -22,35 +22,50 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li>
-                            <a href="./index.php" class="nav-link px-0 text-light">
+                            <a href="/readfy/administrativo/index.php" class="nav-link px-0 text-light">
                                 <span class="d-none d-sm-inline bi bi-house-fill">
-                                        Página Inicial
+                                    Página Inicial
                                 </span>
                             </a>
                         </li>
+
                         <li>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="../administrativo/leitores.php" class="nav-link px-0 text-light">
-                                        <span class="d-none d-sm-inline bi bi-person">
-                                                Leitores
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/readfy/administrativo/adicionar.php" class="nav-link px-0 text-light">
-                                        <span class="d-none d-sm-inline bi bi-book-half">
-                                            Adicionar Livros
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="livros.php" class="nav-link px-0 text-light">
-                                        <span class="d-none d-sm-inline bi bi-book-fill">
-                                            Livros
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="/readfy/administrativo/administradores" class="nav-link px-0 text-light">
+                                <span class="d-none d-sm-inline bi bi-person">
+                                    Administradores
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="" class="nav-link px-0 text-light">
+                                <span class="d-none d-sm-inline bi bi-person-video3">
+                                    Professores
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="" class="nav-link px-0 text-light">
+                                <span class="d-none d-sm-inline bi bi-person-workspace">
+                                    Alunos
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="" class="nav-link px-0 text-light">
+                                <span class="d-none d-sm-inline bi bi-book-fill">
+                                    Livros
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="" class="nav-link px-0 text-light">
+                                <span class="d-none d-sm-inline bi bi-alphabet-uppercase">
+                                    Salas
+                                </span>
+                            </a>
                         </li>
                     </ul>
