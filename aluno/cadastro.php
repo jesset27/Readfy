@@ -10,6 +10,7 @@
     $contato = '';
     $idade = '';
     $senha = '';
+    $check='';
     
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       $nome = $_POST['nome'];
@@ -18,19 +19,20 @@
       $contato = $_POST['telefone'];
       $idade = $_POST['idade'];
       $senha = $_POST['senha'];
-      $user = "user";
+      $tipo = "aluno";
   
-      $aluno = new Aluno($nome, $username, $email, $contato, $idade, $senha, $user);
+      $aluno = new Aluno($nome, $username, $email, $contato, $idade, $tipo, $senha);
       $alunoDao = new AlunoDAO($pdo);
+     
   
       if ($alunoDao->VerificaEmail($email)) {
           $alunoDao->inserir($aluno);
           header('Location: login.php');
           exit();
       } else {
-          echo "O email fornecido já está em uso.";
+          $check= "O email fornecido já está em uso.";
       }
-  }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +102,7 @@
             </div>
         </div>
     </div>
-
+    <?PHP echo $check ?>
 
 </body>
 

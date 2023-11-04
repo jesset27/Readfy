@@ -16,8 +16,8 @@ class ProfessorDao {
                 contato,
                 idade,
                 tipo,
-                senha,
-                data) 
+                senha
+            ) 
             VALUES (
                 :nome,
                 :username,
@@ -25,8 +25,8 @@ class ProfessorDao {
                 :contato,
                 :idade,
                 :tipo,
-                :senha,
-                :data
+                :senha
+                
             )");
 
             $stmt->bindValue(':nome', $professor->getNome());
@@ -36,7 +36,7 @@ class ProfessorDao {
             $stmt->bindValue(':idade', $professor->getIdade());
             $stmt->bindValue(':tipo', $professor->getTipo());
             $stmt->bindValue(":senha", $professor->getSenha());
-            $stmt->bindValue(':data', $professor->getData());
+            
 
             $stmt->execute();
         } catch (PDOException $e) {

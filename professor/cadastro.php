@@ -10,6 +10,7 @@
     $contato = '';
     $idade = '';
     $senha = '';
+    $check='';
     
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
       $nome = $_POST['nome'];
@@ -18,17 +19,20 @@
       $contato = $_POST['telefone'];
       $idade = $_POST['idade'];
       $senha = $_POST['senha'];
-      $user = "user";
+      $tipo = "professor";
   
-      $professor = new Professor($nome, $username, $email, $contato, $idade, $senha, $user);
+      $professor = new Professor($nome, $username, $email, $contato, $idade, $tipo, $senha);
       $professorDao = new ProfessorDAO($pdo);
-   
+    //   $professorDao->inserir($professor);
+
+
+
       if ($professorDao->VerificaEmail($email)) {
           $professorDao->inserir($professor);
           header('Location: cadastro.php');
           exit();
       } else {
-          echo "O email fornecido já está em uso.";
+         $check="O email fornecido já está em uso.";
       }
   }
 ?>
@@ -100,6 +104,8 @@
             </div>
         </div>
     </div>
+
+    <?PHP echo $check ?>
 
 
 </body>
