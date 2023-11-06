@@ -10,11 +10,11 @@ class AdminDao
     public function insert(Admin $admin)
     {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO admin (name, email, password) 
-        VALUES (:name, :email, :password)");
-            $stmt->bindValue(":name", $admin->getName());
+            $stmt = $this->pdo->prepare("INSERT INTO admin (nome, email, senha) 
+        VALUES (:nome, :email, :senha)");
+            $stmt->bindValue(":nome", $admin->getNome());
             $stmt->bindValue(":email", $admin->getEmail());
-            $stmt->bindValue(":password", $admin->getPassword());
+            $stmt->bindValue(":senha", $admin->getSenha());
             $stmt->execute();
             $this->pdo = null;
         } catch (PDOException $e) {
@@ -77,11 +77,11 @@ class AdminDao
     public function update(Admin $admin, $id)
     {
         try {
-            $stmt = $this->pdo->prepare("UPDATE admin SET name = :name, email = :email, password = :password WHERE id = :id");
+            $stmt = $this->pdo->prepare("UPDATE admin SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':name', $admin->getName());
+            $stmt->bindParam(':nome', $admin->getNome());
             $stmt->bindParam(':email', $admin->getEmail());
-            $stmt->bindParam(':password', $admin->getPassword());
+            $stmt->bindParam(':senha', $admin->getSenha());
             $stmt->execute();
             $this->pdo = null;
         } catch (PDOException $e) {

@@ -12,15 +12,17 @@ $admins = $adminDao->selectAll();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
+    $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $senha = $_POST['senha'];
     $admin = new Admin();
-    $admin->setName($name);
+    $admin->setNome($nome);
     $admin->setEmail($email);
-    $admin->setPassword($password);
+    $admin->setSenha($senha);
     $adminDao = new AdminDao($pdo);
-    $adminDao->insert($admin);
+    if($adminDao->VerificaEmail($email)){
+        $adminDao->insert($admin);
+    }
     header("Location: index.php");
 }
 ?>
@@ -62,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <?= $admin->getId(); ?>
                         </th>
                         <td>
-                            <?= $admin->getName(); ?>
+                            <?= $admin->getNome(); ?>
                         </td>
                         <td>
                             <?= $admin->getEmail(); ?>
@@ -103,16 +105,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="POST">
             <h4>Cadastrar novos administradores!</h4>
             <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
-                <input type="name" class="form-control" id="name" name="name" required>
+                <label for="nome" class="form-label">Nome</label>
+                <input type="nome" class="form-control" id="nome" name="nome" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <label for="senha" class="form-label">Senha</label>
+                <input type="senha" class="form-control" id="senha" name="senha" required>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>

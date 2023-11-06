@@ -35,7 +35,7 @@ class LoginDao
                 'admin' AS tipo,
                 admin.id AS id,
                 admin.email AS email,
-                admin.password AS password
+                admin.senha AS senha
                 FROM admin AS admin
                 WHERE admin.email = :email
             ");
