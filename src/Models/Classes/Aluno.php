@@ -10,23 +10,8 @@ class Aluno{
     private string $senha;
     private string $data;
 
-    public function __construct(
-        string $nome,
-        string $username,
-        string $email,
-        string $contato,
-        string $idade,
-        string $tipo,
-        string $senha,
-    ){
-        $this->nome = $nome;
-        $this->username = $username;
-        $this->email = $email;
-        $this->contato = $contato;
-        $this->idade = $idade;
-        $this->tipo = $tipo;
-        $this->senha = password_hash($senha, PASSWORD_DEFAULT);;
-        $this->data = date("d/m/Y");
+    public function __construct(){
+
     }
     public function getId(): string {
         return $this->id;

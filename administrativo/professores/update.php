@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <div class="container">
             <form method="POST">
-                <h4>Cadastrar novos professores!</h4>
+                <h4>Atualizar professor!</h4>
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome" required value="<?= $professor->getNome() ?>">

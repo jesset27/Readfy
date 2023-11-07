@@ -1,6 +1,4 @@
 <?php
-
-require_once('../src/Models/Classes/Livro.php');
 class LivroDao
 {
     private $pdo;
@@ -9,7 +7,7 @@ class LivroDao
         $this->pdo = $pdo;
     }
 
-    public function inserir(Livro $livro)
+    public function insert(Livro $livro)
     {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO livros (
@@ -51,31 +49,34 @@ class LivroDao
     public function UploadFiles($livroNome, $capaLivroNome)
     {
         try {
-            $uploadDir = '../public/pdf/';
-            $uploadDirCapa = '../public/img/capas/';
-
-            $livroNome = $_FILES['livro']['name'];
-            $capaLivroNome = $_FILES['capaLivro']['name'];
-
-            $livroPath = $uploadDir . $livroNome;
-            $capaLivroPath = $uploadDirCapa . $capaLivroNome;
-
-            move_uploaded_file($_FILES['livro']['tmp_name'], $livroPath);
-            move_uploaded_file($_FILES['capaLivro']['tmp_name'], $capaLivroPath);
-            header('Location: ./cadastro.php');
+            move_uploaded_file($_FILES['livro']['tmp_name'], $livroNome);
+            move_uploaded_file($_FILES['livro']['tmp_name'], $capaLivroNome);
+            return true;
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();
+            return false;
         }
     }
-    public function Select()
+
+    public function selectAll()
     {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM livros");
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            $this->pdo = null;
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Livro');
         } catch (PDOException $e) {
-            echo 'Erro ao buscar livros: ' . $e->getMessage();
+            echo 'Erro ao buscar livros : ' . $e->getMessage();
+        }
+    }
+    public function delete($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM livros WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Erro ao excluir o registro: ' . $e->getMessage();
         }
     }
 }

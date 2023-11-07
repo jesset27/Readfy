@@ -98,17 +98,17 @@ class ProfessorDao
         $stmt->execute();
     }
     public function update(Professor $professor, $id)
-{
-    try {
-        $nome = $professor->getNome();
-        $username = $professor->getUsername();
-        $email = $professor->getEmail();
-        $contato = $professor->getContato();
-        $idade = $professor->getIdade();
-        $senha = $professor->getSenha();
+    {
+        try {
+            $nome = $professor->getNome();
+            $username = $professor->getUsername();
+            $email = $professor->getEmail();
+            $contato = $professor->getContato();
+            $idade = $professor->getIdade();
+            $senha = $professor->getSenha();
 
-        $stmt = $this->pdo->prepare(
-            "UPDATE professor SET 
+            $stmt = $this->pdo->prepare(
+                "UPDATE professor SET 
             nome = :nome, 
             username = :username, 
             email = :email, 
@@ -116,20 +116,19 @@ class ProfessorDao
             idade = :idade, 
             senha = :senha 
             WHERE id = :id"
-        );
+            );
 
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':contato', $contato);
-        $stmt->bindParam(':idade', $idade);
-        $stmt->bindParam(':senha', $senha);
-        $stmt->execute();
-        $this->pdo = null;
-    } catch (PDOException $e) {
-        echo 'Erro ao atualizar professor: ' . $e->getMessage();
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':contato', $contato);
+            $stmt->bindParam(':idade', $idade);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->execute();
+            $this->pdo = null;
+        } catch (PDOException $e) {
+            echo 'Erro ao atualizar professor: ' . $e->getMessage();
+        }
     }
-}
-
 }

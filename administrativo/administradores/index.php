@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <tbody>
                 <?php foreach ($admins as $admin) : ?>
                     <tr>
-                        <th scope="row"> 
+                        <th scope="row">
                             <?= $admin->getId(); ?>
                         </th>
                         <td>

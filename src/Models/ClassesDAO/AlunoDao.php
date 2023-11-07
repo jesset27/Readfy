@@ -7,21 +7,22 @@ class AlunoDao {
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configura o modo de erro para exceções
     }
 
-    public function inserir(Aluno $aluno) {
+    public function insert(Aluno $aluno)
+    {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO aluno (
-                nome, 
-                username, 
+                nome,
+                username,
                 email,
                 contato,
                 idade,
                 tipo,
                 senha
-                ) 
+            )
             VALUES (
                 :nome,
                 :username,
-                :email, 
+                :email,
                 :contato,
                 :idade,
                 :tipo,
@@ -36,7 +37,7 @@ class AlunoDao {
             $stmt->bindValue(':idade', $aluno->getIdade());
             $stmt->bindValue(':tipo', $aluno->getTipo());
             $stmt->bindValue(":senha", $aluno->getSenha());
-           
+
 
             $stmt->execute();
         } catch (PDOException $e) {
@@ -45,18 +46,87 @@ class AlunoDao {
     }
     public function VerificaEmail($email)
     {
+        try {
+            $stmt = $this->pdo->prepare('SELECT * FROM aluno WHERE email = :email');
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $stmt = $this->pdo->prepare('SELECT * FROM aluno WHERE email = :email');
-        $stmt->bindParam(':email', $email);
+            if (!$leitor_data) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo 'Erro ao verificar e-mail: ' . $e->getMessage();
+        }
+    }
+    public function selectAll()
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM aluno");
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Aluno');
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar alunos: ' . $e->getMessage();
+        }
+    }
+    public function delete($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM aluno WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Erro ao excluir o registro: ' . $e->getMessage();
+        }
+    }
+    public function selectById($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare('SELECT * FROM aluno WHERE id = :id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchObject('Aluno');
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar alunos: ' . $e->getMessage();
+        }
         $stmt->execute();
-        $aluno_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function update(Aluno $aluno, $id)
+    {
+        try {
+            $nome = $aluno->getNome();
+            $username = $aluno->getUsername();
+            $email = $aluno->getEmail();
+            $contato = $aluno->getContato();
+            $idade = $aluno->getIdade();
+            $senha = $aluno->getSenha();
 
-        if (!$aluno_data) {
-            // email não existe, cadastre    
-            return true;
-        } else {
-            //email ja existe, não cadastre
-            return false;
+            $stmt = $this->pdo->prepare(
+                "UPDATE aluno SET
+            nome = :nome,
+            username = :username,
+            email = :email,
+            contato = :contato,
+            idade = :idade,
+            senha = :senha
+            WHERE id = :id"
+            );
+
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':contato', $contato);
+            $stmt->bindParam(':idade', $idade);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->execute();
+            $this->pdo = null;
+        } catch (PDOException $e) {
+            echo 'Erro ao atualizar aluno: ' . $e->getMessage();
         }
     }
 }
