@@ -11,24 +11,8 @@ class Livro
     private string $genero;
     private string $total_paginas;
     private string $capa;
-    public function __construct(
-        $nome,
-        $editora,
-        $autor,
-        $datalancamento,
-        $caminho,
-        $genero,
-        $total_paginas,
-        $capa
-    ) {
-        $this->nome = $nome;
-        $this->editora = $editora;
-        $this->autor = $autor;
-        $this->datalancamento = $datalancamento;
-        $this->caminho = $caminho;
-        $this->genero = $genero;
-        $this->total_paginas = $total_paginas;
-        $this->capa = $capa;
+    public function __construct() {
+
     }
     public function getId(){
         return $this->id;
@@ -55,13 +39,13 @@ class Livro
         $this->autor = $autor;
     }
     public function getdatalancamento(){
-        return $this->datalancamento;
+        return date('d/m/Y', strtotime($this->datalancamento));
     }
-    public function setdatalancamento($datalancamento){
+    public function setDataLancamento($datalancamento){
         $this->datalancamento = $datalancamento;
     }
     public function getDataatual(){
-        return $this->dataatual;
+        return date('d/m/Y', strtotime($this->dataatual));
     }
     public function setDataatual($dataatual){
         $this->dataatual = $dataatual;

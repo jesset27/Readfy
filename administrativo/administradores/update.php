@@ -5,21 +5,19 @@ require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Admin.php');
 require_once('../../src/Models/ClassesDao/AdminDao.php');
 
-
 $adminDao = new AdminDao($pdo);
 $admin = $adminDao->selectById($_GET['id']);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin->setNome($_POST['nome']);
     $admin->setEmail($_POST['email']);
     $admin->setSenha($_POST['senha']);
-    $adminDao = new AdminDao($pdo);
-    if ($adminDao->VerificaEmail($email)) {
+    if ($adminDao->VerificaEmail($_POST['email'])) {
         $adminDao->update($admin, $_GET['id']);
+        header("Location: index.php");
     }
-    header("Location: index.php");
 }
 ?>
-
 
 <div class="dropdown pb-4">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

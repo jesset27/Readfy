@@ -46,7 +46,7 @@
                         </li>
 
                         <li>
-                            <a href="" class="nav-link px-0 text-light">
+                            <a href="/readfy/administrativo/alunos" class="nav-link px-0 text-light">
                                 <span class="d-none d-sm-inline bi bi-person-workspace">
                                     Alunos
                                 </span>
@@ -54,7 +54,7 @@
                         </li>
 
                         <li>
-                            <a href="" class="nav-link px-0 text-light">
+                            <a href="/readfy/administrativo/livros" class="nav-link px-0 text-light">
                                 <span class="d-none d-sm-inline bi bi-book-fill">
                                     Livros
                                 </span>
