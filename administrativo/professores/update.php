@@ -8,20 +8,32 @@ require_once('../../src/Models/ClassesDao/ProfessorDao.php');
 
 $professorDao = new ProfessorDao($pdo);
 $professor = $professorDao->selectById($_GET['id']);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $professor->setNome($_POST['nome']);
     $professor->setUsername($_POST['username']);
     $professor->setEmail($_POST['email']);
     $professor->setContato($_POST['contato']);
     $professor->setIdade($_POST['idade']);
-    $professor->setSenha($_POST['senha']);
-    $professorDao = new ProfessorDao($pdo);
-    if ($professorDao->VerificaEmail($_POST['email'])) {
-        $professorDao->update($professor, $_GET['id']);
+    
+    // Verifica se a senha foi informada e a define se necessário
+    if (!empty($_POST['senha'])) {
+        $professor->setSenha($_POST['senha']);
     }
+
+    $professorDao = new ProfessorDao($pdo);
+
+    // Não é necessário verificar o e-mail antes de atualizar
+    $professorDao->update($professor, $_GET['id']);
+
     header("Location: index.php");
 }
-?>
+
+
+
+
+
+// ?>
 
 
 <div class="dropdown pb-4">
