@@ -9,14 +9,13 @@ $adminDao = new AdminDao($pdo);
 $admin = $adminDao->selectById($_GET['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $adminDao = new AdminDao($pdo);
     $admin->setNome($_POST['nome']);
     $admin->setEmail($_POST['email']);
     $admin->setSenha($_POST['senha']);
-    //if ($adminDao->VerificaEmail($_POST['email'])) {
-        $adminDao->update($admin, $_GET['id']);
-        header("Location: index.php");
-    //}
-}
+    $adminDao->update($admin, $_GET['id']);
+    header("Location: index.php");
+}   
 ?>
 
 <div class="dropdown pb-4">

@@ -62,7 +62,7 @@ class Aluno{
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
     public function getData(): string {
-        return $this->data;
+        return date('d/m/Y', strtotime($this->data));
     }
     public function setData(string $data) {
         $this->data = date("d/m/Y");

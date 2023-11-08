@@ -10,7 +10,6 @@ $adminDao = new AdminDao($pdo);
 $admins = $adminDao->selectAll();
 
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -20,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin->setEmail($email);
     $admin->setSenha($senha);
     $adminDao = new AdminDao($pdo);
-    if($adminDao->VerificaEmail($email)){
+    if (!$adminDao->VerificaEmail($email)) {
         $adminDao->insert($admin);
+        header("Location: index.php");
     }
-    header("Location: index.php");
 }
 ?>
 

@@ -12,20 +12,19 @@ $alunos = $alunoDao->selectAll();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $aluno = new Aluno();
     $aluno->setNome($_POST['nome']);
     $aluno->setUsername($_POST['username']);
     $aluno->setEmail($_POST['email']);
     $aluno->setContato($_POST['contato']);
     $aluno->setIdade($_POST['idade']);
-    $aluno->setTipo('aluno'); 
+    $aluno->setTipo('aluno');
     $aluno->setSenha($_POST['senha']);
     $alunoDao = new AlunoDao($pdo);
-    if ($alunoDao->VerificaEmail($email)) {
+    if (!$alunoDao->VerificaEmail($_POST['email'])) {
         $alunoDao->insert($aluno);
+        header("Location: index.php");
     }
-    header("Location: index.php");
 }
 ?>
 

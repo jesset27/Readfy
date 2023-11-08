@@ -12,7 +12,7 @@ $professores = $professorDao->selectAll();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    $email = $_POST['email'];
     $professor = new Professor();
     $professor->setNome($_POST['nome']);
     $professor->setUsername($_POST['username']);
@@ -22,10 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $professor->setTipo('professor'); 
     $professor->setSenha($_POST['senha']);
     $professorDao = new ProfessorDao($pdo);
-    if ($professorDao->VerificaEmail($email)) {
+    if (!$professorDao->VerificaEmail($email)) {
         $professorDao->insert($professor);
+        header("Location: index.php");
     }
-    header("Location: index.php");
 }
 ?>
 

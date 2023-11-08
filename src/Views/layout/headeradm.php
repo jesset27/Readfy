@@ -60,12 +60,4 @@
                                 </span>
                             </a>
                         </li>
-
-                        <li>
-                            <a href="" class="nav-link px-0 text-light">
-                                <span class="d-none d-sm-inline bi bi-alphabet-uppercase">
-                                    Salas
-                                </span>
-                            </a>
-                        </li>
                     </ul>

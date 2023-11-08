@@ -49,15 +49,43 @@ class ProfessorDao
     public function VerificaEmail($email)
     {
         try {
-            $stmt = $this->pdo->prepare('SELECT * FROM professor WHERE email = :email');
+            $stmt = $this->pdo->prepare("
+                SELECT
+                'aluno' AS tipo,
+                a.id AS id,
+                a.email AS email,
+                a.senha AS senha
+                FROM aluno AS a
+                WHERE a.email = :email
+
+                UNION ALL
+
+                SELECT
+                'professor' AS tipo,
+                p.id AS id,
+                p.email AS email,
+                p.senha AS senha
+                FROM professor AS p
+                WHERE p.email = :email
+
+                UNION ALL
+
+                SELECT
+                'admin' AS tipo,
+                admin.id AS id,
+                admin.email AS email,
+                admin.senha AS senha
+                FROM admin AS admin
+                WHERE admin.email = :email
+            ");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $leitor_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$leitor_data) {
-                return true;
-            } else {
                 return false;
+            } else {
+                return true;
             }
         } catch (PDOException $e) {
             echo 'Erro ao verificar e-mail: ' . $e->getMessage();
