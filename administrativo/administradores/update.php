@@ -1,6 +1,6 @@
 <?php
-require '../../src/Lib/connect.php';
-require_once("../../src/Lib/Session.php");
+require_once('../../src/Lib/connect.php');
+require_once('../../src/Lib/Session.php');
 require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Admin.php');
 require_once('../../src/Models/ClassesDao/AdminDao.php');
@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin->setNome($_POST['nome']);
     $admin->setEmail($_POST['email']);
     $admin->setSenha($_POST['senha']);
-    if ($adminDao->VerificaEmail($_POST['email'])) {
+    //if ($adminDao->VerificaEmail($_POST['email'])) {
         $adminDao->update($admin, $_GET['id']);
         header("Location: index.php");
-    }
+    //}
 }
 ?>
 

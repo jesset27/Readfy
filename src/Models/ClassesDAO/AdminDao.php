@@ -7,6 +7,7 @@ class AdminDao
     {
         $this->pdo = $pdo;
     }
+
     public function insert(Admin $admin)
     {
         try {
@@ -48,7 +49,7 @@ class AdminDao
             $this->pdo = null;
             return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Admin');
         } catch (PDOException $e) {
-            echo 'Erro ao buscar administradores: ' . $e->getMessage();  
+            echo 'Erro ao buscar administradores: ' . $e->getMessage();
         }
     }
     public function delete($id)
@@ -83,7 +84,7 @@ class AdminDao
             $stmt->bindParam(':email', $admin->getEmail());
             $stmt->bindParam(':senha', $admin->getSenha());
             $stmt->execute();
-            $this->pdo = null;
+            // No need to set $this->pdo to null in this method
         } catch (PDOException $e) {
             echo 'Erro ao atualizar administrador: ' . $e->getMessage();
         }
