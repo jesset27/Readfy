@@ -4,7 +4,7 @@ require_once('../src/Models/ClassesDAO/LivroDao.php');
 require_once('../src/Lib/connect.php');
 $livroDao = new LivroDAO($pdo);
 
-$livros = $livroDao->Select();
+$livros = $livroDao->selectAll();
 ?>
 
 <br>

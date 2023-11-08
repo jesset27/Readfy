@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $capaLivroNome = '../public/img/capas/' . $_FILES['capaLivro']['name'];
     $livro = new Livro();
     $livroDao = new LivroDao($pdo);
-    $livroDao->inserir($livro);
+    $livroDao->insert($livro);
     $livroDao->UploadFiles($livroNome, $capaLivroNome);
 }
 ?>

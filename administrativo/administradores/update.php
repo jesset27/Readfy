@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!">
             </div>
+            
             <button type="submit" class="btn btn-primary">Atualizar dados!</button>
             <a href="index.php"><button type="button" class="btn btn-danger">Voltar</button></a>
 

@@ -34,7 +34,7 @@ class ProfessorDao
 
             $stmt->bindValue(':nome', $professor->getNome());
             $stmt->bindValue(':username', $professor->getUsername());
-            $stmt->bindValue(":email", $professor->getEmail());
+            $stmt->bindValue(':email', $professor->getEmail());
             $stmt->bindValue(':contato', $professor->getContato());
             $stmt->bindValue(':idade', $professor->getIdade());
             $stmt->bindValue(':tipo', $professor->getTipo());

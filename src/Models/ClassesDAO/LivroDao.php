@@ -5,6 +5,7 @@ class LivroDao
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function insert(Livro $livro)
@@ -69,6 +70,21 @@ class LivroDao
             echo 'Erro ao buscar livros : ' . $e->getMessage();
         }
     }
+
+    public function selectById($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare('SELECT * FROM livros WHERE id = :id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchObject('Livro');
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar alunos: ' . $e->getMessage();
+        }
+        $stmt->execute();
+    }
+
     public function delete($id)
     {
         try {
@@ -79,4 +95,50 @@ class LivroDao
             echo 'Erro ao excluir o registro: ' . $e->getMessage();
         }
     }
+
+    public function update(Livro $livro, $id)
+    {
+        try {
+            $nome = $livro->getNome();
+            $editora = $livro->getEditora();
+            $autor = $livro->getAutor();
+            $datalancamento = $livro->getdatalancamento();
+            $caminho = $livro->getCaminho();
+            $genero = $livro->getGenero();
+            $totaldepaginas = $livro->getTotalDePaginas();
+            $capa = $livro->getCapa();
+            
+
+            $stmt = $this->pdo->prepare(
+                "UPDATE livros SET 
+                nome = :nome, 
+                editora = :editora, 
+                autor = :autor, 
+                datalancamento = :datalancamento, 
+                caminho = :caminho, 
+                genero = :genero,
+                totaldepaginas = :totaldepaginas,
+                capa = :capa 
+            WHERE id = :id"
+            );
+
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':editora', $editora);
+            $stmt->bindParam(':autor', $autor);
+            $stmt->bindParam(':datalancamento', $datalancamento);
+            $stmt->bindParam(':caminho', $caminho);
+            $stmt->bindParam(':genero', $genero);
+            $stmt->bindParam(':totaldepaginas', $totaldepaginas);
+            $stmt->bindParam(':capa', $capa);
+            $stmt->execute();
+            $this->pdo = null;
+        } catch (PDOException $e) {
+            echo 'Erro ao atualizar professor: ' . $e->getMessage();
+        }
+    }
 }
+
+
+
+
