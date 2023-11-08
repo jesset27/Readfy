@@ -94,7 +94,7 @@ class AlunoDao {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM aluno");
             $stmt->execute();
-            $this->pdo = null;
+             $this->pdo = null;
             return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Aluno');
         } catch (PDOException $e) {
             echo 'Erro ao buscar alunos: ' . $e->getMessage();
