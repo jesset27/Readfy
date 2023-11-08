@@ -17,20 +17,12 @@
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                    <a href="/readfy" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="/readfy/administrativo/administradores/index.php" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">READFY</span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li>
-                            <a href="/readfy/administrativo/index.php" class="nav-link px-0 text-light">
-                                <span class="d-none d-sm-inline bi bi-house-fill">
-                                    Página Inicial
-                                </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/readfy/administrativo/administradores" class="nav-link px-0 text-light">
+                            <a href="/readfy/administrativo/administradores/index.php" class="nav-link px-0 text-light">
                                 <span class="d-none d-sm-inline bi bi-person">
                                     Administradores
                                 </span>

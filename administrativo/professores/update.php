@@ -15,25 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $professor->setEmail($_POST['email']);
     $professor->setContato($_POST['contato']);
     $professor->setIdade($_POST['idade']);
-    
-    // Verifica se a senha foi informada e a define se necessário
     if (!empty($_POST['senha'])) {
         $professor->setSenha($_POST['senha']);
     }
-
     $professorDao = new ProfessorDao($pdo);
-
-    // Não é necessário verificar o e-mail antes de atualizar
     $professorDao->update($professor, $_GET['id']);
-
-    header("Location: index.php");
-}
-
-
-
-
-
-// ?>
+    header("Location: index.php");  
+}?>
 
 
 <div class="dropdown pb-4">

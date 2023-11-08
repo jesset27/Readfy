@@ -1,4 +1,3 @@
-
 <?php
 
 require '../../src/Lib/connect.php';
@@ -16,22 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livro->setNome($_POST['nomeLivro']);
     $livro->setEditora($_POST['editora']);
     $livro->setAutor($_POST['autor']);
-    $livro->setDataLancamento($_POST['dataLancamento']); 
-    $livro->setCaminho($_POST['livro']);
+    $livro->setDataLancamento($_POST['dataLancamento']);
+    $livro->setCaminho($_FILES['livro']);
     $livro->setGenero($_POST['genero']);
     $livro->setTotalDePaginas($_POST['totalpaginas']);
-    $livro->setCapa($_POST['capalivro']);
-    
-    if (!empty($_POST['senha'])) {
-        $livro->setSenha($_POST['senha']);
-    }
-
-    // Não é necessário verificar o e-mail antes de atualizar
+    $livro->setCapa($_FILES['capalivro']);
+    $livroDao = new LivroDao($pdo);
     $livroDao->update($livro, $_GET['id']);
-
     header("Location: index.php");
-}
-?>
+} ?>
 
 
 <div class="dropdown pb-4">
@@ -52,45 +44,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 <div class="col py-3">
 
-<form method="POST" enctype="multipart/form-data">
-            <h4>Atualize os dados!</h4>
+    <form method="POST" enctype="multipart/form-data">
+        <h4>Atualize os dados!</h4>
+        <div class="form-group">
+            <div>
+                <input type="text" class="form-control" name="nomeLivro" placeholder="Nome do Livro" value="<?= $livro->getNome() ?>">
+            </div>
+            <br>
             <div class="form-group">
-                <div>
-                    <input type="text" class="form-control" name="nomeLivro" placeholder="Nome do Livro" value="<?= $livro->getNome() ?>">
-                </div>
+                <input type="text" class="form-control" name="editora" placeholder="Editora" value="<?= $livro->getEditora() ?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" name="autor" placeholder="Autor(a)" value="<?= $livro->getAutor() ?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="date" class="form-control" name="dataLancamento" value="<?= date('Y-m-d', strtotime($livro->getdatalancamento())) ?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="livro">Livro em pdf</label>
                 <br>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="editora" placeholder="Editora"  value="<?= $livro->getEditora() ?>">
-                </div>
+                <input type="file" id="livro" class="form-control-file" name="livro">
+                <?php if (!empty($livro->getCaminho())) : ?>
+                    <p>Arquivo atual: <?= $livro->getCaminho() ?></p>
+                <?php endif; ?>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" name="genero" placeholder="Gênero" value="<?= $livro->getGenero() ?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="number" class="form-control" name="totalpaginas" placeholder="Total de Páginas" value="<?= $livro->getTotalDePaginas() ?>">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="capa">Capa do Livro</label>
                 <br>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="autor" placeholder="Autor(a)"  value="<?= $livro->getAutor() ?>">
-                </div>
-                <br>
-                <div class="form-group">
-                    <input type="date" class="form-control" name="dataLancamento" value="<?= $livro->getdatalancamento() ?>">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="livro">Livro</label>
-                    <br>
-                    <input type="file" id="livro" class="form-control-file" name="livro"  value="<?= $livro->getCaminho() ?>">
-                </div>
-                <br>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="genero" placeholder="Gênero" value="<?= $livro->getGenero() ?>">
-                </div>
-                <br>
-                <div class="form-group">
-                    <input type="number" class="form-control" name="totalpaginas" placeholder="Total de Páginas" value="<?= $livro->getTotalDePaginas() ?>">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="capa">Capa do Livro</label>
-                    <br>
-                    <input type="file" id="capa" class="form-control-file" name="capalivro" value="<?= $livro->getCapa() ?>">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary">Atualizar dados!</button>
-                <a href="index.php"><button type="button" class="btn btn-danger">Voltar dados</button></a>
-        </form>
+                <input type="file" id="capa" class="form-control-file" name="capalivro">
+                <?php if (!empty($livro->getCapa())) : ?>
+                    <p>Arquivo atual: <?= $livro->getCapa() ?></p>
+                <?php endif; ?>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Atualizar dados!</button>
+            <a href="index.php"><button type="button" class="btn btn-danger">Voltar dados</button></a>
+    </form>
