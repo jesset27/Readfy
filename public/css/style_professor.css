@@ -8,7 +8,7 @@
 
 }
 .container{
-    margin-top: 4%;
+    margin-top: 1%;
     display: flex;
     flex-direction: column; /* Altere a direção do flex container para vertical */
     align-items: flex-start;
@@ -102,8 +102,7 @@ ul li:hover ion-icon{
 }
 ul li span{
     position:absolute;
-    ;
-
+    
 }
 
 ul li a {
@@ -139,7 +138,6 @@ ul li:hover .text{
     width:50%;
     border-radius: 5px;
     height: 50%;
-    
 }
 
 .container2 h1{
@@ -152,7 +150,6 @@ ul li:hover .text{
     height: 180px;
     border:solid 2px rgb(10, 9, 9);
     margin-left: 40px;
-
 }
 
 .profile p{
@@ -166,9 +163,13 @@ css formulario */
 
 .box {
     display: flex;
-    justify-content: center; 
-    margin-top:5%;
-    margin-right: 30%;   
+    margin-top:1%;
+    width: 320px;
+    height: 530px;
+    border: solid 2px #333333;
+    align-items: center;
+    margin-left:75%;
+
 } 
 
 body{
@@ -189,6 +190,21 @@ body{
     
 }
 
+
+
+.container-sala h1{
+    text-align: center;
+    color:#333333;
+}
+
+.label {
+    margin-right: 28%;
+    color: #333333;
+    margin-top:-40%;
+    
+    
+}
+
 .btn_login{
 
     width: 100px;
@@ -197,22 +213,24 @@ body{
     right:30px;
 }
 
-/* .logo{
+.logo{
     color: #f0f1f1;
     font-size: small;
     display: flex;
     justify-content: center;
     padding: 20px 0 50px 0;  
     width: 100px;
-} */
+}
 
-/* .logo a{
-    width: 320px;
-    margin-top: -160px;
+ .logo a{
+    margin-top: 0px;
     margin-left:10%;
     border-radius: 50%;
+} 
 
-} */
+.logo img{
+    width: 300%;
+}
 
 header{
     color:#333333;
@@ -231,7 +249,7 @@ header{
 
 .input{
     height: 45px;
-    width: 87%;
+    width: 90%;
     border:none;
     outline: none;
     border-radius: 30px;
@@ -245,6 +263,7 @@ header{
 
 .input::placeholder {
     color: #807f7f; /* Substitua #ff0000 pela cor desejada */
+    
 }
 
 .input-field select{
@@ -288,7 +307,7 @@ header{
     font-size: 20px;
     height: 45px;
     outline: none;
-    width: 87%;
+    width: 90%;
     background: #4d94ff;
     cursor: pointer;
     transition: 3s;

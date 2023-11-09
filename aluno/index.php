@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <div class="logo-professor">
-        <a href=""> <img src=" "> </a>
+    <div class="logo">
+        <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
     </div>
 
     <div class="container">
@@ -89,8 +89,8 @@
         </form>
     </div>
 
-    <div class="container">
-    <h1> Salas de Leitura:</h1>
+    <div class="container-sala">
+    <div class="label"><h1> Salas de Leitura</h1></div>
      <!-- <?php foreach ($salas as $sala) { ?>  -->
         <div class="card" style="width: 18rem;">
             <div class="card-body">

@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                </a>
             </li>
             <li style="--i: #ff9966; --j:#ff5e62">
-                <a href="#">
+                <a href="\Readfy\professor\criar_sala.php">
                     <span class="icon">
                         <ion-icon name="school-outline"></ion-icon>
                     </span>

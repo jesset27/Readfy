@@ -28,8 +28,8 @@ require_once("../src/Lib/Session.php");
 </head>
 
 <body>
-    <div class="logo-professor">
-        <a href=""> <img src=" "> </a>
+    <div class="logo">
+        <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
     </div>
 
     <div class="container">
@@ -56,7 +56,7 @@ require_once("../src/Lib/Session.php");
                </a>
             </li>
             <li style="--i: #ff9966; --j:#ff5e62">
-                <a href="#">
+                <a href="\Readfy\professor\criar_sala.php">
                     <span class="icon">
                         <ion-icon name="school-outline"></ion-icon>
                     </span>
@@ -96,9 +96,9 @@ require_once("../src/Lib/Session.php");
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-<div class="container">
-    <h1>Salas Existentes:</h1>
-     <?php foreach ($salas as $sala) { ?> 
+<div class="container-sala">
+    <h1>Salas Existentes</h1>
+     <!-- <?php foreach ($salas as $sala) { ?>  -->
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>
