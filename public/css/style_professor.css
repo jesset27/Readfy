@@ -7,18 +7,19 @@
     padding: 0;
 
 }
-.container{
+.menu{
     margin-top: 1%;
     display: flex;
     flex-direction: column; /* Altere a direção do flex container para vertical */
     align-items: flex-start;
     min-height: 80vh;
-    width: 15%;
+    width: 5%; 
     margin-left: 0%;
-    /* background-color: aquamarine; */
-    float: left; /* Faz o menu ficar ao lado da linha */
-    border-right: 2px solid #333333; /* Adiciona a linha vertical ao lado do menu */
-    padding-right: 20%; /* Espaçamento entre o menu e a linha */
+    border-right: solid 2px #333333; 
+    float:left; /* Faz o menu ficar ao lado da linha */
+    padding-right:23% ;/* Espaçamento entre o menu e a linha */
+    position:absolute; 
+
 
 
 }
@@ -156,19 +157,18 @@ ul li:hover .text{
     margin-top:30%;
 
 }
-
-
 /* 
 css formulario */
 
 .box {
     display: flex;
     margin-top:1%;
-    width: 320px;
-    height: 530px;
-    border: solid 2px #333333;
+    width: 325px;
+    height: 520px;
+    border-left: solid 2px #333333;
     align-items: center;
-    margin-left:75%;
+    margin-left:76%;
+    align-items: baseline;
 
 } 
 
@@ -178,6 +178,24 @@ body{
      background-size: cover ; 
      background-position: center;
 } 
+
+.table-container1{
+  margin: top 3px;
+  margin-left: 25%;
+  width: 670px;
+  background-color: #f5f5f5;
+}
+
+.table-container{
+    margin: top 3px;
+    margin-left: 25%;
+    background-color: #f5f5f5;
+  }
+
+.sala{
+    margin-left: 50%;
+    color: #333333;
+}
 
 
 .container3{
@@ -190,18 +208,17 @@ body{
     
 }
 
-
-
 .container-sala h1{
     text-align: center;
     color:#333333;
+    margin-left: 43%;
+    
 }
 
 .label {
     margin-right: 28%;
     color: #333333;
     margin-top:-40%;
-    
     
 }
 
@@ -222,7 +239,7 @@ body{
     width: 100px;
 }
 
- .logo a{
+.logo a{
     margin-top: 0px;
     margin-left:10%;
     border-radius: 50%;

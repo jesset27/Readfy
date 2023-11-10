@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>MENU ANIMADO</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src='main.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
@@ -37,16 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="logo-professor">
         <a href=""> <img src=" "> </a>
     </div>
-
     <div class="container">
 
         <ul>
             <li style="--i: #353bf4; --j:#ea51ff">
-                <a href="#">
+                <a href="\Readfy\professor\index.php">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
-                    <span class="text">
+                    <span class="text">.
                         Início
                     </span>
                 </a>

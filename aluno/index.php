@@ -8,9 +8,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
     <script src='main.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,7 +16,7 @@
         <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
     </div>
 
-    <div class="container">
+    <div class="menu">
 
         <ul>
             <li style="--i: #353bf4; --j:#ea51ff">
@@ -59,7 +57,7 @@
                     <span class="text">
                         Sair
                     </span>
-                </a>  
+                </a>
                 
             </li>
         </ul>
@@ -71,7 +69,7 @@
         <div class="container3">
             <div class="top-header">
 
-                <header>Entrar sala</header>
+                <header>Logar sala</header>
             </div>
             <form action="" method="post">
             
@@ -82,7 +80,7 @@
                 </div>
 
                 <div class="input-field">
-                    <input type="submit" class="submit" value=" ENTRAR">
+                    <input type="submit" class="submit" value=" Confirmar">
                 </div>
         </div>
 
@@ -90,20 +88,61 @@
     </div>
 
     <div class="container-sala">
-    <div class="label"><h1> Salas de Leitura</h1></div>
-     <!-- <?php foreach ($salas as $sala) { ?>  -->
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Senha: <?= $sala['senha'] ?></h6>
-                <p class="card-text">Descrição: <?= $sala['descricao'] ?></p>
-                <a href="#" class="card-link">Exibir</a>
-                <a href="#" class="card-link">Alterar</a>
-                <a href="#" class="card-link"><img src="../public/img/icons/trash.svg" alt=""></a>
+        <div class="label"><h1> Salas de Leitura</h1></div>
+     <!-- <?php foreach ($salas as $sala) { ?>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Senha: <?= $sala['senha'] ?></h6>
+                    <p class="card-text">Descrição: <?= $sala['descricao'] ?></p>
+                    <a href="#" class="card-link">Exibir</a>
+                    <a href="#" class="card-link">Alterar</a>
+                    <a href="#" class="card-link"><img src="../public/img/icons/trash.svg" alt=""></a>
+                </div>
             </div>
         </div>
-        <br>
-    <?php } ?>
+    <?php } ?> -->
+
+<div class="table-container1">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Sala</th>
+        <th scope="col">Nome Livro</th>
+        <th scope="col">Professor</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>O Destino de Perseu</td>
+        <td>Paulo Tacca</td>
+        <td>
+      <button type="button" class="btn btn-primary">Entrar</button></button>
+        </td>
+        
+      </tr>
+      <tr>
+      <th scope="row">2</th>
+        <td>O Destino de Perseu</td>
+        <td>Paulo Tacca</td>
+        <td>
+      <button type="button" class="btn btn-primary">Entrar</button></button>
+        </td>
+      </tr>
+      <tr>
+      <th scope="row">3</th>
+        <<td>O Destino de Perseu</td>
+        <td>Paulo Tacca</td>
+        <td>
+      <button type="button" class="btn btn-primary">Entrar</button></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 
 </body>    
