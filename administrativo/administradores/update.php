@@ -15,13 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin->setSenha($_POST['senha']);
     $adminDao->update($admin, $_GET['id']);
     header("Location: index.php");
-}   
+}
 ?>
 
 <div class="dropdown pb-4">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-        <span class="d-none d-sm-inline mx-1">Administrador</span>
+        <span class="d-none d-sm-inline mx-1">
+            <i class="bi bi-person-circle"></i>
+            Administrador
+        </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href=" update.php?id=  ">Alterar Dados</a></li>
@@ -51,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!">
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Atualizar dados!</button>
             <a href="index.php"><button type="button" class="btn btn-danger">Voltar</button></a>
 

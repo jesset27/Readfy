@@ -1,0 +1,85 @@
+.logo {
+    width: 300px;
+}
+.livro {
+    text-align: center;
+    margin-right: 10px;
+}
+.professor {
+    display: flex;
+}
+.alunos {
+    width: 100%;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: calc(25% - 10px); /* Ajuste a margem conforme necessário */
+    margin-bottom: 20px; /* Espaço entre as linhas dos cartões */
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos adicionais para o corpo e botões do cartão, se necessário */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#left-div,
+#right-div {
+    width: 25%; /* Ajuste a largura conforme necessário */
+    /* mais estilos aqui */
+}
+
+#center-div {
+    width: 50%; /* Ajuste a largura conforme necessário */
+    /* mais estilos aqui */
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px); /* Ajuste a distância da flutuação conforme necessário */
+    }
+}
+.container {
+    align-items: center; 
+    height: 100vh; 
+    
+}
+.floating {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+}
+.center-div {
+    width: 80%;
+}
+.img{
+    display: flex;
+    justify-content: center;
+}
+.imgcenter{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.imglivro{
+    width: 50%;
+
+}

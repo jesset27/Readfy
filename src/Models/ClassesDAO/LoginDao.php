@@ -57,7 +57,7 @@ class LoginDao
                     $_SESSION['tipo_usuario'] = $tipo_usuario;
 
                     if($tipo_usuario === 'admin'){
-                        header('Location: /readfy/administrativo/');
+                        header('Location: /readfy/administrativo/administradores');
                     }elseif($tipo_usuario === 'professor'){
                         header('Location: /readfy/professor/');
                     }else{
