@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Readfy\\Pdf\\": "ajax-livros/"
+        }
+    },
+    "require": {
+        "fpdf/fpdf": "^1.86",
+        "setasign/fpdi": "^2.5",
+        "setasign/fpdf": "^1.8"
+    }
+}

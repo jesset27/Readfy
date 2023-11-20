@@ -136,7 +136,7 @@ require_once("../src/Lib/Session.php");
 </style>
 <body>
     <div class="logo">
-        <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
+        <a href=""> <img src="\readfy\public\img\logo6.png "> </a>
     </div>
 
     <div class="menu">
@@ -163,7 +163,7 @@ require_once("../src/Lib/Session.php");
                </a>
             </li>
             <li style="--i: #ff9966; --j:#ff5e62">
-                <a href="\Readfy\professor\criar_sala.php">
+                <a href="/Readfy/professor/sala/criar_sala.php">
                     <span class="icon">
                         <ion-icon name="school-outline"></ion-icon>
                     </span>

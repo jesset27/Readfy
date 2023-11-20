@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livro->setDataLancamento($_POST['dataLancamento']);
     $livro->setGenero($_POST['genero']);
     $livro->setTotalDePaginas($_POST['totalPaginas']);
-    $livroNome = '../../public/pdf/' . basename($_FILES['livro']['name']);
-    $capaLivroNome = '../public/img/capas/' . basename($_FILES['capaLivro']['name']);
+    $livroNome = basename($_FILES['livro']['name']);
+    $capaLivroNome = basename($_FILES['capaLivro']['name']);
     $livro->setCaminho($livroNome);
     $livro->setCapa($capaLivroNome);
     $livroDao = new LivroDao($pdo);

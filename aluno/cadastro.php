@@ -1,38 +1,30 @@
 <?php
-    require_once('../src/Models/Classes/Aluno.php');
-    require_once ('../src/Models/ClassesDAO/AlunoDao.php');
-    require_once('../src/Lib/connect.php');
+require_once('../src/Models/Classes/Aluno.php');
+require_once('../src/Models/ClassesDAO/AlunoDao.php');
+require_once('../src/Lib/connect.php');
 ?>
 <?php
-    $nome = '';
-    $username = '';
-    $email = '';
-    $contato = '';
-    $idade = '';
-    $senha = '';
-    $check='';
-    
-    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-      $nome = $_POST['nome'];
-      $username = $_POST['apelido'];
-      $email = $_POST['email'];
-      $contato = $_POST['telefone'];
-      $idade = $_POST['idade'];
-      $senha = $_POST['senha'];
-      $tipo = "aluno";
-  
-      $aluno = new Aluno($nome, $username, $email, $contato, $idade, $tipo, $senha);
-      $alunoDao = new AlunoDAO($pdo);
-     
-  
-      if ($alunoDao->VerificaEmail($email)) {
-          $alunoDao->inserir($aluno);
-          header('Location: login.php');
-          exit();
-      } else {
-          $check= "O email fornecido já está em uso.";
-      }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $aluno = new Aluno();
+    $aluno->setNome($_POST['nome']);
+    $aluno->setUsername($_POST['username']);
+    $aluno->setEmail($_POST['email']);
+    $aluno->setContato($_POST['contato']);
+    $aluno->setIdade($_POST['idade']);
+    $aluno->setTipo('aluno');
+    $aluno->setSenha($_POST['senha']);
+    $alunoDao = new AlunoDAO($pdo);
+
+
+    if (!$alunoDao->VerificaEmail($email)) {
+        $alunoDao->inserir($aluno);
+        header('Location: ../login.php');
+        exit();
+    } else {
+        echo "O email fornecido já está em uso.";
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +40,11 @@
 <body>
 
     <div class="logo">
-        <a href="../index.php"><img src="\readfy\public\img\logo5.png"> </a>
+        <a href="../index.php">
+            <img src="\readfy\public\img\logo5.png" alt="logo">
+        </a>
     </div>
-    <div class="btn_login">                                                                                                                          
+    <div class="btn_login">
         <a href="../login.php">
             <input type="submit" class="submit" value="ENTRAR">
         </a>
@@ -68,7 +62,7 @@
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" id="apelido" name="apelido" placeholder="apelido" required>
+                    <input type="text" class="input" id="username" name="username" placeholder="Username" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
@@ -78,7 +72,7 @@
                 </div>
 
                 <div class="input-field">
-                    <input type="tel" class="input" id="telefone" name="telefone"  placeholder="Telefone/Celular" required placeholder=" Digite seu telefone" required>
+                    <input type="tel" class="input" id="contato" name="contato" placeholder="Contato/Celular" required placeholder=" Digite seu contato" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
@@ -87,7 +81,7 @@
                     <i class="fa-regular fa-envelope"></i>
                 </div><br>
                 <div class="tpuser">
-                    
+
                     <div class="input-field">
                         <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required>
                         <i class="fa-solid fa-lock"></i>
@@ -99,11 +93,8 @@
                 </div>
 
             </form>
-            </div>
         </div>
     </div>
-    <?PHP echo $check ?>
-
+    </div>
 </body>
-
 </html>

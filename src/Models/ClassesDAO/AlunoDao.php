@@ -7,7 +7,7 @@ class AlunoDao {
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configura o modo de erro para exceções
     }
 
-    public function insert(Aluno $aluno)
+    public function inserir(Aluno $aluno)
     {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO aluno (
