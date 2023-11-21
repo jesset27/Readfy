@@ -1,5 +1,5 @@
 <?php
-require './Session.php';
-Session::encerrar();
+require_once('./Session.php');
+$session = new Session();
+$session->destruir();
 header('Location: /readfy');
-?>

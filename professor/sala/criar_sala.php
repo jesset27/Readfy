@@ -1,32 +1,55 @@
 <?php
+require_once "../../src/Models/Classes/Livro.php";
+require_once "../../src/Models/ClassesDAO/LivroDao.php";
+
+require_once "../../src/Models/Classes/Sala.php";
+require_once "../../src/Models/ClassesDAO/SalaDao.php";
+require_once "../../src/Lib/connect.php";
+
+require_once("../../src/Lib/Session.php");
+$session = new Session();
+if($session->obter('professor') == null){
+    header("Location: ../login.php");
+}
+$livroDao = new LivroDao($pdo);
+$livros = $livroDao->selectAll();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $senha = $_POST['senha'];
+    $sala = new Sala();
+    $sala->setCodigo();
+    $sala->setLivrosId($_POST['livros_id']);
+    $sala->setPaginaInicial($_POST['pg_inicial']);
+    $sala->setProfessorId($_SESSION['professor']);
+    $sala->setPaginaFinal($_POST['pg_final']);
+    $sala->setNome($_POST['nome']);
+    $sala->setDescricao($_POST['descricao']);
+    $sala->setPrazo($_POST['prazo']);
+    $salaDao = new SalaDao($pdo);
     $salaDao->inserir($sala);
-    header("Location: index.php");
 }
 ?>
+
+<?php foreach ($livros as $livro) : ?>
+    <?= $livro->getNome() ?>
+<?php endforeach; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>CRIAR SALA</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src='main.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
 </head>
 
 <body>
-    <div class="logo-professor">
-        <a href="../sala/">
-            <img src="/readfy/public/img/logo.png" alt="logo">
-        </a>
+    <div class="logo">
+        <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
     </div>
-
     <div class="container">
         <ul>
             <li style="--i: #353bf4; --j:#ea51ff">
@@ -70,41 +93,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </li>
         </ul>
-
-
-        <div class="box">
+        <div class="">
             <div class="container3">
                 <div class="top-header">
 
                     <header>Criar sala</header>
                 </div>
+
                 <form action="" method="post">
                     <div class="input-field">
-                        <label>Selecione o livro</label>
-                        <select name="livros_id" class="form-select" id="livros_id" placehorder='Selecionar livro' required>
+                        <select name="livros_id" class="form-select" id="livros_id" placehorder='Selecione o Livro' required>
+                            <option value="0">Selecione o livro desejado</option>
+                            <?php foreach ($livros as $livro) : ?>
+                                <option value="<?= $livro->getId() ?>"><?= $livro->getNome() ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <i class="fa-regular fa-envelope"></i>
                     </div>
-
                     <div class="input-field">
-                        <input type="text" class="input" id="pg_inicial" name="pag_inicial" placeholder="Digite a pagina inicial de leitura" required>
+                        <input type="text" class="input" id="nome" name="nome" placeholder="Digite o nome" required>
                         <i class="fa-regular fa-envelope"></i>
                     </div>
-
                     <div class="input-field">
-                        <input type="e-mail" class="input" id="pg_final" name="pg_final" placeholder="Digite a pagina final de leitura" required>
+                        <input type="text" class="input" id="descricao" name="descricao" placeholder="Digite a descricao" required>
                         <i class="fa-regular fa-envelope"></i>
                     </div>
-
                     <div class="input-field">
-                        <input type="tel" class="input" id="codigo" name="codigo" placeholder="Digite o codigo da sala" required placeholder=" Digite o codigo da sala" required>
+                        <input type="text" class="input" id="pg_inicial" name="pg_inicial" placeholder="Digite a pagina inicial de leitura" required>
                         <i class="fa-regular fa-envelope"></i>
                     </div>
-
+                    <div class="input-field">
+                        <input type="text" class="input" id="pg_final" name="pg_final" placeholder="Digite a pagina final de leitura" required>
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="date" class="input" id="prazo" name="prazo" placeholder="Digite o prazo máximo de leitura" required>
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
                     <div class="input-field">
                         <input type="submit" class="submit" value="CRIAR SALA">
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

@@ -12,8 +12,8 @@ class LivroDao
     {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO livros (
-            nome, 
-            editora, 
+            nome,
+            editora,
             autor,
             datalancamento,
             caminho,
@@ -50,8 +50,8 @@ class LivroDao
     public function UploadFiles($livroNome, $capaLivroNome)
     {
         try {
-            move_uploaded_file($_FILES['livro']['tmp_name'], $livroNome);
-            move_uploaded_file($_FILES['livro']['tmp_name'], $capaLivroNome);
+            move_uploaded_file($_FILES['livro']['tmp_name'], '../../public/pdf/' . $livroNome);
+            move_uploaded_file($_FILES['capaLivro']['tmp_name'], '../../public/img/capas/' . $capaLivroNome);
             return true;
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();

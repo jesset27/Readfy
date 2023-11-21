@@ -1,6 +1,6 @@
 <?php
 require "src/Lib/connect.php";
-require_once("src/Lib/Session.php");
+require_once("./src/Lib/Session.php");
 require_once("./src/Models/ClassesDAO/LoginDao.php");
 
 // Processar o formulário apenas quando houver uma solicitação POST

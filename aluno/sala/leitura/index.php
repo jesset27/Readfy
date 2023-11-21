@@ -15,7 +15,7 @@
         <button id="back-page" class="button-5">
             Voltar
         </button>
-        <iframe  id="livro" height="300" width="800" src="livros/exemplo.pdf">
+        <iframe  id="livro" height="500" width="800" src="livros/exemplo.pdf">
 
         </iframe>
         <button id="next-page" class="button-5">
@@ -25,8 +25,8 @@
 <script>
 const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX
 
-const livro_id = 20; // ID DO Livro
-const livro_totalpage = 20; // total de paginas do livro
+const livro_id = 28; // ID DO Livro
+const livro_totalpage = 14; // total de paginas do livro
 var current_page = 1; //pagina que sera renderizada no inicio
 var sala_id =  1 // ID DA SALA
 

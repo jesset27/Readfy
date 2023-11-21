@@ -19,14 +19,12 @@
     float:left; /* Faz o menu ficar ao lado da linha */
     padding-right:23% ;/* Espaçamento entre o menu e a linha */
     position:absolute; 
-
-
-
 }
 ul{
     list-style: none;
     padding: 0;
-    width: 100%;
+
+
 }
 
 li{
@@ -55,7 +53,6 @@ ul li{
     transition: 0.5s;
     width: 100px;
     margin-top:20px;
-    
 }
 ul li:hover{
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
@@ -131,6 +128,10 @@ ul li:hover .text{
     transition-delay: 0.25;
 }
 
+.container{
+    display: flex;
+}
+
 .container2{
     border-color: solid 2px , rgb(200, 18, 18);
     margin-top:-30%;
@@ -169,7 +170,6 @@ css formulario */
     align-items: center;
     margin-left:76%;
     align-items: baseline;
-
 } 
 
 body{
@@ -194,7 +194,7 @@ body{
 
 .sala{
     margin-left: 50%;
-    color: #333333;
+    color: #333333; 
 }
 
 

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $aluno->setSenha($_POST['senha']);
     $alunoDao = new AlunoDao($pdo);
     if (!$alunoDao->VerificaEmail($_POST['email'])) {
-        $alunoDao->insert($aluno);
+        $alunoDao->inserir($aluno);
         header("Location: index.php");
     }
 }

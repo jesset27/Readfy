@@ -45,35 +45,35 @@ class LoginDao
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            session_start(); //inicia a sessão
+
 
             if ($result) {
                 $tipo_usuario = $result['tipo'];
                 $senha_hash = $result['senha'];
-
                 if (password_verify($senha, $senha_hash)) {
-                    //Armazena as informações do usuario na sessão
-                    $_SESSION['email'] = $email;
-                    $_SESSION['tipo_usuario'] = $tipo_usuario;
-
-                    if($tipo_usuario === 'admin'){
+                    if ($tipo_usuario === 'admin') {
+                        $session = new Session();
+                        $session->definir($result['tipo'], $result['id']);
                         header('Location: /readfy/administrativo/administradores');
-                    }elseif($tipo_usuario === 'professor'){
+                    } elseif ($tipo_usuario === 'professor') {
+                        $session = new Session();
+                        $session->definir($result['tipo'], $result['id']);
                         header('Location: /readfy/professor/');
-                    }else{
+                    } else {
+                        $session = new Session();
+                        $session->definir($result['tipo'], $result['id']);
                         header('Location: /readfy/aluno/');
                     }
                 } else {
-                    // Senha incorreta
                     echo "Senha incorreta $tipo_usuario";
                 }
             } else {
-                // O email do usuário não foi encontrado
                 echo "Email não encontrado";
             }
+            $this->pdo = null;
         } catch (PDOException $e) {
-            error_log($e->getMessage()); // Registre o erro no log do servidor
-            die("Erro na consulta: " . $e->getMessage(  ));
+            error_log($e->getMessage());
+            die("Erro na consulta: " . $e->getMessage());
         }
     }
 }

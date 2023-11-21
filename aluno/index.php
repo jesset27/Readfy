@@ -1,3 +1,14 @@
+<?php
+require_once('../src/Models/Classes/Aluno.php');
+require_once('../src/Models/ClassesDAO/AlunoDao.php');
+require_once('../src/Lib/connect.php');
+require_once("../src/Lib/Session.php");
+$session = new Session();
+if($session->obter('aluno') == null){
+    header("Location: ../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -30,14 +41,14 @@
                 </a>
             </li>
             <li style="--i: #70e094; --j:#99e599">
-               <a href="#">
+                <a href="#">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
                     </span>
                     <span class="text">
                         Galeria
                     </span>
-               </a>
+                </a>
             </li>
             <li style="--i: #ff9966; --j:#ff5e62">
                 <a href="#">
@@ -50,7 +61,7 @@
                 </a>
             </li>
             <li style="--i: #f66333f1; --j:#f434e2">
-                <a href="#">
+                <a href="../src/Lib/session_destroy.php">
                     <span class="icon">
                         <ion-icon name="exit-outline"></ion-icon>
                     </span>
@@ -58,7 +69,7 @@
                         Sair
                     </span>
                 </a>
-                
+
             </li>
         </ul>
     </div>
@@ -72,10 +83,9 @@
                 <header>Logar sala</header>
             </div>
             <form action="" method="post">
-            
+
                 <div class="input-field">
-                    <input type="tel" class="input" id="codigo" name="codigo" placeholder="Digite o codigo da sala"
-                        required placeholder=" Digite o Código da sala" required>
+                    <input type="tel" class="input" id="codigo" name="codigo" placeholder="Digite o codigo da sala" required placeholder=" Digite o Código da sala" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
@@ -88,8 +98,10 @@
     </div>
 
     <div class="container-sala">
-        <div class="label"><h1> Salas de Leitura</h1></div>
-     <!-- <?php foreach ($salas as $sala) { ?>
+        <div class="label">
+            <h1> Salas de Leitura</h1>
+        </div>
+        <!-- <?php foreach ($salas as $sala) { ?>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>
@@ -103,46 +115,46 @@
         </div>
     <?php } ?> -->
 
-<div class="table-container1">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Sala</th>
-        <th scope="col">Nome Livro</th>
-        <th scope="col">Professor</th>
-        <th scope="col">Ação</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>O Destino de Perseu</td>
-        <td>Paulo Tacca</td>
-        <td>
-      <button type="button" class="btn btn-primary">Entrar</button></button>
-        </td>
-        
-      </tr>
-      <tr>
-      <th scope="row">2</th>
-        <td>O Destino de Perseu</td>
-        <td>Paulo Tacca</td>
-        <td>
-      <button type="button" class="btn btn-primary">Entrar</button></button>
-        </td>
-      </tr>
-      <tr>
-      <th scope="row">3</th>
-        <<td>O Destino de Perseu</td>
-        <td>Paulo Tacca</td>
-        <td>
-      <button type="button" class="btn btn-primary">Entrar</button></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        <div class="table-container1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Sala</th>
+                        <th scope="col">Nome Livro</th>
+                        <th scope="col">Professor</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>O Destino de Perseu</td>
+                        <td>Paulo Tacca</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Entrar</button></button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>O Destino de Perseu</td>
+                        <td>Paulo Tacca</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Entrar</button></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <<td>O Destino de Perseu</td>
+                            <td>Paulo Tacca</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">Entrar</button></button>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
 
-</body>    
+</body>
