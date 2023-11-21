@@ -1,16 +1,31 @@
 <?php
-require_once('../src/Models/Classes/Aluno.php');
-require_once('../src/Models/ClassesDAO/AlunoDao.php');
+require_once('../src/Models/Classes/Sala.php');
+require_once('../src/Models/ClassesDAO/SalaDao.php');
 require_once('../src/Lib/connect.php');
 require_once("../src/Lib/Session.php");
 $session = new Session();
-if($session->obter('aluno') == null){
+if ($session->obter('aluno') == null) {
     header("Location: ../login.php");
+}
+$salaDao = new SalaDao($pdo);
+$salas = $salaDao->selectAlunoSala();
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $codigo = $_POST['codigo'];
+    $salaDao = new SalaDao($pdo);
+    if ($salaLogin = $salaDao->buscarSala($codigo)) {
+        $salaDao = new SalaDao($pdo);
+        $salaDao->entrarSala($_SESSION['aluno'], $salaLogin->getId());
+        header("Location: index.php");
+    } else {
+        echo "sala não encontrada";
+    };
 }
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset='utf-8'>
@@ -78,17 +93,12 @@ if($session->obter('aluno') == null){
 
     <div class="box">
         <div class="container3">
-            <div class="top-header">
-
+            <form method="POST">
                 <header>Logar sala</header>
-            </div>
-            <form action="" method="post">
-
                 <div class="input-field">
                     <input type="tel" class="input" id="codigo" name="codigo" placeholder="Digite o codigo da sala" required placeholder=" Digite o Código da sala" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
-
                 <div class="input-field">
                     <input type="submit" class="submit" value=" Confirmar">
                 </div>
@@ -101,19 +111,6 @@ if($session->obter('aluno') == null){
         <div class="label">
             <h1> Salas de Leitura</h1>
         </div>
-        <!-- <?php foreach ($salas as $sala) { ?>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Nome da Sala: <?= $sala['nome'] ?></h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Senha: <?= $sala['senha'] ?></h6>
-                    <p class="card-text">Descrição: <?= $sala['descricao'] ?></p>
-                    <a href="#" class="card-link">Exibir</a>
-                    <a href="#" class="card-link">Alterar</a>
-                    <a href="#" class="card-link"><img src="../public/img/icons/trash.svg" alt=""></a>
-                </div>
-            </div>
-        </div>
-    <?php } ?> -->
 
         <div class="table-container1">
             <table class="table table-hover">
@@ -126,31 +123,18 @@ if($session->obter('aluno') == null){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>O Destino de Perseu</td>
-                        <td>Paulo Tacca</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Entrar</button></button>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>O Destino de Perseu</td>
-                        <td>Paulo Tacca</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">Entrar</button></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <<td>O Destino de Perseu</td>
-                            <td>Paulo Tacca</td>
+                    <?php foreach ($salas as $sala) { ?>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><?= $sala->nome_livros ?></td>
+                            <td><?= $sala->nome_professor ?></td>
                             <td>
                                 <button type="button" class="btn btn-primary">Entrar</button></button>
                             </td>
-                    </tr>
+
+                        </tr>
+                    <?php } ?>
+
                 </tbody>
             </table>
         </div>

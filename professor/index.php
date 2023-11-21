@@ -5,7 +5,7 @@
   require_once("../src/Models/ClassesDAO/SalaDao.php");
   $salaDao = new SalaDao($pdo);
   $session = new Session();
-  $salas = $salaDao->selectAll();
+  $salas = $salaDao->selectAllByIdProfessor();
   if ($session->obter('professor') == null) {
     header("Location: ../login.php");
   }

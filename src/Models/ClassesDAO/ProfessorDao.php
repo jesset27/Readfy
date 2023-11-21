@@ -136,13 +136,13 @@ class ProfessorDao
             $senha = $professor->getSenha();
 
             $stmt = $this->pdo->prepare(
-                "UPDATE professor SET 
-            nome = :nome, 
-            username = :username, 
-            email = :email, 
-            contato = :contato, 
-            idade = :idade, 
-            senha = :senha 
+                "UPDATE professor SET
+            nome = :nome,
+            username = :username,
+            email = :email,
+            contato = :contato,
+            idade = :idade,
+            senha = :senha
             WHERE id = :id"
             );
 

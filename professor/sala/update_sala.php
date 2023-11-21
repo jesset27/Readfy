@@ -103,11 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <form action="" method="post">
                     <div class="input-field">
-                        <select name="livros_id" class="form-select" id="livros_id" placehorder='Selecione o Livro' required>
+                        <select name="livros_id" class="form-select" id="livros_id" required>
+                            <option value="" disabled selected>Selecione um Livro</option>
                             <?php foreach ($livros as $livro) : ?>
-                                <option value="<?= $livro->getId() ?>"><?= $livro->getNome() ?></option>
+                                <option value="<?= $livro->getId() ?>" <?= $livro->getId() == $sala->getLivrosId() ? 'selected' : '' ?>><?= $livro->getNome() ?></option>
                             <?php endforeach; ?>
                         </select>
+
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <div class="input-field">

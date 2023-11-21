@@ -43,7 +43,7 @@ class SalaDao
             echo 'Erro ao inserir professor: ' . $e->getMessage();
         }
     }
-    public function selectAll()
+    public function selectAllByIdProfessor()
     {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM sala WHERE professor_id = :professor_id");
@@ -76,7 +76,6 @@ class SalaDao
         } catch (PDOException $e) {
             echo 'Erro ao buscar salas: ' . $e->getMessage();
         }
-        $stmt->execute();
     }
     public function update(Sala $sala, $id)
     {
@@ -118,6 +117,71 @@ class SalaDao
             header('Location: ../index.php');
         } catch (PDOException $e) {
             echo 'Erro ao atualizar sala: ' . $e->getMessage();
+        }
+    }
+    public function buscarSala($codigo)
+    {
+        try {
+            $stmt = $this->pdo->prepare('SELECT * FROM sala WHERE codigo = :codigo');
+            $stmt->bindParam(':codigo', $codigo);
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchObject('Sala');
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar sala: ' . $e->getMessage();
+        }
+        $stmt->execute();
+    }
+    public function entrarSala($aluno_id, $sala_id)
+    {
+        try {
+            $stmt = $this->pdo->prepare('INSERT INTO alunosala (
+                aluno_id,
+                sala_id
+            ) VALUES (:aluno_id, :sala_id)');
+            $stmt->bindParam(':aluno_id', $aluno_id);
+            $stmt->bindParam(':sala_id', $sala_id);
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchObject('Sala');
+        } catch (PDOException $e) {
+            echo 'Erro ao entrar na sala: ' . $e->getMessage();
+        }
+        $stmt->execute();
+    }
+    public function mostrarSalasLogadas($aluno_id)
+    {
+        try {
+            $stmt = $this->pdo->prepare('SELECT * FROM aluno');
+            $stmt->bindParam(':aluno_id', $aluno_id);
+            $stmt->execute();
+            $this->pdo = null;
+            return $stmt->fetchAll(\PDO::FETCH_CLASS);
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar salas: ' . $e->getMessage();
+        }
+    }
+    public function selectAlunoSala()
+    {
+        try {
+            $stmt = $this->pdo->prepare("
+            SELECT
+        sala.id AS sala_id,
+        livros.nome AS nome_livros,
+        professor.nome AS nome_professor
+    FROM
+        alunosala
+    JOIN sala ON alunosala.sala_id = sala.id
+    JOIN livros ON sala.livros_id = livros.id
+    JOIN professor ON sala.professor_id = professor.id
+    WHERE
+        alunosala.aluno_id = :aluno_id
+            ");
+            $stmt->bindParam(':aluno_id', $_SESSION['aluno']);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_CLASS);
+        } catch (PDOException $e) {
+            echo 'Erro: ' . $e->getMessage();
         }
     }
 }
