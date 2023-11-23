@@ -14,9 +14,11 @@ if ($session->obter('professor') == null) {
 $salaDao = new SalaDao($pdo);
 $sala = $salaDao->selectById($_GET['id']);
 
-
 $livroDao = new LivroDao($pdo);
 $livro = $livroDao->selectById($sala->getLivrosId());
+
+$salaDao = new SalaDao($pdo);
+$sal = $salaDao->mostrarAlunoSala($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -47,30 +49,14 @@ $livro = $livroDao->selectById($sala->getLivrosId());
                 <h3 class="text-center">Alunos</h3>
                 <div class="card-container">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Jessé Willian Gimenes dos Santos</h5>
-                            <a href="#" class="btn btn-primary">Exibir</a>
+                    <?php foreach ($sal as $sa) : ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $sa->nome_aluno?></h5>
+                                <a href="#" class="btn btn-primary">Exibir</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Jessé Willian Gimenes dos Santos</h5>
-                            <a href="#" class="btn btn-primary">Exibir</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Jessé Willian Gimenes dos Santos</h5>
-                            <a href="#" class="btn btn-primary">Exibir</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Jessé Willian Gimenes dos Santos</h5>
-                            <a href="#" class="btn btn-primary">Exibir</a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
 
                 </div>
 

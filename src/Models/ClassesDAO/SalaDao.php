@@ -184,4 +184,33 @@ class SalaDao
             echo 'Erro: ' . $e->getMessage();
         }
     }
+    public function mostrarAlunoSala($salaId){
+        try {
+            $stmt = $this->pdo->prepare("SELECT
+                aluno.id AS aluno_id,
+                aluno.nome AS nome_aluno,
+                sala.id AS sala_id,
+                sala.nome AS nome_sala,
+                professor.nome AS nome_professor,
+                livros.nome AS nome_livro
+            FROM
+                alunosala
+            JOIN aluno ON alunosala.aluno_id = aluno.id
+            JOIN sala ON alunosala.sala_id = sala.id
+            JOIN professor ON sala.professor_id = professor.id
+            JOIN livros ON sala.livros_id = livros.id
+            WHERE
+                sala.id = :sala_id;");
+    
+            // Vincular o parâmetro :sala_id ao valor passado para a função
+            $stmt->bindParam(':sala_id', $salaId, \PDO::PARAM_INT);
+    
+            $stmt->execute();
+            
+            return $stmt->fetchAll(\PDO::FETCH_CLASS);
+        } catch(PDOException $e) {
+            echo 'Erro: ' . $e->getMessage();
+        }
+    }
+    
 }
