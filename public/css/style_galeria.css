@@ -1,40 +1,97 @@
-body{
-    background-color:#F5F5F5;
+body {
+    background-color: #F5F5F5;
 }
 
-h2{
+h2 {
     color: #333333;
 }
 
-h2:hover{
-    color:#ffa500;
+h2:hover {
+    color: #ffa500;
 }
 
-.cor1{
+.cor1 {
     background-color: #eb2d07;
 }
 
-.navbar a{
+/* Estilos para a Navbar e Dropdown */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007acc; /* Cor do fundo do header */
+}
+
+.navbar a {
     font-size: 1.35rem;
     color: #ffffff;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 7.5rem;
-    margin-right: 7.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
     justify-content: center;
+    font-family: "Poppins" sans-serif;
 }
 
-header{
-    background-color: #007acc;
-    
+.logo img{
+    width: 350px;
+    margin-top:10px ;
+    margin-left:35%;
+
+
 }
 
+/* Estilos Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    background-color: #4D94FF;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    height: 45px;
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Poppins" sans-serif;
+
+}
+
+/* Estilos para o Logo da Galeria */
 .logogaleria a img {
     margin-left: 30%;
     height: 300px;
     margin-top: -5%;
     margin-bottom: -5%;
-    
 }
 
 
