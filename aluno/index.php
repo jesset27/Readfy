@@ -126,12 +126,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php foreach ($salas as $sala) { ?>
                         <tr>
                             <th scope="row">1</th>
-                            <td><?= $sala->nome_livros ?></td>
-                            <td><?= $sala->nome_professor ?></td>
+                            <td><?= $sala->nome_livros; ?></td>
+                            <td><?= $sala->nome_professor; ?></td>
                             <td>
-                                <button type="button" class="btn btn-primary">Entrar</button></button>
+                                <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">
+                                    <button type="button" class="btn btn-primary">Entrar</button>
+                                </a>
                             </td>
-
                         </tr>
                     <?php } ?>
 

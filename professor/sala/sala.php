@@ -57,7 +57,12 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
                             </div>
                         </div>
                     <?php endforeach; ?>
-
+                    <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $sa->nome_aluno?></h5>
+                                <a href="#" class="btn btn-primary">Exibir</a>
+                            </div>
+                        </div>
                 </div>
 
             </div>

@@ -107,18 +107,18 @@ class LivroDao
             $genero = $livro->getGenero();
             $totaldepaginas = $livro->getTotalDePaginas();
             $capa = $livro->getCapa();
-            
+
 
             $stmt = $this->pdo->prepare(
-                "UPDATE livros SET 
-                nome = :nome, 
-                editora = :editora, 
-                autor = :autor, 
-                datalancamento = :datalancamento, 
-                caminho = :caminho, 
+                "UPDATE livros SET
+                nome = :nome,
+                editora = :editora,
+                autor = :autor,
+                datalancamento = :datalancamento,
+                caminho = :caminho,
                 genero = :genero,
                 totaldepaginas = :totaldepaginas,
-                capa = :capa 
+                capa = :capa
             WHERE id = :id"
             );
 
@@ -137,8 +137,30 @@ class LivroDao
             echo 'Erro ao atualizar professor: ' . $e->getMessage();
         }
     }
+    public function selectByIdSalaLivro($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("
+            SELECT
+            livros.id AS livro_id,
+            livros.nome AS nome_livro,
+            livros.editora,
+            livros.autor,
+            livros.datalancamento,
+            livros.genero,
+            livros.total_paginas,
+            livros.capa
+        FROM
+            sala
+        JOIN livros ON sala.livros_id = livros.id
+        WHERE
+            sala.id = :sala_id;
+            ");
+            $stmt->bindParam(':sala_id', $id, \PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Erro : ' . $e->getMessage();
+        }
+    }
 }
-
-
-
-
