@@ -20,6 +20,7 @@
    <meta name='viewport' content='width=device-width, initial-scale=1'>
    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
    <script src='main.js'></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
    <title>Readfy</title>
  </head>
@@ -124,9 +125,9 @@
                  <button type="button" class="btn btn-primary">Entrar</button>
                </a>
                <a href="./sala/update_sala.php?id=<?= $sala->getId() ?>">
-                 <button type="button" class="btn btn-warning">Alterar</button>
+                 <button type="button" class="btn btn-warning bi bi-pencil-square"></button>
                </a>
-               <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $sala->getId(); ?>">Deletar</button>
+               <button class="bi bi-trash3-fill btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $sala->getId(); ?>"></button>
              </td>
            </tr>
 

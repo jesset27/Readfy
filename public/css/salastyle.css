@@ -1,5 +1,5 @@
 .logo {
-    width: 300px;
+    width: 300px;  
 }
 .livro {
     text-align: center;
@@ -29,7 +29,7 @@
 
 /* Estilos adicionais para o corpo e botões do cartão, se necessário */
 .container {
-    display: flex;
+    display: block;
     justify-content: space-between;
 }
 

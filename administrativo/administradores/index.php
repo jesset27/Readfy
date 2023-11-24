@@ -72,9 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </td>
                         <td>
                             <a href="./update.php?id=<?= $admin->getId(); ?>">
-                                <button class="btn btn-primary">Editar</button>
+                                <button class="btn btn-primary bi bi-pencil-square"></button>
                             </a>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= $admin->getId(); ?>">Deletar</button>
+                            <button class="bi bi-trash3-fill btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= $admin->getId(); ?>"></button>
                         </td>
                     </tr>
 
