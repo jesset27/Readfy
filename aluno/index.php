@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </li>
             <li style="--i: #ff9966; --j:#ff5e62">
-                <a href="#">
+                <a href="\readfy\aluno\perfil.php">
                     <span class="icon">
                         <ion-icon name="cog-outline"></ion-icon>
                     </span>
@@ -130,12 +130,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <td><?= $sala->nome_livros; ?></td>
                             <td><?= $sala->nome_professor; ?></td>
                             <td>
+<<<<<<< Updated upstream
                                 <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">
                                     <button type="button" class="btn btn-primary bi bi-book-half"></button>
                                 </a>
                                 <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">
                                     <button type="button" class="bi bi-trash3-fill btn btn-danger"></button>
                                 </a>
+=======
+                                <button type="button" class="btn btn-primary">Entrar</button>
+                                <button type="button" class="btn btn-danger">Sair</button>
+                                
+>>>>>>> Stashed changes
                             </td>
                         </tr>
                     <?php } ?>
