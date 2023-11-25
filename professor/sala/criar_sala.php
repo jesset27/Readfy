@@ -8,7 +8,7 @@ require_once "../../src/Lib/connect.php";
 
 require_once("../../src/Lib/Session.php");
 $session = new Session();
-if($session->obter('professor') == null){
+if ($session->obter('professor') == null) {
     header("Location: ../login.php");
 }
 $livroDao = new LivroDao($pdo);
@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<?php foreach ($livros as $livro) : ?>
+<!-- <?php foreach ($livros as $livro) : ?>
     <?= $livro->getNome() ?>
-<?php endforeach; ?>
+<?php endforeach; ?> -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src='main.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_criar_sala.css'>
 </head>
 
 <body>
@@ -57,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
-                    <span class="text">.
+                    <span class="text">
                         Início
                     </span>
                 </a>
             </li>
             <li style="--i: #70e094; --j:#99e599">
-                <a href="#">
+                <a href="\readfy\galeria.php">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
                     </span>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </li>
             <li style="--i: #f66333f1; --j:#f434e2">
-                <a href="#">
+                <a href="\readfy\professor\perfil.php">
                     <span class="icon">
                         <ion-icon name="cog-outline"></ion-icon>
                     </span>
@@ -92,8 +92,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
+            <li style="--i: #f66333f1; --j:#f434e2">
+                <a href="../src/Lib/session_destroy.php">
+                    <span class="icon">
+                        <ion-icon name="exit-outline"></ion-icon>
+                    </span>
+                    <span class="text">
+                        Sair
+                    </span>
+                </a>
+            </li>
         </ul>
-        <div class="">
+        <div class="box">
             <div class="container3">
                 <div class="top-header">
 

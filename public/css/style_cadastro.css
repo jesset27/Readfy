@@ -64,6 +64,14 @@ header{
     flex-direction: column;
 }
 
+.fechar img{
+    width: 35px;
+    position: absolute;
+    top: 30px;
+    right:40px;
+}
+
+
 .input{
     height: 45px;
     width: 87%;
