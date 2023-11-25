@@ -203,10 +203,11 @@ body{
     width: 350px;
     display: flex;
     flex-direction: column;
-    padding:  0 15px 0 15 px; 
-    margin-left: 35%;
+    margin-left: 20%;
     border-color: solid 2px, black;
-    margin-top: -15%;
+    margin-top: -10%;
+  
+
     
 }
 
