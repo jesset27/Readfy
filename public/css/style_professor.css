@@ -14,7 +14,6 @@
     align-items: flex-start;
     min-height: 80vh;
     width: 5%; 
-    margin-left: 0%;
     border-right: solid 2px #333333;  
     float:left; /*Faz o menu ficar ao lado da linha */
     padding-right:25%;/* Espaçamento entre o menu e a linha */
@@ -206,10 +205,9 @@ body{
     margin-left: 20%;
     border-color: solid 2px, black;
     margin-top: -10%;
-  
-
     
 }
+
 
 .container-sala h1{
     text-align: center;

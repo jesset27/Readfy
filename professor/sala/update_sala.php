@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src='main.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_professor.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/readfy/public/css/style_criar_sala.css'>
 </head>
 
 <body>
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
-                    <span class="text">.
+                    <span class="text">
                         Início
                     </span>
                 </a>
@@ -93,9 +93,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
+            <li style="--i: #f66333f1; --j:#f434e2">
+                <a href="../src/Lib/session_destroy.php">
+                    <span class="icon">
+                        <ion-icon name="exit-outline"></ion-icon>
+                    </span>
+                    <span class="text">
+                        Sair
+                    </span>
+                </a>
+            </li>
         </ul>
         <div class="">
-            <div class="container3">
+            <div class="container_edit_sala">
                 <div class="top-header">
 
                     <header>EDITAR SALA</header>
@@ -133,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <div class="input-field">
-                        <input type="submit" class="submit" value="CRIAR SALA">
+                        <input type="submit" class="submit" value="SALVAR">
                     </div>
                 </form>
 

@@ -45,7 +45,7 @@
          </a>
        </li>
        <li style="--i: #70e094; --j:#99e599">
-         <a href="#">
+         <a href="\readfy\galeria.php">
            <span class="icon">
              <ion-icon name="library-outline"></ion-icon>
            </span>
@@ -65,7 +65,7 @@
          </a>
        </li>
        <li style="--i: #f66333f1; --j:#f434e2">
-         <a href="#">
+         <a href="\readfy\professor\perfil.php">
            <span class="icon">
              <ion-icon name="cog-outline"></ion-icon>
            </span>

@@ -11,6 +11,7 @@ $session = new Session();
 if ($session->obter('professor') == null) {
     header("Location: ../login.php");
 }
+
 $salaDao = new SalaDao($pdo);
 $sala = $salaDao->selectById($_GET['id']);
 
@@ -33,9 +34,11 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
 </head>
 <style>
     .progress {
-        background-color: #f5f5f5;
-        border-radius: 2px;
+        background-color: #FFA500;
+        border-radius: 10px;
         height: 20px;
+        width: 200px;
+
     }
 
     .progress-bar {
@@ -46,57 +49,150 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
         line-height: 20px;
         /* Altura da barra para centralizar o texto */
     }
+
+    .texto {
+        color: #333333;
+    }
+
+    .alunos {
+        /* border: 2px solid #333333; */
+        width: 80%;
+        margin-left: 22%;
+        margin-top: -40%;
+    }
+    .alunos h3{
+        margin-top: 2%;
+        margin-bottom: -2%;
+    }
+
+    .professor_container {
+
+        width: 38%;
+    }
+
+    .livro {
+        margin-left: 0,5%;
+    }
+
+    .text-center {
+        color: #333333;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: -85px;
+    }
+
+    .card {
+        width: 230px;
+    }
+
+    .fechar img {
+        width: 40px;
+    }
+
+    .fechar {
+        text-align: right;
+        margin-top: -50px;
+    }
+
+    .logo {
+        margin-top: 0, 5%;
+        margin-left: 1%;
+    }
+
+    .linha {
+        border-bottom: 2px solid #333333;
+        width: 100%;
+
+    }
 </style>
 
+
 <body>
-    <img class="logo" src="../../public/img/logo.png" alt="">
-    <div class="container">
-        <br><br>
-        <div class="professor">
-            <div class="livro">
-                <img class="logo" src="<?= "../../public/img/capas/" . $livro->getCapa() ?>" alt="">
-                <p>Nome do livro: <?= $livro->getNome() ?></p>
-                <p>Prazo maximo até <?= $sala->getPrazo(); ?></p>
-                <div>
-                    <a href="../index.php">Sair</a>
+    <div class="p-3 mb-2 bg-light text-dark">
+        <div class="linha">
+            <img class="logo" src="/readfy/public/img/logo6.png" alt="">
+        </div>
+        <div class="fechar"><img src="\readfy\public\img\fechar.png"></div>
+        <div class="professor_container">
+            <br><br>
+            <div class="professor">
+                <div class="livro">
+                    <img class="logo" src="<?= "../../public/img/capas/" . $livro->getCapa() ?>" alt="">
+                    <br>
+                    <p class="texto"><strong>Nome do livro: <?= $livro->getNome() ?></strong></p>
+                    <p class="texto"><strong>Prazo de leitura até : <?= $sala->getPrazo(); ?></strong></p>
                 </div>
             </div>
-            <div class="alunos text-center">
-                <h3 class="text-center">Alunos</h3>
-                <div class="card-container">
+        </div>
 
-                    <?php foreach ($sal as $sa) : ?>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $sa->nome_aluno ?></h5>
-                                <br>
-                                <!-- Barra de progresso Bootstrap -->
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </div>
-                                <br>
-                                <a href="#" class="btn btn-primary">Exibir</a>
-                            </div>
+        <div class="alunos">
+            <h3 class="text-center">Alunos</h3>
+
+            <div class="container">
+
+                <div class="card">
+                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Evandro</h5>
+                        <br>
+                        <!-- Barra de progresso Bootstrap -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                         </div>
-                    <?php endforeach; ?>
-                    <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $sa->nome_aluno ?></h5>
-                                <br>
-                                <!-- Barra de progresso Bootstrap -->
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </div>
-                                <br>
-                                <a href="#" class="btn btn-primary">Exibir</a>
-                            </div>
+                        <br>
+                        <a href="#" class="btn btn-primary">Exibir</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Evandro</h5>
+                        <br>
+                        <!-- Barra de progresso Bootstrap -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                         </div>
+                        <br>
+                        <a href="#" class="btn btn-primary">Exibir</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Evandro</h5>
+                        <br>
+                        <!-- Barra de progresso Bootstrap -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                        <br>
+                        <a href="#" class="btn btn-primary">Exibir</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Evandro</h5>
+                        <br>
+                        <!-- Barra de progresso Bootstrap -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                        <br>
+                        <a href="#" class="btn btn-primary">Exibir</a>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
 </body>
+
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
