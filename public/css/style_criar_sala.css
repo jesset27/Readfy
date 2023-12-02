@@ -302,12 +302,13 @@ header{
     border:none;
     outline: none;
     border-radius: 30px;
-    color: #f0f1f1;
-    padding: 0 0 0 54px;
+    color: #807f7f;
+    padding: 0 0 0 40px;
     background:rgba(0, 0, 0, .1);
-    margin-top: 15px;
+    margin-top: 13px;
     font-size: 15px;
     line-height: 50%;
+    
 }
 .form-check{
     color:#333333;

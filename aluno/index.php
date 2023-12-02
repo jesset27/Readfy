@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="menu">
 
         <ul>
-            <li style="--i: #353bf4; --j:#ea51ff">
+            <li style="--i: #353bf4; --j:#48D1CC">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #70e094; --j:#99e599">
+            <li style="--i:#32CD32 ; --j:#70e094">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #ff9966; --j:#ff5e62">
+            <li style="--i: #ff9966; --j:#FFA500">
                 <a href="\readfy\aluno\perfil.php">
                     <span class="icon">
                         <ion-icon name="cog-outline"></ion-icon>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #f66333f1; --j:#f434e2">
+            <li style="--i:#FF0000 ; --j:#f66333f1">
                 <a href="../src/Lib/session_destroy.php">
                     <span class="icon">
                         <ion-icon name="exit-outline"></ion-icon>

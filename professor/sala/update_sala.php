@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #70e094; --j:#99e599">
+            <li style="--i: #70e094; --j:#32CD32">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #ff9966; --j:#ff5e62">
+            <li style="--i: #1E90FF; --j:#4D94FF">
                 <a href="\Readfy\professor\criar_sala.php">
                     <span class="icon">
                         <ion-icon name="school-outline"></ion-icon>
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #f66333f1; --j:#f434e2">
+            <li style="--i:#FF0000; --j:#f66333f1">
                 <a href="../src/Lib/session_destroy.php">
                     <span class="icon">
                         <ion-icon name="exit-outline"></ion-icon>

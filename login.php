@@ -2,17 +2,9 @@
 require "src/Lib/connect.php";
 require_once("./src/Lib/Session.php");
 require_once("./src/Models/ClassesDAO/LoginDao.php");
-
 // Processar o formulário apenas quando houver uma solicitação POST
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-
-    $login = new LoginDao($pdo);
-    $login->login($email, $senha);
-
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -72,7 +64,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
             </div>
         </div>
+    </div>
+    <br>
+    <div>
+    <?php 
+        // Processar o formulário apenas quando houver uma solicitação POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
 
+        $login = new LoginDao($pdo);
+        $login->login($email, $senha);
+    }
+    ?>
+    </div>
 </body>
 
 </html>

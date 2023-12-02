@@ -18,6 +18,7 @@
     float:left; /*Faz o menu ficar ao lado da linha */
     padding-right:25%;/* Espaçamento entre o menu e a linha */
     position:absolute;  
+    margin-left:-50px;
 }
 ul{
     list-style: none;
@@ -180,16 +181,17 @@ body{
 } 
 
 .table-container1{
-  margin: top 3px;
-  margin-left: 25%;
+  /* margin: top 10%; */
+  margin-left: 24%;
   width: 670px;
   background-color: #f5f5f5;
 }
 
 .table-container{
     margin: top 3px;
-    margin-left: 25%;
+    margin-left: 22%;
     background-color: #f5f5f5;
+    width: 77%;
   }
 
 .sala{
@@ -212,9 +214,10 @@ body{
 .container-sala h1{
     text-align: center;
     color:#333333;
-    margin-left: 43%;
-    
+    margin-left: 40%;
 }
+
+
 
 .label {
     margin-right: 28%;
