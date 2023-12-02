@@ -19,7 +19,8 @@ $livroDao = new LivroDao($pdo);
 $livro = $livroDao->selectById($sala->getLivrosId());
 
 $salaDao = new SalaDao($pdo);
-$sal = $salaDao->mostrarAlunoSala($_GET['id']);
+$sals = $salaDao->mostrarAlunoSala($_GET['id']);
+var_dump($sals);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,7 +61,8 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
         margin-left: 22%;
         margin-top: -40%;
     }
-    .alunos h3{
+
+    .alunos h3 {
         margin-top: 2%;
         margin-bottom: -2%;
     }
@@ -71,7 +73,7 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
     }
 
     .livro {
-        margin-left: 0,5%;
+        margin-left: 0, 5%;
     }
 
     .text-center {
@@ -133,60 +135,21 @@ $sal = $salaDao->mostrarAlunoSala($_GET['id']);
             <h3 class="text-center">Alunos</h3>
 
             <div class="container">
-
-                <div class="card">
-                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Evandro</h5>
-                        <br>
-                        <!-- Barra de progresso Bootstrap -->
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                <?php foreach ($sals as $sal) : ?>
+                    <div class="card">
+                        <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $sal->nome_aluno ?></h5>
+                            <br>
+                            <!-- Barra de progresso Bootstrap -->
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->porcentagem?>  </div>
+                            </div>
+                            <br>
+                            <a href="#" class="btn btn-primary">Exibir</a>
                         </div>
-                        <br>
-                        <a href="#" class="btn btn-primary">Exibir</a>
                     </div>
-                </div>
-                <div class="card">
-                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Evandro</h5>
-                        <br>
-                        <!-- Barra de progresso Bootstrap -->
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                        <br>
-                        <a href="#" class="btn btn-primary">Exibir</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Evandro</h5>
-                        <br>
-                        <!-- Barra de progresso Bootstrap -->
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                        <br>
-                        <a href="#" class="btn btn-primary">Exibir</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="\readfy\public\img\Coruja_lendo 2 .jpg" class="card-img-top" alt="Livro 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Evandro</h5>
-                        <br>
-                        <!-- Barra de progresso Bootstrap -->
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                        <br>
-                        <a href="#" class="btn btn-primary">Exibir</a>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
