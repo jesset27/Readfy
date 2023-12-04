@@ -71,6 +71,23 @@ class LivroDao
         }
     }
 
+   
+    public function getLivrosPorGenero($genero) {
+        
+        try {
+                $stmt = $this->pdo->prepare("SELECT * FROM livros WHERE genero = :genero");
+                $stmt->bindParam(':genero', $genero, PDO::PARAM_STR);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_CLASS, 'Livro');
+            } catch (PDOException $e) {
+                echo 'Erro ao buscar livros por gênero: ' . $e->getMessage();
+                return []; // Retorna um array vazio em caso de erro
+            }
+    }
+    
+     
+ 
+
     public function selectById($id)
     {
         try {
@@ -83,6 +100,16 @@ class LivroDao
             echo 'Erro ao buscar alunos: ' . $e->getMessage();
         }
         $stmt->execute();
+    }
+
+    public function getGenerosOrdenados() {
+        try {
+            $stmt = $this->pdo->prepare("SELECT DISTINCT genero FROM livros ORDER BY genero ASC");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar gêneros: ' . $e->getMessage();
+        }
     }
 
     public function delete($id)

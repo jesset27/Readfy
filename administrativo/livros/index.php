@@ -5,6 +5,7 @@ require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Livro.php');
 require_once('../../src/Models/ClassesDao/LivroDao.php');
 
+$genero="";
 
 $livroDao = new LivroDao($pdo);
 $livros = $livroDao->selectAll();
@@ -17,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livro->setEditora($_POST['editora']);
     $livro->setAutor($_POST['autor']);
     $livro->setDataLancamento($_POST['dataLancamento']);
-    $livro->setGenero($_POST['genero']);
+    $genero = ucfirst(strtolower($_POST['genero']));
+    $livro->setGenero($genero);
     $livro->setTotalDePaginas($_POST['totalPaginas']);
     $livroNome = basename($_FILES['livro']['name']);
     $capaLivroNome = basename($_FILES['capaLivro']['name']);
