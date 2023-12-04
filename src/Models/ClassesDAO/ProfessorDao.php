@@ -118,7 +118,6 @@ class ProfessorDao
             $stmt = $this->pdo->prepare('SELECT * FROM professor WHERE id = :id');
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchObject('Professor');
         } catch (PDOException $e) {
             echo 'Erro ao buscar professores: ' . $e->getMessage();

@@ -1,3 +1,27 @@
+<?php
+require_once("../src/Lib/connect.php");
+require_once("../src/Lib/Session.php");
+require_once("../src/Models/Classes/Professor.php");
+require_once("../src/Models/ClassesDAO/ProfessorDao.php");
+
+$professorDao = new ProfessorDao($pdo);
+$session = new Session();
+
+$professor = $professorDao->selectById($session->obter('professor'));
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $professor->setNome($_POST['nome']);
+    $professor->setUsername($_POST['username']);
+    $professor->setEmail($_POST['email']);
+    $professor->setContato($_POST['contato']);
+    $professor->setIdade($_POST['idade']);
+    if (!empty($_POST['senha'])) {
+        $professor->setSenha($_POST['senha']);
+    }
+    $professorDao = new ProfessorDao($pdo);
+    $professorDao->update($professor, $_GET['id']);
+    header("Location: index.php");
+} ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,41 +44,41 @@
             <img src="/readfy/public/img/fechar.png">
         </a>
     </div>
-    <div class="box">                                                                                       
+    <div class="box">
         <div class="container">
             <div class="top-header">
-                                                                                  
+
                 <header>Meu perfil</header>
             </div>
-            <form action="" method="post">
+            <form method="POST">
                 <div class="input-field">
-                    <input type="text" class="input" id="nome" name="nome" placeholder="Nome" required>
+                    <input value="<?= $professor->getNome() ?>" type="text" class="input" id="nome" name="nome" placeholder="Nome" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" id="username" name="username" placeholder="Username" required>
+                    <input value="<?= $professor->getUsername() ?>" type="text" class="input" id="username" name="username" placeholder="Username" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="e-mail" class="input" id="email" name="email" placeholder="E-mail" required>
+                    <input value="<?= $professor->getEmail() ?>" type="e-mail" class="input" id="email" name="email" placeholder="E-mail" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="tel" class="input" id="contato" name="contato" placeholder="Contato/Celular" required placeholder=" Digite seu contato" required>
+                    <input value="<?= $professor->getContato() ?>" type="tel" class="input" id="contato" name="contato" placeholder="Contato/Celular" required placeholder=" Digite seu contato" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="number" class="input" id="idade" name="idade" placeholder="Digite sua idade" required>
+                    <input value="<?= $professor->getIdade() ?>" type="number" class="input" id="idade" name="idade" placeholder="Digite sua idade" required>
                     <i class="fa-regular fa-envelope"></i>
                 </div><br>
                 <div class="tpuser">
 
                     <div class="input-field">
-                        <input type="password" id="senha" name="senha" class="input" placeholder="Senha" required>
+                        <input type="password" id="senha" name="senha" class="input" placeholder="Senha">
                         <i class="fa-solid fa-lock"></i>
                     </div>
 

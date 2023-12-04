@@ -18,7 +18,6 @@ $sala = $salaDao->selectById($_GET['id']);
 $livroDao = new LivroDao($pdo);
 $livro = $livroDao->selectById($sala->getLivrosId());
 
-$salaDao = new SalaDao($pdo);
 $sals = $salaDao->mostrarAlunoSala($_GET['id']);
 var_dump($sals);
 ?>
@@ -143,7 +142,7 @@ var_dump($sals);
                             <br>
                             <!-- Barra de progresso Bootstrap -->
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->porcentagem?>  </div>
+                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->soma_porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->soma_porcentagem?>  </div>
                             </div>
                             <br>
                             <a href="#" class="btn btn-primary">Exibir</a>

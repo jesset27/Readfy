@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="../src/Lib/session_destroy.php">Sair</a></li>
+        <li><a class="dropdown-item" href="/readfy/src/Lib/session_destroy.php">Sair</a></li>
     </ul>
 </div>
 </div>

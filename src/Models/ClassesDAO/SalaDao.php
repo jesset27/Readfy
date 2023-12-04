@@ -60,7 +60,6 @@ class SalaDao
             $stmt = $this->pdo->prepare("DELETE FROM sala WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $this->pdo = null;
         } catch (PDOException $e) {
             echo 'Erro ao excluir o registro: ' . $e->getMessage();
         }
@@ -71,7 +70,6 @@ class SalaDao
             $stmt = $this->pdo->prepare('SELECT * FROM sala WHERE id = :id');
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchObject('Sala');
         } catch (PDOException $e) {
             echo 'Erro ao buscar salas: ' . $e->getMessage();
@@ -113,7 +111,6 @@ class SalaDao
 
 
             $stmt->execute();
-            $this->pdo = null;
             header('Location: ../index.php');
         } catch (PDOException $e) {
             echo 'Erro ao atualizar sala: ' . $e->getMessage();
@@ -125,7 +122,6 @@ class SalaDao
             $stmt = $this->pdo->prepare('SELECT * FROM sala WHERE codigo = :codigo');
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchObject('Sala');
         } catch (PDOException $e) {
             echo 'Erro ao buscar sala: ' . $e->getMessage();
@@ -142,7 +138,6 @@ class SalaDao
             $stmt->bindParam(':aluno_id', $aluno_id);
             $stmt->bindParam(':sala_id', $sala_id);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchObject('Sala');
         } catch (PDOException $e) {
             echo 'Erro ao entrar na sala: ' . $e->getMessage();
@@ -155,7 +150,6 @@ class SalaDao
             $stmt = $this->pdo->prepare('SELECT * FROM aluno');
             $stmt->bindParam(':aluno_id', $aluno_id);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchAll(\PDO::FETCH_CLASS);
         } catch (PDOException $e) {
             echo 'Erro ao buscar salas: ' . $e->getMessage();
@@ -185,35 +179,33 @@ class SalaDao
         }
     }
     public function mostrarAlunoSala($salaId)
-    {
-        try {
-            $stmt = $this->pdo->prepare("SELECT
-            aluno.id AS aluno_id,
-            aluno.nome AS nome_aluno,
-            sala.id AS sala_id,
-            sala.nome AS nome_sala,
-            professor.nome AS nome_professor,
-            livros.nome AS nome_livro,
-            SUM(l.porcentagem) /sala.pagina_final * 100 as porcentagem 
-        FROM
-            alunosala
-        JOIN aluno ON alunosala.aluno_id = aluno.id
-        JOIN sala ON alunosala.sala_id = sala.id
-        JOIN professor ON sala.professor_id = professor.id
-        JOIN livros ON sala.livros_id = livros.id
-        JOIN leitura l ON l.aluno_id = aluno.id AND l.sala_id = sala.id 
-        WHERE
-            alunosala.sala_id = 8
-;");
+{
+    try {
+        $stmt = $this->pdo->prepare("SELECT
+        aluno.nome AS nome_aluno,
+        sala.id AS id_sala,
+        aluno.id AS id_aluno,
+        COALESCE(SUM(leitura.porcentagem), 0) AS soma_porcentagem
+    FROM
+        alunosala
+    JOIN aluno ON alunosala.aluno_id = aluno.id
+    LEFT JOIN leitura ON aluno.id = leitura.aluno_id AND alunosala.sala_id = leitura.sala_id
+    JOIN sala ON alunosala.sala_id = sala.id
+    WHERE
+        alunosala.sala_id = :salaId 
+    GROUP BY
+        aluno.id;
+    ");
 
-            // Vincular o parâmetro :sala_id ao valor passado para a função
-            // $stmt->bindParam(':sala_id', $salaId, \PDO::PARAM_INT);
+        $stmt->bindParam(':salaId', $salaId, \PDO::PARAM_INT);
+        $stmt->execute();
 
-            $stmt->execute();
-
-            return $stmt->fetchAll(\PDO::FETCH_CLASS);
-        } catch (PDOException $e) {
-            echo 'Erro: ' . $e->getMessage();
-        }
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
+    } catch (\PDOException $e) {
+        echo 'Erro: ' . $e->getMessage();
     }
+}
+public function __destruct(){
+    $this->pdo = null;
+}
 }

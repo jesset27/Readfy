@@ -55,10 +55,10 @@ class Professor{
     public function setTipo(string $tipo) {
         $this->tipo = $tipo;
     }
-    public function getSenha(): string {
+    public function getSenha(){
         return $this->senha;
     }
-    public function setSenha(string $senha) {
+    public function setSenha(string $senha){
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
     public function getData(): string {

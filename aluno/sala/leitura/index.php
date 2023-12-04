@@ -4,7 +4,12 @@ require_once('../../../src/Lib/connect.php');
 require_once('../../../src/Lib/Session.php');
 $session = new Session();
 $livroDao = new LivroDao($pdo);
-$livro = $livroDao->selectByIdSalaLivro($_GET['id'])['livro_id'];
+$livro = $livroDao->selectByIdSalaLivro($_GET['id']);
+$pgAtual = $session->obter("pagina_atual");
+if ($pgAtual == null) {
+    $pgAtual = 1;
+}
+
 var_dump($livro);
 ?>
 <!DOCTYPE html>
@@ -24,13 +29,12 @@ var_dump($livro);
         <button id="back-page" class="button-5">
             Voltar
         </button>
-        <iframe  id="livro" height="630" width="1100" src="livros/exemplo.pdf">
+        <iframe  id="livro" height="500" width="800" src="livros/exemplo.pdf">
 
         </iframe>
         <button id="next-page" class="button-5">
             Próxima
         </button>
-        
     </div>
 <script>
 const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX

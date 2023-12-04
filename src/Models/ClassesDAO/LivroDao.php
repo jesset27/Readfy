@@ -97,7 +97,7 @@ class LivroDao
             $this->pdo = null;
             return $stmt->fetchObject('Livro');
         } catch (PDOException $e) {
-            echo 'Erro ao buscar alunos: ' . $e->getMessage();
+            echo 'Erro ao buscar: ' . $e->getMessage();
         }
         $stmt->execute();
     }
