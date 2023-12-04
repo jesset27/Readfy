@@ -8,7 +8,7 @@ require_once('../../src/Models/ClassesDao/ProfessorDao.php');
 
 $professorDao = new ProfessorDao($pdo);
 $professores = $professorDao->selectAll();
-
+$session = new Session();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $professor->setEmail($_POST['email']);
     $professor->setContato($_POST['contato']);
     $professor->setIdade($_POST['idade']);
-    $professor->setTipo('professor'); 
+    $professor->setTipo('professor');
     $professor->setSenha($_POST['senha']);
     $professorDao = new ProfessorDao($pdo);
     if (!$professorDao->VerificaEmail($email)) {
@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href=" update.php?id=  ">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="update.php?id= ">Meu Perfil</a></li>
+    <li><a class="dropdown-item" href="../update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
+        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
         <li>
             <hr class="dropdown-divider">
         </li>

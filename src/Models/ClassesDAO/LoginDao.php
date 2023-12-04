@@ -53,7 +53,7 @@ class LoginDao
                 if (password_verify($senha, $senha_hash)) {
                     if ($tipo_usuario === 'admin') {
                         $session = new Session();
-                        $session->definir($result['tipo'], $result['id']);
+                        $session->definir('administrador', $result['id']);
                         header('Location: /readfy/administrativo/administradores');
                     } elseif ($tipo_usuario === 'professor') {
                         $session = new Session();

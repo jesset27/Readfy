@@ -9,7 +9,7 @@ $genero="";
 
 $livroDao = new LivroDao($pdo);
 $livros = $livroDao->selectAll();
-
+$session = new Session();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href=" update.php?id=  ">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="update.php?id= ">Meu Perfil</a></li>
+    <li><a class="dropdown-item" href="../update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
+        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
         <li>
             <hr class="dropdown-divider">
         </li>

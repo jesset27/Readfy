@@ -8,6 +8,7 @@ require_once('../../src/Models/ClassesDao/AlunoDao.php');
 
 $alunoDao = new AlunoDao($pdo);
 $aluno = $alunoDao->selectById($_GET['id']);
+$session = new Session();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $aluno->setNome($_POST['nome']);
@@ -25,13 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div class="dropdown pb-4">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-        <span class="d-none d-sm-inline mx-1">Aluno</span>
+<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="d-none d-sm-inline mx-1">
+            <i class="bi bi-person-circle"></i> 
+            Administrador
+        </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href=" update.php?id=  ">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="update.php?id= ">Meu Perfil</a></li>
+    <li><a class="dropdown-item" href="../update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
+        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
         <li>
             <hr class="dropdown-divider">
         </li>

@@ -17,7 +17,6 @@ class AdminDao
             $stmt->bindValue(":email", $admin->getEmail());
             $stmt->bindValue(":senha", $admin->getSenha());
             $stmt->execute();
-            $this->pdo = null;
         } catch (PDOException $e) {
             echo 'Erro ao inserir administrador: ' . $e->getMessage();
         }
@@ -72,7 +71,6 @@ class AdminDao
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM admin");
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Admin');
         } catch (PDOException $e) {
             echo 'Erro ao buscar administradores: ' . $e->getMessage();
@@ -94,7 +92,6 @@ class AdminDao
             $stmt = $this->pdo->prepare('SELECT * FROM admin WHERE id = :id');
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchObject('Admin');
         } catch (PDOException $e) {
             echo 'Erro ao buscar administradores: ' . $e->getMessage();

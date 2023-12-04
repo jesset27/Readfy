@@ -7,6 +7,7 @@ require_once('../../src/Models/ClassesDao/AdminDao.php');
 
 $adminDao = new AdminDao($pdo);
 $admin = $adminDao->selectById($_GET['id']);
+$session = new Session();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $adminDao = new AdminDao($pdo);
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $adminDao->update($admin, $_GET['id']);
     header("Location: index.php");
 }
+
 ?>
 
 <div class="dropdown pb-4">
@@ -26,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href=" update.php?id=  ">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="update.php?id= ">Meu Perfil</a></li>
+    <li><a class="dropdown-item" href="../update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
+        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="../src/Lib/session_destroy.php">Sair</a></li>
+        <li><a class="dropdown-item" href="/readfy/src/Lib/session_destroy.php">Sair</a></li>
     </ul>
 </div>
 </div>
