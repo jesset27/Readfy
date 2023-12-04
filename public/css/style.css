@@ -12,6 +12,7 @@ body{
     background: url('/readfy/public/img/fundo3.png') no-repeat;
     background-size: cover ; 
     background-position: center;
+    
 }
 .header {
     position: fixed;
@@ -157,6 +158,85 @@ body{
     justify-content: center; 
 }
 
+
+
+
+/* Estilos para telas de tablet */
+@media screen and (max-width: 900px) {
+    .navbar {
+        margin-left: 300px; /* Ajuste conforme necessário */
+    }
+    .logo img {
+        width: 290px; /* Ajuste conforme necessário */
+        margin-top: -45px;
+    }
+
+    body{
+        min-height: 70vh;
+        background: url('/readfy/public/img/fundo3.png') no-repeat;
+        background-size: 110% ; 
+        background-position: center;
+        
+    }
+    /* Adicione mais estilos específicos para tablets aqui */
+
+    .tx1{
+        margin-top: 20px;
+        margin-left: 35%;
+        font-size:medium;
+        color: rgb(255, 255, 255);
+    }
+    
+    .texto{
+        color:#ffffff;
+        font-size: 18px; 
+    }
+    
+}
+
+/* Estilos para telas de celular */
+@media screen and (max-width: 600px) {
+    .navbar {
+        margin-left: 100px; /* Ajuste conforme necessário */
+    }
+    .logo img {
+        width: 200px; /* Ajuste conforme necessário */
+        margin-top: -23px;
+        margin-left: -10px;
+    }
+    .botao1 button, .botao2 button {
+        padding: 10px 25px;
+        font-size: 18px;
+        margin-left: 38%;
+        margin-top: 25px
+    
+    }
+    /* Adicione mais estilos específicos para celulares aqui */
+    .tx1{
+        margin-top: 13px;
+        margin-left: 35%;
+        font-size:12px;
+        color: rgb(255, 255, 255);
+    }
+    
+    .texto{
+        color:#ffffff;
+        font-size: 13px;
+        margin-left: -8%; 
+    }
+
+    .navbar a{
+        font-size: 1.1rem;
+    }
+
+    body{
+        min-height: 65vh;
+        background-size: 110% ; 
+        background-position: center;
+        
+    }
+
+}
 
 
 

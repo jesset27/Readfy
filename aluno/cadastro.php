@@ -4,6 +4,7 @@ require_once('../src/Models/ClassesDAO/AlunoDao.php');
 require_once('../src/Lib/connect.php');
 ?>
 <?php
+$resultado="";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $aluno = new Aluno();
@@ -16,13 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $aluno->setSenha($_POST['senha']);
     $alunoDao = new AlunoDAO($pdo);
 
+    $email = $_POST['email'];
 
-    if (!$alunoDao->VerificaEmail($email)) {
+    if ($alunoDao->VerificaEmail($email)) {
+        $resultado= "O email fornecido já está em uso.";
+    } else {
         $alunoDao->inserir($aluno);
         header('Location: ../login.php');
         exit();
-    } else {
-        echo "O email fornecido já está em uso.";
     }
 }
 ?>
@@ -95,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
-    <div> <? $resposta ?></div>
+    <p><?php echo $resultado?> </p>
+   
 
 </body>
 
