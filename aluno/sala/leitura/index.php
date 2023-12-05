@@ -10,7 +10,7 @@ if ($pgAtual == null) {
     $pgAtual = 1;
 }
 
-var_dump($livro);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,11 +29,15 @@ var_dump($livro);
         <button id="back-page" class="button-5">
             Voltar
         </button>
-        <iframe  id="livro" height="500" width="800" src="livros/exemplo.pdf">
+        <iframe  id="livro" height="700" width="900" src="livros/exemplo.pdf">
 
         </iframe>
         <button id="next-page" class="button-5">
             Próxima
+        </button>
+
+        <button id="next-page" class="button-6">
+            Sair
         </button>
     </div>
 <script>
