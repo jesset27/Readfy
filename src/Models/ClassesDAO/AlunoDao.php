@@ -157,4 +157,33 @@ class AlunoDao {
             echo 'Erro ao atualizar aluno: ' . $e->getMessage();
         }
     }
+    public function emailVerifyRecover($email){
+        try{
+            $stmt = $this->pdo->prepare("SELECT * FROM aluno WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                // Email exists
+                return $stmt->fetchObject('Aluno');
+            } else {
+                // Email does not exist
+                return false;
+            }
+        }catch(PDOException $e){
+            echo 'Erro: ' . $e->getMessage();
+        }
+    }
+    public function alterarSenha($senha, $id){
+        try{
+            $stmt = $this->pdo->prepare("UPDATE aluno SET senha = :senha WHERE id = :id");
+            $senhaPassword = password_hash($senha, PASSWORD_DEFAULT);
+            $stmt->bindParam(':senha', $senhaPassword);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            header('Location: login.php');
+        }catch(PDOException $e){
+            echo 'Erro: ' . $e->getMessage();
+        }
+    }
 }

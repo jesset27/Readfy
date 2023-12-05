@@ -57,8 +57,7 @@ require_once("./src/Models/ClassesDAO/LoginDao.php");
                         </div>
 
                         <div class="right">
-                            <label><a href="#"> Esqueceu a senha?</a></label>
-
+                            <label><a href="/readfy/src/Lib/recovery/recovery.php"> Esqueceu a senha?</a></label>
                         </div>
                     </div>
                 </form>
