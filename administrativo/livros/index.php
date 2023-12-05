@@ -4,7 +4,10 @@ require_once("../../src/Lib/Session.php");
 require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Livro.php');
 require_once('../../src/Models/ClassesDao/LivroDao.php');
-
+$session = new Session();
+if ($session->obter('administrador') == null) {
+    header("Location: /readfy/login.php");
+}
 $genero="";
 
 $livroDao = new LivroDao($pdo);
@@ -38,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="dropdown pb-4">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="d-none d-sm-inline mx-1">
-            <i class="bi bi-person-circle"></i> 
+            <i class="bi bi-person-circle"></i>
             Administrador
         </span>
     </a>
@@ -74,30 +77,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <tbody>
                 <?php foreach ($livros as $livro) : ?>
                     <tr>
-                        <th scope="row">
+                        <th scope='row'>
                             <?= $livro->getId(); ?>
                         </th>
-                        <th scope="row">
+                        <td>
                             <?= $livro->getNome(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getEditora(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getAutor(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getdatalancamento(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getDataatual(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getGenero(); ?>
-                        </th>
-                        <th scope="row">
+                        </td>
+                        <td>
                             <?= $livro->getTotalDePaginas(); ?>
-                        </th>
+                        </td>
                         <td>
                             <a href="./update.php?id=<?= $livro->getId(); ?>">
                                 <button class="btn btn-primary bi bi-pencil-square"></button>

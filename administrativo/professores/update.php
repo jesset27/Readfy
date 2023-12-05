@@ -4,7 +4,10 @@ require_once("../../src/Lib/Session.php");
 require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Professor.php');
 require_once('../../src/Models/ClassesDao/ProfessorDao.php');
-
+$session = new Session();
+if ($session->obter('administrador') == null) {
+    header("Location: /readfy/login.php");
+}
 
 $professorDao = new ProfessorDao($pdo);
 $professor = $professorDao->selectById($_GET['id']);
@@ -70,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!">
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Atualizar Dados!</button>
             </form>

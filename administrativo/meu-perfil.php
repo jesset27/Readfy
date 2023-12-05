@@ -6,12 +6,12 @@ require_once('../src/Views/layout/headeradm.php');
 require_once("../src/Lib/Session.php");
 require_once("../src/Models/Classes/Admin.php");
 require_once("../src/Models/ClassesDAO/AdminDao.php");
-
-
 $session = new Session();
 if ($session->obter('administrador') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
+
+
 
 $adminDao = new AdminDao($pdo);
 $admin = $adminDao->selectById($session->obter('administrador'));

@@ -7,10 +7,10 @@ require_once "../src/Models/ClassesDAO/SalaDao.php";
 require_once "../src/Lib/connect.php";
 
 require_once "../src/Lib/Session.php";
-// $session = new Session();
-// if ($session->obter('professor') == null) {
-//     header("Location: ../login.php");
-// }
+$session = new Session();
+if ($session->obter('professor') == null) {
+    header("Location: ../login.php");
+}
 
 $salaDao = new SalaDao($pdo);
 $sala = $salaDao->selectById($_GET['id']);

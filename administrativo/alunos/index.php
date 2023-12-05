@@ -4,7 +4,10 @@ require_once("../../src/Lib/Session.php");
 require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Aluno.php');
 require_once('../../src/Models/ClassesDao/AlunoDao.php');
-
+$session = new Session();
+if ($session->obter('administrador') == null) {
+    header("Location: /readfy/login.php");
+}
 
 $alunoDao = new AlunoDao($pdo);
 $alunos = $alunoDao->selectAll();

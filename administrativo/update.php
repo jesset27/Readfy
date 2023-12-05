@@ -10,7 +10,7 @@ require_once("../src/Models/ClassesDAO/AdminDao.php");
 
 $session = new Session();
 if ($session->obter('administrador') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
 
 $adminDao = new AdminDao($pdo);
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="mb-3">
             <label for="inputEmail" class="form-label">Senha</label>
-            <input value="" name="senha" type="senha" class="form-control" id="inputsenha" placeholder="Digite sua senha">
+            <input value="" name="senha" type="senha" class="form-control" id="inputsenha" placeholder="Digite sua senha" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar</button>

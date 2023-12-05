@@ -5,8 +5,10 @@ require_once("../../src/Lib/Session.php");
 require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Livro.php');
 require_once('../../src/Models/ClassesDao/LivroDao.php');
-
-// Criar uma instância da classe LivroDao
+$session = new Session();
+if ($session->obter('administrador') == null) {
+    header("Location: /readfy/login.php");
+}
 $livroDao = new LivroDao($pdo);
 $session = new Session();
 $livro = $livroDao->selectById($_GET['id']);
@@ -16,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livro->setEditora($_POST['editora']);
     $livro->setAutor($_POST['autor']);
     $livro->setDataLancamento($_POST['dataLancamento']);
-    $livro->setCaminho($_FILES['livro']);
+    $livro->setCaminho($_FILES['livro']['tmp_name']);
     $livro->setGenero($_POST['genero']);
-    $livro->setTotalDePaginas($_POST['totalpaginas']);
-    $livro->setCapa($_FILES['capalivro']);
+    $livro->setTotalDePaginas($_POST['total_paginas']);
+    $livro->setCapa($_FILES['capalivro']['tmp_name']);
     $livroDao = new LivroDao($pdo);
     $livroDao->update($livro, $_GET['id']);
     header("Location: index.php");
@@ -79,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <br>
             <div class="form-group">
-                <input type="number" class="form-control" name="totalpaginas" placeholder="Total de Páginas" value="<?= $livro->getTotalDePaginas() ?>">
+                <input type="number" class="form-control" name="total_paginas" placeholder="Total de Páginas" value="<?= $livro->getTotalDePaginas() ?>">
             </div>
             <br>
             <div class="form-group">

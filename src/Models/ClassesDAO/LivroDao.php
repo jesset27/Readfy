@@ -144,7 +144,7 @@ class LivroDao
                 datalancamento = :datalancamento,
                 caminho = :caminho,
                 genero = :genero,
-                totaldepaginas = :totaldepaginas,
+                total_paginas = :totaldepaginas,
                 capa = :capa
             WHERE id = :id"
             );
