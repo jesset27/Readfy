@@ -10,7 +10,6 @@ if ($session->obter('aluno') == null) {
 $salaDao = new SalaDao($pdo);
 $salas = $salaDao->selectAlunoSala();
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $codigo = $_POST['codigo'];
     $salaDao = new SalaDao($pdo);
@@ -126,12 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <tbody>
                     <?php foreach ($salas as $sala) { ?>
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><?= $sala->sala_id; ?></th>
                             <td><?= $sala->nome_livros; ?></td>
                             <td><?= $sala->nome_professor; ?></td>
                             <td>
 
-                                <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">
+                                <a href="./sala/sala.php?id=<?= $sala->sala_id; ?>">
                                     <button type="button" class="btn btn-primary bi bi-book-half"></button>
                                 </a>
                                 <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">

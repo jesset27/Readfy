@@ -185,7 +185,7 @@ class SalaDao
         aluno.nome AS nome_aluno,
         sala.id AS id_sala,
         aluno.id AS id_aluno,
-        COALESCE(SUM(leitura.porcentagem), 0) AS soma_porcentagem
+        COALESCE(SUM(leitura.porcentagem) / 40, 0) AS soma_porcentagem
     FROM
         alunosala
     JOIN aluno ON alunosala.aluno_id = aluno.id

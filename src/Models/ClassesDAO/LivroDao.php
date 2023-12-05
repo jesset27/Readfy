@@ -176,7 +176,8 @@ class LivroDao
             livros.datalancamento,
             livros.genero,
             livros.total_paginas,
-            livros.capa
+            livros.capa,
+            sala.prazo
         FROM
             sala
         JOIN livros ON sala.livros_id = livros.id

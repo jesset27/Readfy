@@ -10,7 +10,6 @@ if ($pgAtual == null) {
     $pgAtual = 1;
 }
 
-var_dump($livro);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
