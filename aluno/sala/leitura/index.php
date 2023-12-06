@@ -40,7 +40,7 @@ if ($pgAtual == null) {
         
 
     </div>
-        <a href="/readfy/aluno/sala/sala.php">
+        <a href="/readfy/aluno/index.php">
             <button id="back-page" class="button-6">
                 Sair
             </button>

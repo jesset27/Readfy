@@ -96,7 +96,6 @@ class ProfessorDao
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM professor");
             $stmt->execute();
-            $this->pdo = null;
             return $stmt->fetchAll(\PDO::FETCH_CLASS, 'Professor');
         } catch (PDOException $e) {
             echo 'Erro ao buscar professores: ' . $e->getMessage();
@@ -153,9 +152,12 @@ class ProfessorDao
             $stmt->bindParam(':idade', $idade);
             $stmt->bindParam(':senha', $senha);
             $stmt->execute();
-            $this->pdo = null;
         } catch (PDOException $e) {
             echo 'Erro ao atualizar professor: ' . $e->getMessage();
         }
+    }
+    public function __destruct()
+    {
+        $this->pdo = null;
     }
 }

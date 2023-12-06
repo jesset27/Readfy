@@ -65,7 +65,7 @@ class LoginDao
                         header('Location: /readfy/aluno/');
                     }
                 } else {
-                    echo "Senha incorreta $tipo_usuario";
+                    echo "Senha incorreta";
                 }
             } else {
                 echo "Email não encontrado";

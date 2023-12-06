@@ -205,6 +205,20 @@ class SalaDao
             echo 'Erro: ' . $e->getMessage();
         }
     }
+
+    public function excluirAlunoSala($idSala, $idAluno){
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM alunosala WHERE sala_id = :sala_id AND aluno_id = :aluno_id");
+                $stmt->bindParam(':sala_id', $idSala, PDO::PARAM_INT);
+            $stmt->bindParam(':aluno_id', $idAluno, PDO::PARAM_INT);
+                $stmt->execute();
+    
+            header('Location: ./index.php');
+        } catch (PDOException $e) {
+            echo 'Erro: ' . $e->getMessage();
+        }
+    }
+    
     public function __destruct()
     {
         $this->pdo = null;

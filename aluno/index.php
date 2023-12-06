@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <a href="./sala/sala.php?id=<?= $sala->sala_id; ?>">
                                     <button type="button" class="btn btn-primary bi bi-book-half"></button>
                                 </a>
-                                <a href="./sala/leitura/index.php?id=<?= $sala->sala_id; ?>">
+                                <a href="./saladestroy.php?id=<?= $sala->sala_id; ?>">
                                     <button type="button" class="bi bi-trash3-fill btn btn-danger"></button>
                                 </a>
 
