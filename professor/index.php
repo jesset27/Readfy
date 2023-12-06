@@ -54,7 +54,7 @@
            </span>
          </a>
        </li>
-       <li style="--i: #191970; --j:#4D94FF">
+       <li style="--i:#1E90FF; --j:#4D94FF">
          <a href="/Readfy/professor/sala/criar_sala.php">
            <span class="icon">
              <ion-icon name="school-outline"></ion-icon>

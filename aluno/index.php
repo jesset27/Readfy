@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </li>
             <li style="--i:#32CD32 ; --j:#70e094">
-                <a href="#">
+                <a href="../../Readfy/galeria.php">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
                     </span>
@@ -102,9 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="input-field">
                     <input type="submit" class="submit" value=" Confirmar">
                 </div>
+            </form>
         </div>
 
-        </form>
     </div>
 
     <div class="container-sala">
@@ -144,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </tbody>
             </table>
         </div>
-
-
+    </div>
 
 </body>

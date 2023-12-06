@@ -19,7 +19,6 @@ $livroDao = new LivroDao($pdo);
 $livro = $livroDao->selectById($sala->getLivrosId());
 
 $sals = $salaDao->mostrarAlunoSala($_GET['id']);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

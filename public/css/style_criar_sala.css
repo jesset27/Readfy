@@ -139,12 +139,12 @@ ul li:hover .text{
 
 .container_edit_sala{
     
-    width: 350px;
+    width: 360px;
     display: flex;
     flex-direction: column; 
-    margin-left: 200%;
+    margin-left: 40%;
     border-color: solid 2px, black;
-    margin-top: -160%;
+    margin-top: -33%;
 
 }
 

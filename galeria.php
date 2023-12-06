@@ -47,6 +47,7 @@ $generos = $livroDao->getGenerosOrdenados();
                     </div>
                 </div>
                 <a href="sobre.php">Sair</a>
+                
             </nav>
     </header>
 

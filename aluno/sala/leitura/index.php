@@ -13,6 +13,7 @@ if ($pgAtual == null) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,33 +23,44 @@ if ($pgAtual == null) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
 <body>
     </script>
     <div class="render-livro">
         <button id="back-page" class="button-5">
             Voltar
         </button>
-        <iframe  id="livro" height="500" width="800" src="livros/exemplo.pdf">
+        <iframe id="livro" height="700" width="900" src="livros/exemplo.pdf">
 
         </iframe>
         <button id="next-page" class="button-5">
             Próxima
         </button>
+
+        
+
     </div>
-<script>
-const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX
+        <a href="/readfy/aluno/sala/sala.php">
+            <button id="back-page" class="button-6">
+                Sair
+            </button>
+        </a>
 
-const livro_id = <?= $livro['livro_id'] ?>; // ID DO Livro
-const livro_totalpage = <?= $livro['total_paginas'] ?>; // total de paginas do livro
-var current_page = <?= $pgAtual ?>; //pagina que sera renderizada no inicio
-var sala_id =  <?= $_GET['id'] ?> // ID DA SALA
 
-var send_time = false; //nao altere
-var livro_iframe = jQuery("#livro"); //nao altere    
 
- 
-</script>
-<script src="assets/script.js" charset="UTF-8"></script>
+    <script>
+        const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX
+
+        const livro_id = <?= $livro['livro_id'] ?>; // ID DO Livro
+        const livro_totalpage = <?= $livro['total_paginas'] ?>; // total de paginas do livro
+        var current_page = <?= $pgAtual ?>; //pagina que sera renderizada no inicio
+        var sala_id = <?= $_GET['id'] ?> // ID DA SALA
+
+        var send_time = false; //nao altere
+        var livro_iframe = jQuery("#livro"); //nao altere    
+    </script>
+    <script src="assets/script.js" charset="UTF-8"></script>
 
 </body>
+
 </html>

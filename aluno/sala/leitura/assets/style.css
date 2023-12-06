@@ -12,8 +12,8 @@ body{
     width: 100%;
     height: 100vh;
     gap: 20px;
-    margin-left: -15%;
-    margin-top:-2%;
+    margin-left: 3%;
+    margin-top:2%;
 }
 .button-5 {
 align-items: center;
@@ -76,8 +76,8 @@ transform: translateY(0);
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
-    margin-top:52%;
-    margin-left: -42%;
+    margin-top:75px;
+    margin-left: 700px;
     min-height: 3rem;
     padding: calc(.875rem - 1px) calc(1.5rem - 1px);
     position: relative;
@@ -88,7 +88,7 @@ transform: translateY(0);
     touch-action: manipulation;
     vertical-align: baseline;
     width: auto;
-    }
+ }
 
 .button-6:hover,
 .button-6:focus {

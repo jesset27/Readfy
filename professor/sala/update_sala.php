@@ -51,9 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="logo">
         <a href=""> <img src="\Readfy\public\img\logo6.png "> </a>
     </div>
+
     <div class="container">
         <ul>
-            <li style="--i: #353bf4; --j:#ea51ff">
+            <li style="--i: #353bf4; --j:#48D1CC">
                 <a href="\Readfy\professor\index.php">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
@@ -63,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #70e094; --j:#32CD32">
-                <a href="#">
+            <li style="--i:#32CD32 ; --j:#70e094">
+                <a href="\readfy\galeria.php">
                     <span class="icon">
                         <ion-icon name="library-outline"></ion-icon>
                     </span>
@@ -83,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i: #f66333f1; --j:#f434e2">
-                <a href="#">
+            <li style="--i: #f66333f1; --j:#FFA500">
+                <a href="\readfy\professor\perfil.php">
                     <span class="icon">
                         <ion-icon name="cog-outline"></ion-icon>
                     </span>
@@ -93,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </span>
                 </a>
             </li>
-            <li style="--i:#FF0000; --j:#f66333f1">
+            <li style="--i:#FF0000 ; --j:#f66333f1">
                 <a href="../src/Lib/session_destroy.php">
                     <span class="icon">
                         <ion-icon name="exit-outline"></ion-icon>
@@ -104,54 +105,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </li>
         </ul>
-        <div class="">
-            <div class="container_edit_sala">
-                <div class="top-header">
-
-                    <header>EDITAR SALA</header>
-                </div>
-
-                <form action="" method="post">
-                    <div class="input-field">
-                        <select name="livros_id" class="form-select" id="livros_id" required>
-                            <option value="" disabled selected>Selecione um Livro</option>
-                            <?php foreach ($livros as $livro) : ?>
-                                <option value="<?= $livro->getId() ?>" <?= $livro->getId() == $sala->getLivrosId() ? 'selected' : '' ?>><?= $livro->getNome() ?></option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="input" id="nome" name="nome" value="<?= $sala->getNome(); ?>" placeholder="Digite o nome" required>
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="input" id="descricao" name="descricao" value="<?= $sala->getDescricao(); ?>" placeholder="Digite a descricao" required>
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="input" id="pg_inicial" name="pg_inicial" value="<?= $sala->getPaginaInicial() ?>" placeholder="Digite a pagina inicial de leitura" required>
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="input" id="pg_final" name="pg_final" value="<?= $sala->getPaginaFinal() ?>" placeholder="Digite a pagina final de leitura" required>
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="input" id="prazo" name="prazo" value="<?= $sala->getPrazo() ?>" placeholder="Digite o prazo máximo de leitura" required>
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="submit" class="submit" value="SALVAR">
-                    </div>
-                </form>
-
-            </div>
-        </div>
     </div>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <div class="container_edit_sala">
+        <div class="top-header">
+
+            <header>EDITAR SALA</header>
+        </div>
+
+        <form action="" method="post">
+            <div class="input-field">
+                <select name="livros_id" class="form-select" id="livros_id" required>
+                    <option value="" disabled selected>Selecione um Livro</option>
+                    <?php foreach ($livros as $livro) : ?>
+                        <option value="<?= $livro->getId() ?>" <?= $livro->getId() == $sala->getLivrosId() ? 'selected' : '' ?>><?= $livro->getNome() ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" id="nome" name="nome" value="<?= $sala->getNome(); ?>" placeholder="Digite o nome" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" id="descricao" name="descricao" value="<?= $sala->getDescricao(); ?>" placeholder="Digite a descricao" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" id="pg_inicial" name="pg_inicial" value="<?= $sala->getPaginaInicial() ?>" placeholder="Digite a pagina inicial de leitura" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" id="pg_final" name="pg_final" value="<?= $sala->getPaginaFinal() ?>" placeholder="Digite a pagina final de leitura" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="text" class="input" id="prazo" name="prazo" value="<?= $sala->getPrazo() ?>" placeholder="Digite o prazo máximo de leitura" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="input-field">
+                <input type="submit" class="submit" value="SALVAR">
+            </div>
+        </form>
+
+    </div>
+
+
+    
 
 </body>
 

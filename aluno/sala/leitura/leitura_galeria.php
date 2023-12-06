@@ -23,20 +23,22 @@ $livro = $livroDao->selectById($_GET['id']);
 
 <body>
     <div class="render-livro">
-        <a href="../../../galeria.php">
-            <button id="back-page" class="button-5">
-                Voltar
-            </button>
-        </a>
+        
         <button id="back-page" class="button-5">
             Voltar
         </button>
-        <iframe id="livro" height="630" width="1100" src="<?= "../../../public/pdf/" . $livro->getcaminho() ?>">
+        <iframe id="livro" height="700" width="900" src="<?= "../../../public/pdf/" . $livro->getcaminho() ?>">
 
         </iframe>
         <button id="next-page" class="button-5">
             Próxima
         </button>
+
+        <a href="../../../galeria.php">
+            <button id="back-page" class="button-6">
+                Sair
+            </button>
+        </a>
 
     </div>
     <script>

@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="nome" name="nome" placeholder="Digite o nome" required>
+                        <input type="text" class="input" id="nome" name="nome" placeholder="Digite o nome do professor" required>
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <div class="input-field">
