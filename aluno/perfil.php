@@ -7,7 +7,7 @@ require_once("../src/Models/ClassesDAO/AlunoDao.php");
 $alunoDao = new AlunoDao($pdo);
 $session = new Session();
 if ($session->obter('aluno') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
 
 $aluno = $alunoDao->selectById($session->obter('aluno'));

@@ -5,7 +5,7 @@ require_once('../src/Lib/connect.php');
 require_once("../src/Lib/Session.php");
 $session = new Session();
 if ($session->obter('aluno') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
 $salaDao = new SalaDao($pdo);
 $salas = $salaDao->selectAlunoSala();

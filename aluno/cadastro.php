@@ -2,6 +2,10 @@
 require_once('../src/Models/Classes/Aluno.php');
 require_once('../src/Models/ClassesDAO/AlunoDao.php');
 require_once('../src/Lib/connect.php');
+$session = new Session();
+if ($session->obter('aluno') == null) {
+    header("Location: /readfy/login.php");
+}
 ?>
 <?php
 $resultado="";

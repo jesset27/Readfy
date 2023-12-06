@@ -5,6 +5,9 @@
   require_once("../src/Models/ClassesDAO/SalaDao.php");
   $salaDao = new SalaDao($pdo);
   $session = new Session();
+if ($session->obter('professor') == null) {
+    header("Location: /readfy/login.php");
+}
   $salas = $salaDao->selectAllByIdProfessor();
   if ($session->obter('professor') == null) {
     header("Location: ../login.php");

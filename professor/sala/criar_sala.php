@@ -9,7 +9,7 @@ require_once "../../src/Lib/connect.php";
 require_once("../../src/Lib/Session.php");
 $session = new Session();
 if ($session->obter('professor') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
 $livroDao = new LivroDao($pdo);
 $livros = $livroDao->selectAll();

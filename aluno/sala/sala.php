@@ -3,6 +3,10 @@ require_once('../../src/Models/ClassesDao/LivroDao.php');
 require_once('../../src/Lib/connect.php');
 require_once('../../src/Lib/Session.php');
 $id = $_GET['id'];
+$session = new Session();
+if ($session->obter('aluno') == null) {
+    header("Location: /readfy/login.php");
+}
 function compararDataComAtual($dataStr) {
     $dataFornecida = DateTime::createFromFormat('d/m/Y', $dataStr);
     $dataAtual = new DateTime();

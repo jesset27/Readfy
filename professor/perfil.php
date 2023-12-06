@@ -6,6 +6,9 @@ require_once("../src/Models/ClassesDAO/ProfessorDao.php");
 
 $professorDao = new ProfessorDao($pdo);
 $session = new Session();
+if ($session->obter('professor') == null) {
+    header("Location: /readfy/login.php");
+}
 
 $professor = $professorDao->selectById($session->obter('professor'));
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

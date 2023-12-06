@@ -9,7 +9,7 @@ require_once "../../src/Lib/connect.php";
 require_once("../../src/Lib/Session.php");
 $session = new Session();
 if ($session->obter('professor') == null) {
-    header("Location: ../login.php");
+    header("Location: /readfy/login.php");
 }
 
 $salaDao = new SalaDao($pdo);
@@ -124,7 +124,7 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
                     <img class="logo" src="<?= "../../public/img/capas/" . $livro->getCapa() ?>" alt="">
                     <br>
                     <p class="texto"><strong>Nome do livro: <?= $livro->getNome() ?></strong></p>
-                    <p class="texto"><strong>Prazo de leitura até : <?= $sala->getPrazo(); ?></strong></p>
+                    <p class="texto"><strong>Prazo de leitura até : <?= date('d/m/Y', strtotime($sala->getPrazo())); ?></strong></p>
                 </div>
             </div>
         </div>
