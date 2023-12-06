@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="input-field">
-                <input type="text" class="input" id="prazo" name="prazo" value="<?= $sala->getPrazo() ?>" placeholder="Digite o prazo máximo de leitura" required>
+                <input type="date" class="input" id="prazo" name="prazo" value="<?= $sala->getPrazo() ?>" placeholder="Digite o prazo máximo de leitura" required>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="input-field">
@@ -153,10 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
     </div>
-
-
-    
-
 </body>
 
 </html>

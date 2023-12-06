@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $livroDao = new LivroDao($pdo);
     if ($livroDao->UploadFiles($livroNome, $capaLivroNome)) {
         $livroDao->insert($livro);
+        header('Location: index.php');
     }
 }
 

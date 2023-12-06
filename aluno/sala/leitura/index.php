@@ -9,6 +9,8 @@ $pgAtual = $session->obter("pagina_atual");
 if ($pgAtual == null) {
     $pgAtual = 1;
 }
+$pgInicialFinal = $livroDao->getPgInicialFinal($_GET['id']);
+var_dump($pgInicialFinal);
 
 ?>
 <!DOCTYPE html>
@@ -52,8 +54,8 @@ if ($pgAtual == null) {
         const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX
 
         const livro_id = <?= $livro['livro_id'] ?>; // ID DO Livro
-        const livro_totalpage = <?= $livro['total_paginas'] ?>; // total de paginas do livro
-        var current_page = <?= $pgAtual ?>; //pagina que sera renderizada no inicio
+        const livro_totalpage = <?= $pgInicialFinal['pagina_final'] ?>; // total de paginas do livro
+        var current_page = <?= $pgInicialFinal['pagina_inicial']   ?>; //pagina que sera renderizada no inicio
         var sala_id = <?= $_GET['id'] ?> // ID DA SALA
 
         var send_time = false; //nao altere

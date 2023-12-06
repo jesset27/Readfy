@@ -191,4 +191,18 @@ class LivroDao
             echo 'Erro : ' . $e->getMessage();
         }
     }
+    public function getPgInicialFinal($salaId){
+        try {
+            $stmt = $this->pdo->prepare("SELECT pagina_inicial, pagina_final FROM sala WHERE id =:salaId");
+            $stmt->bindParam(':salaId', $salaId, \PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Erro : ' . $e->getMessage();
+        }
+    }
+    public function __destruct()
+    {
+        $this->pdo = null;
+    }
 }

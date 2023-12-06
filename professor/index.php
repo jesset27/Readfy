@@ -122,7 +122,7 @@ if ($session->obter('professor') == null) {
              <td><?= $sala->getPaginaInicial(); ?></td>
              <td><?= $sala->getPaginaFinal(); ?></td>
              <td><?= $sala->getDescricao(); ?></td>
-             <td><?=$sala->getPrazo() ?></td>
+             <td><?= date('d/m/Y', strtotime($sala->getPrazo())); ?></td>
              <td>
                <a href="./sala/sala.php?id=<?= $sala->getId();?>">
                  <button type="button" class="btn btn-primary">Entrar</button>

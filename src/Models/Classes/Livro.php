@@ -39,7 +39,7 @@ class Livro
         $this->autor = $autor;
     }
     public function getdatalancamento(){
-        return date('d/m/Y', strtotime($this->datalancamento));
+        return $this->datalancamento;
     }
     public function setDataLancamento($datalancamento){
         $this->datalancamento = $datalancamento;
