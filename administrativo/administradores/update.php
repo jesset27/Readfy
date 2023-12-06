@@ -5,9 +5,9 @@ require_once('../../src/Views/layout/headeradm.php');
 require_once('../../src/Models/Classes/Admin.php');
 require_once('../../src/Models/ClassesDao/AdminDao.php');
 $session = new Session();
-if ($session->obter('administrador') == null) {
-    header("Location: /readfy/login.php");
-}
+// if ($session->obter('administrador') == null) {
+//     header("Location: /readfy/login.php");
+// }
 $adminDao = new AdminDao($pdo);
 $admin = $adminDao->selectById($_GET['id']);
 $session = new Session();
@@ -16,10 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $adminDao = new AdminDao($pdo);
     $admin->setNome($_POST['nome']);
     $admin->setEmail($_POST['email']);
-    $admin->setSenha($_POST['senha']);
+
+    if (!empty($_POST['senha'])) {
+        $admin->setSenha($_POST['senha']);
+    }
+
     $adminDao->update($admin, $_GET['id']);
     header("Location: index.php");
 }
+
 
 ?>
 
@@ -31,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-    <li><a class="dropdown-item" href="../update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
+        <li><a class="dropdown-item" href="../update.php?id=<?= $session->obter('administrador') ?>">Alterar Dados</a></li>
+        <li><a class="dropdown-item" href="../meu-perfil.php?id=<?= $session->obter('administrador') ?>">Meu Perfil</a></li>
         <li>
             <hr class="dropdown-divider">
         </li>
@@ -56,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!" required>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a nova senha!">
             </div>
 
             <button type="submit" class="btn btn-primary">Atualizar dados!</button>

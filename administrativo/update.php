@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $adminDao->update($admin, $_GET['id']);
+    header('./administradores/index.php');
 }
 ?>
 
@@ -36,12 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-    <li><a class="dropdown-item" href="/readfy/administrativo/update.php?id=<?=$session->obter('administrador') ?>">Alterar Dados</a></li>
-        <li><a class="dropdown-item" href="/readfy/administrativo/meu-perfil.php?id=<?=$session->obter('administrador') ?>">Meu Perfil</a></li>
+        <li>
+            <a class="dropdown-item" href="/readfy/administrativo/update.php?id=<?= $session->obter('administrador') ?>">Alterar Dados</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="/readfy/administrativo/meu-perfil.php?id=<?= $session->obter('administrador') ?>">Meu Perfil</a>
+        </li>
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="/readfy/src/Lib/session_destroy.php">Sair</a></li>
+        <li>
+            <a class="dropdown-item" href="/readfy/src/Lib/session_destroy.php">Sair</a>
+        </li>
     </ul>
 </div>
 </div>
@@ -61,11 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="mb-3">
             <label for="inputEmail" class="form-label">Senha</label>
-            <input value="" name="senha" type="senha" class="form-control" id="inputsenha" placeholder="Digite sua senha" required>
+            <input value="" name="senha" type="senha" class="form-control" id="inputsenha" placeholder="Digite sua senha">
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
-        <button type="" class="btn btn-primary">Sair</button>
+        <a href="./administradores/index.php">
+            <button type="button" class="btn btn-primary">Sair</button>
+        </a>
     </form>
 
 

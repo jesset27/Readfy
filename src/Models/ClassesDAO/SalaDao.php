@@ -179,33 +179,34 @@ class SalaDao
         }
     }
     public function mostrarAlunoSala($salaId)
-{
-    try {
-        $stmt = $this->pdo->prepare("SELECT
-        aluno.nome AS nome_aluno,
-        sala.id AS id_sala,
-        aluno.id AS id_aluno,
-        COALESCE(SUM(leitura.porcentagem) / 40, 0) AS soma_porcentagem
-    FROM
-        alunosala
-    JOIN aluno ON alunosala.aluno_id = aluno.id
-    LEFT JOIN leitura ON aluno.id = leitura.aluno_id AND alunosala.sala_id = leitura.sala_id
-    JOIN sala ON alunosala.sala_id = sala.id
-    WHERE
-        alunosala.sala_id = :salaId 
-    GROUP BY
-        aluno.id;
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT
+            aluno.nome AS nome_aluno,
+            sala.id AS id_sala,
+            aluno.id AS id_aluno,
+            COALESCE(SUM(leitura.porcentagem) / (sala.pagina_final - sala.pagina_inicial + 1), 0) AS soma_porcentagem
+        FROM
+            alunosala
+        JOIN aluno ON alunosala.aluno_id = aluno.id
+        LEFT JOIN leitura ON aluno.id = leitura.aluno_id AND alunosala.sala_id = leitura.sala_id
+        JOIN sala ON alunosala.sala_id = sala.id
+        WHERE
+            alunosala.sala_id = :salaId
+        GROUP BY
+            aluno.id;
     ");
 
-        $stmt->bindParam(':salaId', $salaId, \PDO::PARAM_INT);
-        $stmt->execute();
+            $stmt->bindParam(':salaId', $salaId, \PDO::PARAM_INT);
+            $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_CLASS);
-    } catch (\PDOException $e) {
-        echo 'Erro: ' . $e->getMessage();
+            return $stmt->fetchAll(\PDO::FETCH_CLASS);
+        } catch (\PDOException $e) {
+            echo 'Erro: ' . $e->getMessage();
+        }
     }
-}
-public function __destruct(){
-    $this->pdo = null;
-}
+    public function __destruct()
+    {
+        $this->pdo = null;
+    }
 }

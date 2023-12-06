@@ -102,13 +102,24 @@ class AdminDao
     {
         try {
             $stmt = $this->pdo->prepare("UPDATE admin SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
+
+            $nome = $admin->getNome();
+            $email = $admin->getEmail();
+            $senha = $admin->getSenha();
+
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':nome', $admin->getNome());
-            $stmt->bindParam(':email', $admin->getEmail());
-            $stmt->bindParam(':senha', $admin->getSenha());
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+
             $stmt->execute();
         } catch (PDOException $e) {
             echo 'Erro ao atualizar administrador: ' . $e->getMessage();
         }
+    }
+
+    public function __destruct()
+    {
+        $this->pdo = null;
     }
 }

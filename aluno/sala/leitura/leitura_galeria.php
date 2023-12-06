@@ -10,6 +10,7 @@ $livro = $livroDao->selectById($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,20 +20,37 @@ $livro = $livroDao->selectById($_GET['id']);
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
 <body>
-    </script>
     <div class="render-livro">
         <a href="../../../galeria.php">
             <button id="back-page" class="button-5">
-              Voltar
+                Voltar
             </button>
         </a>
-        <iframe  id="livro" height="630" width="1100" src="<?="../../../public/pdf/". $livro->getcaminho()?>">
+        <button id="back-page" class="button-5">
+            Voltar
+        </button>
+        <iframe id="livro" height="630" width="1100" src="<?= "../../../public/pdf/" . $livro->getcaminho() ?>">
 
         </iframe>
-          
-    </div>
-</script>
+        <button id="next-page" class="button-5">
+            Próxima
+        </button>
 
+    </div>
+    <script>
+        const ajax_livro = "http://localhost/readfy/aluno/sala/leitura/ajax-livros/"; //endpoint AJAX
+
+        const livro_id = <?= $_GET['id'] ?>; // ID DO Livro
+        const livro_totalpage = 10; // total de paginas do livro
+        var current_page = 1; //pagina que sera renderizada no inicio
+        var sala_id = 2; // ID DA SALA
+
+        var send_time = false; //nao altere
+        var livro_iframe = jQuery("#livro"); //nao altere    
+    </script>
+    <script src="assets/main.js" charset="UTF-8"></script>
 </body>
+
 </html>

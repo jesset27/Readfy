@@ -11,7 +11,6 @@ if ($session->obter('administrador') == null) {
 
 $professorDao = new ProfessorDao($pdo);
 $professores = $professorDao->selectAll();
-$session = new Session();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
