@@ -182,10 +182,13 @@ class SalaDao
     {
         try {
             $stmt = $this->pdo->prepare("SELECT
+            aluno.id AS aluno_id,
             aluno.nome AS nome_aluno,
             sala.id AS id_sala,
             aluno.id AS id_aluno,
-            CAST(COALESCE(SUM(leitura.porcentagem) / (sala.pagina_final - sala.pagina_inicial + 1), 0) AS INT) AS soma_porcentagem
+            CAST(COALESCE(SUM(leitura.porcentagem) / (sala.pagina_final - sala.pagina_inicial + 1), 0) AS INT) AS soma_porcentagem,
+            aluno.email AS aluno_email,
+            aluno.idade AS aluno_idade
         FROM
             alunosala
         JOIN aluno ON alunosala.aluno_id = aluno.id
@@ -207,19 +210,20 @@ class SalaDao
         }
     }
 
-    public function excluirAlunoSala($idSala, $idAluno){
+    public function excluirAlunoSala($idSala, $idAluno)
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE FROM alunosala WHERE sala_id = :sala_id AND aluno_id = :aluno_id");
-                $stmt->bindParam(':sala_id', $idSala, PDO::PARAM_INT);
+            $stmt->bindParam(':sala_id', $idSala, PDO::PARAM_INT);
             $stmt->bindParam(':aluno_id', $idAluno, PDO::PARAM_INT);
-                $stmt->execute();
-    
+            $stmt->execute();
+
             header('Location: ./index.php');
         } catch (PDOException $e) {
             echo 'Erro: ' . $e->getMessage();
         }
     }
-    
+
     public function __destruct()
     {
         $this->pdo = null;

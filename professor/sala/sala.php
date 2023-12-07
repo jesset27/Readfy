@@ -116,13 +116,13 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
         <div class="linha">
             <img class="logo" src="/readfy/public/img/logo6.png" alt="">
         </div>
-        
-        <div class="fechar">
-        <a href="\readfy\professor\index.php">
-            <img src="/readfy/public/img/fechar.png">
-        </a>
 
-    </div>
+        <div class="fechar">
+            <a href="\readfy\professor\index.php">
+                <img src="/readfy/public/img/fechar.png">
+            </a>
+
+        </div>
 
         <div class="professor_container">
             <br><br>
@@ -148,20 +148,47 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
                             <br>
                             <!-- Barra de progresso Bootstrap -->
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->soma_porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->soma_porcentagem?> % </div>
-                            </div> 
+                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->soma_porcentagem ?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->soma_porcentagem ?> % </div>
+                            </div>
                             <br>
-                            <a href="#" class="btn btn-primary">Exibir</a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $sal->aluno_id ?>">
+                                Exibir
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal<?= $sal->aluno_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?= $sal->aluno_id ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel<?= $sal->aluno_id ?>">Informações do Aluno</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Aqui você pode adicionar as informações que quer exibir sobre o aluno -->
+                                    Nome do Aluno: <?= $sal->nome_aluno ?><br>
+                                    E-mail:<?= $sal->aluno_email ?><br>
+                                    Idade: <?= $sal->aluno_idade ?> <br>
+                                    Progresso: <?= $sal->soma_porcentagem ?>%
+                                    <!-- Outras informações do aluno -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar Alterações</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+
             </div>
         </div>
     </div>
 </body>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
 </html>
