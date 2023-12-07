@@ -116,7 +116,14 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
         <div class="linha">
             <img class="logo" src="/readfy/public/img/logo6.png" alt="">
         </div>
-        <div class="fechar"><img src="\readfy\public\img\fechar.png"></div>
+        
+        <div class="fechar">
+        <a href="\readfy\professor\index.php">
+            <img src="/readfy/public/img/fechar.png">
+        </a>
+
+    </div>
+
         <div class="professor_container">
             <br><br>
             <div class="professor">

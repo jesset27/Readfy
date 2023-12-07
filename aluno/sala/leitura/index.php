@@ -10,7 +10,7 @@ if ($pgAtual == null) {
     $pgAtual = 1;
 }
 $pgInicialFinal = $livroDao->getPgInicialFinal($_GET['id']);
-var_dump($pgInicialFinal);
+
 
 ?>
 <!DOCTYPE html>

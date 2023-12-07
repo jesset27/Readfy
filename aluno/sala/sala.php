@@ -92,7 +92,11 @@ $botaoHabilitado = compararDataComAtual($prazo->format('d/m/Y'));
     <div class="linha">
         <img class="logo" src="/readfy/public/img/logo6.png" alt="">
     </div>
-    <div class="fechar"><img src="\readfy\public\img\fechar.png"></div>
+    <div class="fechar">
+        <a href="\readfy\aluno\index.php">
+            <img src="/readfy/public/img/fechar.png">
+        </a>
+    </div>
     <div class="professor_container">
         <br><br>
         <div class="professor">
