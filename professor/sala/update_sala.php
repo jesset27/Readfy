@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>EDITAR SALA</title>
+    <title>Readfy</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src='main.js'></script>

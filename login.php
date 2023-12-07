@@ -14,7 +14,7 @@ require_once("./src/Models/ClassesDAO/LoginDao.php");
     <link rel="stylesheet" href="/readfy/public/css/style_login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <title>Entrar</title>
+    <title>Readfy</title>
 
 </head>
 
