@@ -185,7 +185,7 @@ class SalaDao
             aluno.nome AS nome_aluno,
             sala.id AS id_sala,
             aluno.id AS id_aluno,
-            COALESCE(SUM(leitura.porcentagem) / (sala.pagina_final - sala.pagina_inicial + 1), 0) AS soma_porcentagem
+            CAST(COALESCE(SUM(leitura.porcentagem) / (sala.pagina_final - sala.pagina_inicial + 1), 0) AS INT) AS soma_porcentagem
         FROM
             alunosala
         JOIN aluno ON alunosala.aluno_id = aluno.id
@@ -195,6 +195,7 @@ class SalaDao
             alunosala.sala_id = :salaId
         GROUP BY
             aluno.id;
+        
     ");
 
             $stmt->bindParam(':salaId', $salaId, \PDO::PARAM_INT);

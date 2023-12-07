@@ -148,8 +148,8 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
                             <br>
                             <!-- Barra de progresso Bootstrap -->
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->soma_porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->soma_porcentagem?>  </div>
-                            </div>
+                                <div class="progress-bar" role="progressbar" style="width: <?= $sal->soma_porcentagem?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?= $sal->soma_porcentagem?> % </div>
+                            </div> 
                             <br>
                             <a href="#" class="btn btn-primary">Exibir</a>
                         </div>
