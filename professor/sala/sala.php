@@ -175,7 +175,6 @@ $sals = $salaDao->mostrarAlunoSala($_GET['id']);
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn btn-primary">Salvar Alterações</button>
                                 </div>
                             </div>
                         </div>
