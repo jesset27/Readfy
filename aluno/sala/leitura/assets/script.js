@@ -36,7 +36,7 @@ function updateRead(page_id){
 //inicialização da pagina quando todos os elementos são renderizados
 function initialize(){
 
-    renderPage(1);
+    renderPage(current_page); //erro
     //lista eventos dos botões
     jQuery("#next-page").on("click", function(){
 
