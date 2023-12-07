@@ -11,7 +11,6 @@ if ($pgAtual == null) {
 }
 $pgInicialFinal = $livroDao->getPgInicialFinal($_GET['id']);
 var_dump($pgInicialFinal);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,7 +54,7 @@ var_dump($pgInicialFinal);
 
         const livro_id = <?= $livro['livro_id'] ?>; // ID DO Livro
         const livro_totalpage = <?= $pgInicialFinal['pagina_final'] ?>; // total de paginas do livro
-        var current_page = <?= $pgInicialFinal['pagina_inicial']   ?>; //pagina que sera renderizada no inicio
+        var current_page = <?= 5   ?>; //pagina que sera renderizada no inicio
         var sala_id = <?= $_GET['id'] ?> // ID DA SALA
 
         var send_time = false; //nao altere

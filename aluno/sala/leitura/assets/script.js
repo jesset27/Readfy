@@ -46,7 +46,7 @@ function initialize(){
         }else{
             Swal.fire({
                 title: 'Ops!',
-                text: 'Você chegou ao limite de páginas do livro',
+                text: 'Você chegou ao limite de páginas de leitura!',
                 icon: 'error',
                 confirmButtonText: 'OK'
                 });
