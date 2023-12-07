@@ -55,8 +55,9 @@ function initialize(){
     });
 
     jQuery("#back-page").on("click", function(){
+        $pagina_inicial = current_page;
 
-        if ( current_page>=2){
+        if ( current_page < $pagina_inicial){
             current_page = current_page-1;
             renderPage( current_page);
         }else{
