@@ -13,7 +13,6 @@ $livroDao = new LivroDao($pdo);
 //Usando o método da classe LivroDao
 $generos = $livroDao->getGenerosOrdenados();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -42,42 +41,47 @@ $generos = $livroDao->getGenerosOrdenados();
                     <button class="dropbtn">Categorias</button>
                     <div class="dropdown-content">
                         <?php foreach ($generos as $genero) : ?>
-                            <a href="#<?php echo $genero?>"><?php echo htmlspecialchars($genero); ?></a>
+                            <a href="#<?php echo $genero ?>"><?php echo htmlspecialchars($genero); ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <a href="sobre.php">Sair</a>
-                
+                <button class="dropbtn" id="logoutButton" value="button">Sair</button>
             </nav>
     </header>
 
-            <!-- Exibição dinâmica de livros por gênero -->
-            <?php foreach ($generos as $genero) : ?>
-                <div class="container mt-5">
-                    <h2 id="<?php echo $genero ?>" class="mb-4"><?php echo htmlspecialchars($genero); ?></h2>
-                    <div class="row">
-                      <?php $livrosParaGenero = $livroDao->getLivrosPorGenero($genero);?>
-                        <?php foreach ($livrosParaGenero as $livro) : ?>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img src= "<?= "../Readfy/public/img/capas/" . $livro->getCapa() ?>" alt="";>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $livro->getNome(); ?></h5>
-                                        <!-- <a href="#" class="btn btn-primary">Ler</a> -->
-                                        <a href=" <?= "./aluno/sala/leitura/leitura_galeria.php?id=".$livro->getId();?>" class="btn btn-primary"> Ler </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+    <!-- Exibição dinâmica de livros por gênero -->
+    <?php foreach ($generos as $genero) : ?>
+        <div class="container mt-5">
+            <h2 id="<?php echo $genero ?>" class="mb-4"><?php echo htmlspecialchars($genero); ?></h2>
+            <div class="row">
+                <?php $livrosParaGenero = $livroDao->getLivrosPorGenero($genero); ?>
+                <?php foreach ($livrosParaGenero as $livro) : ?>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="<?= "../Readfy/public/img/capas/" . $livro->getCapa() ?>" alt="" ;>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $livro->getNome(); ?></h5>
+                                <!-- <a href="#" class="btn btn-primary">Ler</a> -->
+                                <a href=" <?= "./aluno/sala/leitura/leitura_galeria.php?id=" . $livro->getId(); ?>" class="btn btn-primary"> Ler </a>
 
-            <!-- Inclua os arquivos JavaScript do Bootstrap (opcional) -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+    <!-- Inclua os arquivos JavaScript do Bootstrap (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
+
 </body>
 
 </html>
